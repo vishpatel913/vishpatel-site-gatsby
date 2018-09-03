@@ -2,6 +2,6 @@ module.exports = {
   siteMetadata: {
     title: 'VishPatel.com',
   },
-  pathPrefix: `/vishpatel913.github.io`,
+  pathPrefix: `/`,
   plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-sass'],
 }
