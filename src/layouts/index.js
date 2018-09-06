@@ -1,30 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 import Header from '../components/header'
-import './index.css'
+import icon32 from '../../static/logo/favicon-32.png'
+
+const BodyContainer = styled.div`
+  margin: 0 auto;
+  maxwidth: 1200;
+  padding: 1.5rem;
+  padding-top: 0;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+`
 
 const Layout = ({ children, data }) => (
   <div>
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        {
+          name: 'description',
+          content: 'Front-end Development and Design Porfolio',
+        },
+        {
+          name: 'keywords',
+          content:
+            'front-end, development, design, portfolio, javascript, photoshop, illustrator, react, gatsby, graphql',
+        },
+        {
+          name: 'author',
+          content: 'Vish Patel',
+        },
       ]}
+      link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
+    <Header />
+    <BodyContainer>{children()}</BodyContainer>
   </div>
 )
 
