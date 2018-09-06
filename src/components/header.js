@@ -8,6 +8,7 @@ const Container = styled.div`
   background: #333333;
   margin-bottom: 1.5rem;
   // border-bottom: ${colors.grey} 1px solid;
+
   @media (max-width: 768px) {
     margin-bottom: 1rem;
   }
@@ -21,6 +22,7 @@ const Main = styled.div`
   margin: 0 auto;
   max-width: 1200px;
   padding: 1.5rem;
+
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -63,10 +65,10 @@ const Logo = styled.img`
 `
 
 const Tab = ({ title, ext }) => {
-  let label = title.toUpperCase().split('-')
-  if (label.length > 1) {
-    label = label[0] + ' ' + label[1]
-  }
+  let label = title
+    .toUpperCase()
+    .split('-')
+    .join(' ')
   if (ext) {
     return (
       <ExternalLink href={ext} target="_blank">

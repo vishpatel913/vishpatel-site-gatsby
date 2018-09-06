@@ -5,11 +5,12 @@ import Masonry from 'react-masonry-component'
 
 const GridContainer = styled(Masonry)`
   margin: auto;
+
   @media (max-width: 768px) {
     margin: 0 1rem;
   }
   @media (min-width: 768px) {
-    width: 750px;
+    // width: 750px;
   }
   @media (min-width: 992px) {
     width: auto;
@@ -19,6 +20,7 @@ const GridContainer = styled(Masonry)`
 const ImageContainer = styled.li`
   display: block;
   margin: 0;
+
   @media (min-width: 768px) {
     width: 50%;
     padding: 4px;

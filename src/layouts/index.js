@@ -8,7 +8,7 @@ import icon32 from '../../static/logo/favicon-32.png'
 
 const BodyContainer = styled.div`
   margin: 0 auto;
-  maxwidth: 1200;
+  max-width: 1200px;
   padding: 1.5rem;
   padding-top: 0;
 
