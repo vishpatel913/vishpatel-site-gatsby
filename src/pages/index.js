@@ -21,8 +21,8 @@ export const query = graphql`
           title
           slug
           photo {
-            file {
-              url
+            sizes(maxWidth: 800) {
+              ...GatsbyContentfulSizes_tracedSVG
             }
           }
           category

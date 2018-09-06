@@ -19,5 +19,8 @@ module.exports = {
         accessToken: `53275fa1db2534ec36b9dd363f767359773ce40ef008ef519b32e5d29574b83e`,
       },
     },
+    'gatsby-image',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
   ],
 }

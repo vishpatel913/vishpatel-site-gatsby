@@ -6,8 +6,11 @@ import styled from 'styled-components'
 import Navigation from '../components/navigation'
 import icon32 from '../../static/logo/favicon-32.png'
 
-const BodyContainer = styled.div`
+const SiteContainer = styled.div`
   background: #eeeeee;
+`
+
+const BodyContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
   padding: 1.5rem 2rem 2rem;
@@ -18,7 +21,7 @@ const BodyContainer = styled.div`
 `
 
 const Layout = ({ children, data }) => (
-  <div>
+  <SiteContainer>
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
@@ -40,7 +43,7 @@ const Layout = ({ children, data }) => (
     />
     <Navigation />
     <BodyContainer>{children()}</BodyContainer>
-  </div>
+  </SiteContainer>
 )
 
 Layout.propTypes = {

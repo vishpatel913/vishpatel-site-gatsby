@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 import colors from '../utils/colors'
 
@@ -35,7 +36,7 @@ const ContentContainer = styled.div`
   }
 `
 
-const PostImage = styled.img`
+const PostImage = styled(Img)`
   width: 100%;
   margin: 0;
 `
@@ -97,7 +98,13 @@ const Tag = ({ title }) => {
   return <TagLink to={'tag/' + tagSlug}>#{title}</TagLink>
 }
 
-const renderTags = tags => {}
+const editTracedSvg = sizes => {
+  const color = '#311B9255'
+  const svgSrc = sizes.tracedSVG.replace('lightgray', color)
+  let newSizes = sizes
+  newSizes.tracedSVG = svgSrc
+  return newSizes
+}
 
 const ImageTemplate = ({ data }) => {
   const {
@@ -110,6 +117,22 @@ const ImageTemplate = ({ data }) => {
   } = data.contentfulImage
 
   const metaDescription = imageCaption ? imageCaption.imageCaption : category
+
+  let altTag = ''
+  switch (category) {
+    case 'development':
+      altTag = 'Screenshot of '
+      break
+    case 'design':
+      altTag = 'Design titled '
+      break
+    case 'photography':
+      altTag = 'Photograph titled '
+      break
+    default:
+      altTag = ''
+      break
+  }
 
   return (
     <PostContainer>
@@ -124,7 +147,11 @@ const ImageTemplate = ({ data }) => {
         ]}
       />
       <ImageContainer>
-        <PostImage src={photo.file.url} />
+        <PostImage
+          sizes={editTracedSvg(photo.sizes)}
+          title={title}
+          alt={altTag + title}
+        />
       </ImageContainer>
       <ContentContainer>
         <h1>{title}</h1>
@@ -147,8 +174,8 @@ export const pageQuery = graphql`
       title
       slug
       photo {
-        file {
-          url
+        sizes(maxWidth: 900) {
+          ...GatsbyContentfulSizes_tracedSVG
         }
       }
       imageCaption {
