@@ -21,7 +21,7 @@ const Main = styled.div`
   align-items: center;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
 
   @media (max-width: 768px) {
     padding: 1rem;

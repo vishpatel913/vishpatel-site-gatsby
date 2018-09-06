@@ -22,16 +22,21 @@ const ImageContainer = styled.div`
 const ContentContainer = styled.div`
   @media (min-width: 992px) {
     max-width: 30%;
-    padding-left: 1.5rem;
+    padding-left: 2rem;
   }
   @media (max-width: 992px) {
-    padding: 1.5rem;
+    padding: 2rem;
     max-width: 85%;
     margin: auto;
   }
   @media (max-width: 768px) {
     max-width: 100%;
   }
+`
+
+const PostImage = styled.img`
+  width: 100%;
+  margin: 0;
 `
 
 const ImageTitle = styled.h1``
@@ -118,7 +123,7 @@ const ImageTemplate = ({ data }) => {
         ]}
       />
       <ImageContainer>
-        <img src={photo.file.url} />
+        <PostImage src={photo.file.url} />
       </ImageContainer>
       <ContentContainer>
         <h1>{title}</h1>
