@@ -8,6 +8,7 @@ import colors from '../utils/colors'
 
 const PostContainer = styled.div`
   width: 100%;
+  background: white;
   @media (min-width: 992px) {
     display: flex;
   }
@@ -22,7 +23,7 @@ const ImageContainer = styled.div`
 const ContentContainer = styled.div`
   @media (min-width: 992px) {
     max-width: 30%;
-    padding-left: 2rem;
+    padding: 1.5rem;
   }
   @media (max-width: 992px) {
     padding: 2rem;

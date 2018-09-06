@@ -7,13 +7,13 @@ import Navigation from '../components/navigation'
 import icon32 from '../../static/logo/favicon-32.png'
 
 const BodyContainer = styled.div`
-  // background: #eeeeee;
+  background: #eeeeee;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem 2rem;
 
   @media (max-width: 768px) {
-    padding: 1rem 0;
+    padding: 0;
   }
 `
 

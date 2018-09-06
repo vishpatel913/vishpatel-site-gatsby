@@ -8,6 +8,7 @@ const GridContainer = styled(Masonry)`
 
   @media (max-width: 768px) {
     margin: 0 1rem;
+    padding-top: 1rem;
   }
 
   // @media (min-width: 768px) {
@@ -37,7 +38,10 @@ const ImageGridItem = ({ node }) => {
   return (
     <ImageContainer>
       <Link to={node.slug}>
-        <img style={{ background: 'white' }} src={node.photo.file.url} />
+        <img
+          style={{ background: 'white', padding: '8px' }}
+          src={node.photo.file.url}
+        />
       </Link>
     </ImageContainer>
   )
