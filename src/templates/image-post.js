@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
+import { capitaliseString, getAltText, editTracedSvg } from '../utils/helpers'
+
 import colors from '../utils/colors'
 
 const PostContainer = styled.div`
@@ -98,14 +100,6 @@ const Tag = ({ title }) => {
   return <TagLink to={'tag/' + tagSlug}>#{title}</TagLink>
 }
 
-const editTracedSvg = sizes => {
-  const color = '#311B9255'
-  const svgSrc = sizes.tracedSVG.replace('lightgray', color)
-  let newSizes = sizes
-  newSizes.tracedSVG = svgSrc
-  return newSizes
-}
-
 const ImageTemplate = ({ data }) => {
   const {
     title,
@@ -117,22 +111,6 @@ const ImageTemplate = ({ data }) => {
   } = data.contentfulImage
 
   const metaDescription = imageCaption ? imageCaption.imageCaption : category
-
-  let altTag = ''
-  switch (category) {
-    case 'development':
-      altTag = 'Screenshot of '
-      break
-    case 'design':
-      altTag = 'Design titled '
-      break
-    case 'photography':
-      altTag = 'Photograph titled '
-      break
-    default:
-      altTag = ''
-      break
-  }
 
   return (
     <PostContainer>
@@ -150,15 +128,23 @@ const ImageTemplate = ({ data }) => {
         <PostImage
           sizes={editTracedSvg(photo.sizes)}
           title={title}
-          alt={altTag + title}
+          alt={getAltText(title, category)}
         />
       </ImageContainer>
       <ContentContainer>
         <h1>{title}</h1>
-        {imageCaption && <p>{metaDescription}</p>}
+        {imageCaption && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: imageCaption.childMarkdownRemark.html,
+            }}
+          />
+        )}
         <ImageMetaContainer>
           <DateText>{dateCreated}</DateText>
-          <Category title={category} />
+          <CategoryLink to={'work/' + title}>
+            {capitaliseString(category)}
+          </CategoryLink>
         </ImageMetaContainer>
         {tags.sort().map(tag => <Tag key={tag} title={tag} />)}
       </ContentContainer>
@@ -180,6 +166,9 @@ export const pageQuery = graphql`
       }
       imageCaption {
         imageCaption
+        childMarkdownRemark {
+          html
+        }
       }
       dateCreated(formatString: "Do MMMM YYYY")
       category

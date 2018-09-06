@@ -5,9 +5,10 @@ import styled from 'styled-components'
 
 import Navigation from '../components/navigation'
 import icon32 from '../../static/logo/favicon-32.png'
+import './index.css'
 
 const SiteContainer = styled.div`
-  background: #eeeeee;
+  background: #f3f3f3;
 `
 
 const BodyContainer = styled.div`

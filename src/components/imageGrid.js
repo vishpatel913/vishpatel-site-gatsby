@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 
+import { getAltText, editTracedSvg } from '../utils/helpers'
+
 const GridContainer = styled(Masonry)`
   margin: auto;
 
@@ -52,8 +54,8 @@ const ImagePost = styled(Img)`
   //   width: 100%;
   //   top: 0;
   //   left: 0;
-  //   background-image: url('${props => props.hoverImage}');
-  //   background: rgba(200, 200, 200, 0.28);
+  //   background: ${props => `url(${props.hoverImage}) no-repeat top center`};
+  //   background: rgba(103, 86, 113, 1);
   //   transition: opacity 0.5s ease 0s;
   //   object-fit: cover;
   //   object-position: center center;
@@ -66,40 +68,18 @@ const ImagePost = styled(Img)`
   // }
 `
 
-const editTracedSvg = sizes => {
-  const color = '#311B9255'
-  const svgSrc = sizes.tracedSVG.replace('lightgray', color)
-  let newSizes = sizes
-  newSizes.tracedSVG = svgSrc
-  return newSizes
-}
-
 const ImageGridItem = ({ node }) => {
-  let altTag = ''
-  switch (node.category) {
-    case 'development':
-      altTag = 'Screenshot of '
-      break
-    case 'design':
-      altTag = 'Design titled '
-      break
-    case 'photography':
-      altTag = 'Photograph titled '
-      break
-    default:
-      altTag = ''
-      break
-  }
+  const { title, slug, photo, category } = node
 
   return (
     <ImageContainer>
-      <Link to={node.slug}>
+      <Link to={slug}>
         <ImagePost
-          sizes={editTracedSvg(node.photo.sizes)}
-          title={node.title}
-          alt={altTag + node.title}
+          sizes={editTracedSvg(photo.sizes)}
+          title={title}
+          alt={getAltText(title, category)}
           imgStyle={{ padding: '8px' }}
-          hoverImage={node.photo.sizes.tracedSVG}
+          hoverImage={photo.sizes.tracedSVG}
         />
       </Link>
     </ImageContainer>
