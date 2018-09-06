@@ -1,0 +1,22 @@
+{
+  allContentfulImage(sort: {fields: [dateCreated], order: DESC}) {
+    edges {
+      node {
+        id
+        title
+        slug
+        photo {
+          file {
+            url
+          }
+        }
+        imageCaption {
+          imageCaption
+        }
+        dateCreated(formatString: "Do MMMM YYYY")
+        category
+        tags
+      }
+    }
+  }
+}
