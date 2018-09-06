@@ -6,12 +6,6 @@ import logo from '../../static/logo/logo-light.png'
 
 const Container = styled.div`
   background: #333333;
-  margin-bottom: 1.5rem;
-  // border-bottom: ${colors.grey} 1px solid;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1rem;
-  }
 `
 
 const Main = styled.div`

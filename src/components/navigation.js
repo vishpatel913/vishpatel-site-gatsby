@@ -6,7 +6,6 @@ import logo from '../../static/logo/logo.png'
 
 const Container = styled.div`
   background: white;
-  margin-bottom: 1.45rem;
   border-bottom: ${colors.grey} 1px solid;
 `
 
@@ -16,8 +15,12 @@ const Menu = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+  max-width: 1200px;
+  padding: 1.5rem 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `
 
 const FlexRowLeft = styled.div`
@@ -42,7 +45,7 @@ const FlexRowRight = styled.div`
   }
 `
 
-const MenuLink = styled(Link)`
+const InternalLink = styled(Link)`
   color: black;
   text-decoration: none;
   margin: 8px;
@@ -50,45 +53,75 @@ const MenuLink = styled(Link)`
   &:hover {
     color: ${colors.primary};
   }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+`
+
+const ExternalLink = styled.a`
+  color: black;
+  text-decoration: none;
+  margin: 8px;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 const Logo = styled.img`
   margin: 0 8px;
   height: 64px;
   width: 64px;
+  @media (max-width: 768px) {
+    height: 56px;
+    width: 56px;
+  }
 `
 
-const Tab = ({ page }) => {
-  let title = page.toUpperCase().split('-')
-  if (title.length > 1) {
-    title = title[0] + ' ' + title[1]
+const Tab = ({ title, ext }) => {
+  let label = title
+    .toUpperCase()
+    .split('-')
+    .join(' ')
+  if (ext) {
+    return (
+      <ExternalLink href={ext} target="_blank">
+        {label}
+      </ExternalLink>
+    )
+  } else {
+    const link = '/' + title
+    return (
+      <InternalLink
+        activeStyle={{
+          color: `${colors.primaryLight}`,
+        }}
+        to={link}
+      >
+        {label}
+      </InternalLink>
+    )
   }
-  const link = '/' + page
-  return (
-    <MenuLink
-      activeStyle={{
-        color: `${colors.primaryLight}`,
-      }}
-      to={link}
-    >
-      {title}
-    </MenuLink>
-  )
 }
 
 const Header = () => (
   <Container>
     <Menu>
       <FlexRowLeft>
-        <Tab page="about" />
-        <Tab page="work" />
+        <Tab title="about" />
+        <Tab title="work" />
       </FlexRowLeft>
       <Link to="/">
         <Logo src={logo} />
       </Link>
       <FlexRowRight>
-        <Tab page="tech-stack" />
-        <Tab page="resume" />
+        <Tab title="tech-stack" />
+        <Tab title="resume" ext="http://www.vishpatel.com/cv-2018" />
       </FlexRowRight>
     </Menu>
   </Container>

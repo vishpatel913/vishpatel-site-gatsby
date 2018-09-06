@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import Header from '../components/header'
+import Navigation from '../components/navigation'
 import icon32 from '../../static/logo/favicon-32.png'
 
 const BodyContainer = styled.div`
+  // background: #eeeeee;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 2rem;
-  padding-top: 0;
+  padding: 1.5rem 2rem;
 
   @media (max-width: 768px) {
-    padding: 0;
+    padding: 1rem 0;
   }
 `
 
@@ -38,7 +38,7 @@ const Layout = ({ children, data }) => (
       ]}
       link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
     />
-    <Header />
+    <Navigation />
     <BodyContainer>{children()}</BodyContainer>
   </div>
 )
