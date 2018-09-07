@@ -4,11 +4,12 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import Navigation from '../components/navigation'
+import colors from '../utils/colors'
 import icon32 from '../../static/logo/favicon-32.png'
 import './index.css'
 
 const SiteContainer = styled.div`
-  background: #f3f3f3;
+  background: ${colors.background};
 `
 
 const BodyContainer = styled.div`

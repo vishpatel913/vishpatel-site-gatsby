@@ -14,18 +14,21 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const query = graphql`
-  query contentQuery {
-    allContentfulImage(sort: { fields: [dateCreated], order: DESC }) {
+  query featuredImageQuery {
+    allContentfulImage(filter: { featured: { eq: true } }) {
       edges {
         node {
           title
           slug
+          featured
           photo {
             sizes(maxWidth: 800) {
               ...GatsbyContentfulSizes_tracedSVG
             }
           }
+          dateCreated(formatString: "Do MMMM YYYY")
           category
+          tags
         }
       }
     }

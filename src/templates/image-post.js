@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-import { capitaliseString, getAltText, editTracedSvg } from '../utils/helpers'
+import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 
 import colors from '../utils/colors'
 
@@ -143,7 +143,7 @@ const ImageTemplate = ({ data }) => {
         <ImageMetaContainer>
           <DateText>{dateCreated}</DateText>
           <CategoryLink to={'work/' + title}>
-            {capitaliseString(category)}
+            {capitalizeString(category)}
           </CategoryLink>
         </ImageMetaContainer>
         {tags.sort().map(tag => <Tag key={tag} title={tag} />)}

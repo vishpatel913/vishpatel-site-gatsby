@@ -48,6 +48,7 @@ const FlexRowRight = styled.div`
 const InternalLink = styled(Link)`
   color: black;
   text-decoration: none;
+  font-weight: lighter;
   margin: 8px;
 
   &:hover {
@@ -55,13 +56,14 @@ const InternalLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `
 
 const ExternalLink = styled.a`
   color: black;
   text-decoration: none;
+  font-weight: lighter;
   margin: 8px;
 
   &:hover {
@@ -69,7 +71,7 @@ const ExternalLink = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `
 

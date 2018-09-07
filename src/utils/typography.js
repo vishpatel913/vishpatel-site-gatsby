@@ -5,16 +5,19 @@ const typography = new Typography({
   googleFonts: [
     {
       name: 'Raleway',
-      styles: ['400', '400i', '700', '700i'],
+      styles: ['200', '400', '700'],
     },
     {
       name: 'Open Sans',
-      styles: ['400', '400i', '700', '700i'],
+      styles: ['400', '700'],
     },
   ],
-
   headerFontFamily: ['Raleway', 'sans-serif'],
   bodyFontFamily: ['Raleway', 'sans-serif'],
+  bodyWeight: 400,
+  headerWeight: 700,
+  lightWeight: 200,
+  boldWeight: 700,
 })
 
 export default typography
