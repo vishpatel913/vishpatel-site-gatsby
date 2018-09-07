@@ -87,11 +87,6 @@ const TagLink = styled.span`
   }
 `
 
-const Category = ({ title }) => {
-  const text = title.slice(0, 1).toUpperCase() + title.slice(1)
-  return <CategoryLink to={'work/' + title}>{text}</CategoryLink>
-}
-
 const Tag = ({ title }) => {
   let tagSlug = title
     .toLowerCase()
@@ -107,6 +102,7 @@ const ImageTemplate = ({ data }) => {
     imageCaption,
     dateCreated,
     category,
+    slug,
     tags,
   } = data.contentfulImage
 
@@ -142,7 +138,7 @@ const ImageTemplate = ({ data }) => {
         )}
         <ImageMetaContainer>
           <DateText>{dateCreated}</DateText>
-          <CategoryLink to={'work/' + title}>
+          <CategoryLink to={'/work/' + category}>
             {capitalizeString(category)}
           </CategoryLink>
         </ImageMetaContainer>

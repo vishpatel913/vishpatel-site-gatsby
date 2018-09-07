@@ -1,4 +1,5 @@
 import Typography from 'typography'
+import colors from './colors'
 
 const typography = new Typography({
   baseFontSize: '18px',
@@ -18,6 +19,18 @@ const typography = new Typography({
   headerWeight: 700,
   lightWeight: 200,
   boldWeight: 700,
+  overrideStyles: () => ({
+    body: {
+      background: colors.background,
+    },
+    a: {
+      textDecoration: 'none',
+      color: colors.primary,
+    },
+    'a:hover': {
+      color: colors.primaryLight,
+    },
+  }),
 })
 
 export default typography

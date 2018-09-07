@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Navigation from '../components/navigation'
 import colors from '../utils/colors'
 import icon32 from '../../static/logo/favicon-32.png'
-import './index.css'
+// import './index.css'
 
 const SiteContainer = styled.div`
   background: ${colors.background};
@@ -15,6 +15,7 @@ const SiteContainer = styled.div`
 const BodyContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
+  height: 100%;
   padding: 1.5rem 2rem 2rem;
 
   @media (max-width: 768px) {
