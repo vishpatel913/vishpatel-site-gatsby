@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
+import NotFoundPage from '../pages/404'
 
 const IndexPage = ({ data }) => {
   return (
@@ -11,7 +12,7 @@ const IndexPage = ({ data }) => {
       {data.allContentfulImage ? (
         <ImageGrid images={data.allContentfulImage.edges} />
       ) : (
-        <span>NO IMAGES</span>
+        <NotFoundPage />
       )}
     </div>
   )
