@@ -13,14 +13,6 @@ const GridContainer = styled(Masonry)`
     margin: 0 1rem;
     padding-top: 1rem;
   }
-
-  // @media (min-width: 768px) {
-  //   width: 750px;
-  // }
-  //
-  // @media (min-width: 992px) {
-  //   width: auto;
-  // }
 `
 
 const ImageContainer = styled.li`
@@ -42,30 +34,14 @@ const ImageContainer = styled.li`
   }
 `
 
-// TODO: Implement image hover
 const ImagePost = styled(Img)`
   // background: white;
+  opacity: 1;
+  transition: all 0.5s ease 0s;
 
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   position: absolute;
-  //   height: 100%;
-  //   width: 100%;
-  //   top: 0;
-  //   left: 0;
-  //   background: ${props => `url(${props.hoverImage}) no-repeat top center`};
-  //   background: rgba(103, 86, 113, 1);
-  //   transition: opacity 0.5s ease 0s;
-  //   object-fit: cover;
-  //   object-position: center center;
-  //   opacity: 0;
-  //   padding: 8px;
-  // }
-  //
-  // &:hover:after {
-  //   opacity: 1;
-  // }
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 const ImageGridItem = ({ node }) => {
@@ -79,7 +55,6 @@ const ImageGridItem = ({ node }) => {
           title={title}
           alt={getAltText(title, category)}
           imgStyle={{ padding: '0px' }}
-          hoverImage={photo.sizes.tracedSVG}
         />
       </Link>
     </ImageContainer>

@@ -43,7 +43,7 @@ const Layout = ({ children, data, location }) => (
       <a href="https://www.contentful.com/" rel="nofollow" target="_blank">
         <img
           src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-          style={{ maxWidth: '100px', width: '100%' }}
+          style={{ maxWidth: '100px', width: '100%', filter: 'opacity(0.8)' }}
           alt="Powered by Contentful"
         />
       </a>

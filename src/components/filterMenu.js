@@ -19,7 +19,7 @@ const MenuContainer = styled.div`
 `
 
 const MenuItem = styled(Link)`
-  padding: 12px 1rem;
+  padding: 0.5rem 1rem;
   font-size: 12px;
   font-weight: lighter;
   color: grey;
@@ -28,8 +28,8 @@ const MenuItem = styled(Link)`
     border: none;
   }
   &:hover {
-    background: ${colors.background};
     color: ${colors.primaryLight};
+    background: ${colors.background};
   }
 `
 
@@ -40,8 +40,10 @@ const Tab = ({ category }) => {
   }
   return (
     <MenuItem
+      exact={true}
       activeStyle={{
-        color: `${colors.primaryLight}`,
+        color: colors.primaryLight,
+        background: colors.background,
       }}
       to={link}
     >
