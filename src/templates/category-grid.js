@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import SiteHead from '../components/siteHead'
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
 import NotFoundPage from '../pages/404'
+import { capitalizeString } from '../utils/helpers'
 
-const IndexPage = ({ data }) => {
+const CategoryTemplate = ({ data }) => {
   return (
     <div>
       <FilterMenu />
@@ -18,7 +20,7 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export default IndexPage
+export default CategoryTemplate
 
 export const query = graphql`
   query categoryImageQuery($slug: String!) {

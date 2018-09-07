@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
+import SiteHead from '../components/siteHead'
 import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
-
 import colors from '../utils/colors'
 
 const PostContainer = styled.div`
@@ -110,16 +109,7 @@ const ImageTemplate = ({ data }) => {
 
   return (
     <PostContainer>
-      <Helmet
-        title={title}
-        meta={[
-          {
-            name: 'description',
-            content: metaDescription,
-          },
-          { name: 'keywords', content: tags },
-        ]}
-      />
+      <SiteHead title={title} description={metaDescription} keywords={tags} />
       <ImageContainer>
         <PostImage
           sizes={editTracedSvg(photo.sizes)}

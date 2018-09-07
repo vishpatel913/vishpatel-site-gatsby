@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
+import SiteHead from '../components/siteHead'
 import Navigation from '../components/navigation'
 import colors from '../utils/colors'
 import icon32 from '../../static/logo/favicon-32.png'
@@ -23,27 +23,9 @@ const BodyContainer = styled.div`
   }
 `
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, location }) => (
   <SiteContainer>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        {
-          name: 'description',
-          content: 'Front-end Development and Design Porfolio',
-        },
-        {
-          name: 'keywords',
-          content:
-            'front-end, development, design, portfolio, javascript, photoshop, illustrator, react, gatsby, graphql',
-        },
-        {
-          name: 'author',
-          content: 'Vish Patel',
-        },
-      ]}
-      link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
-    />
+    <SiteHead page={location.pathname} />
     <Navigation />
     <BodyContainer>{children()}</BodyContainer>
   </SiteContainer>

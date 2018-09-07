@@ -1,5 +1,8 @@
 export const capitalizeString = string => {
-  return string.slice(0, 1).toUpperCase() + string.slice(1)
+  return string
+    .split(/\s|-/)
+    .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ')
 }
 
 export const getAltText = (title, category) => {

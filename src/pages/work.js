@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
 
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
