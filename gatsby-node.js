@@ -10,6 +10,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
   return new Promise((resolve, reject) => {
     const imagePostTemplate = path.resolve(`src/templates/image-post.js`)
+    const categoryGridTemplate = path.resolve(`src/templates/category-grid.js`)
     // Query for markdown nodes to use in creating pages.
     // all entries based on content type: which here, is image
     resolve(
@@ -36,6 +37,18 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: imagePostTemplate,
             context: {
               slug: edge.node.slug,
+            },
+          })
+        })
+
+        const categories = ['design', 'development', 'photography']
+
+        categories.forEach(category => {
+          createPage({
+            path: `work/${category}`, // required
+            component: categoryGridTemplate,
+            context: {
+              slug: category,
             },
           })
         })

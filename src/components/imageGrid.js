@@ -44,7 +44,7 @@ const ImageContainer = styled.li`
 
 // TODO: Implement image hover
 const ImagePost = styled(Img)`
-  background: white;
+  // background: white;
 
   // &:after {
   //   content: '';
@@ -73,12 +73,12 @@ const ImageGridItem = ({ node }) => {
 
   return (
     <ImageContainer>
-      <Link to={slug}>
+      <Link to={'/' + slug}>
         <ImagePost
           sizes={editTracedSvg(photo.sizes)}
           title={title}
           alt={getAltText(title, category)}
-          imgStyle={{ padding: '8px' }}
+          imgStyle={{ padding: '0px' }}
           hoverImage={photo.sizes.tracedSVG}
         />
       </Link>
