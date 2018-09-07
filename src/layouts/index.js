@@ -23,11 +23,31 @@ const BodyContainer = styled.div`
   }
 `
 
+const FooterContainer = styled.div`
+  margin: 0 auto;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0.5rem 2rem 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+  }
+`
+
 const Layout = ({ children, data, location }) => (
   <SiteContainer>
     <SiteHead page={location.pathname} />
     <Navigation />
     <BodyContainer>{children()}</BodyContainer>
+    <FooterContainer>
+      <a href="https://www.contentful.com/" rel="nofollow" target="_blank">
+        <img
+          src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
+          style={{ maxWidth: '100px', width: '100%' }}
+          alt="Powered by Contentful"
+        />
+      </a>
+    </FooterContainer>
   </SiteContainer>
 )
 

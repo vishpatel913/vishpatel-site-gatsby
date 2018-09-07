@@ -23,6 +23,9 @@ const typography = new Typography({
     body: {
       background: colors.background,
     },
+    img: {
+      margin: '0',
+    },
     a: {
       textDecoration: 'none',
       color: colors.primary,
