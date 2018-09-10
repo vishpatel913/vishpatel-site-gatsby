@@ -35,12 +35,32 @@ const ImageContainer = styled.li`
 `
 
 const ImagePost = styled(Img)`
-  // background: white;
-  opacity: 1;
-  transition: all 0.5s ease 0s;
+  @media (min-width: 768px) {
+    &:after {
+      content: '';
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: all 0.5s ease 0s;
+      color: white;
+      font-size: 20px;
+      padding: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
 
-  &:hover {
-    opacity: 0.7;
+    &:hover:after {
+      ${({ hoverText }) =>
+        hoverText ? `content: '${hoverText}';` : `content: 'View';`};
+      opacity: 1;
+    }
   }
 `
 
@@ -54,7 +74,7 @@ const ImageGridItem = ({ node }) => {
           sizes={editTracedSvg(photo.sizes)}
           title={title}
           alt={getAltText(title, category)}
-          imgStyle={{ padding: '0px' }}
+          hoverText={title}
         />
       </Link>
     </ImageContainer>

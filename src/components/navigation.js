@@ -23,21 +23,20 @@ const Menu = styled.div`
   }
 `
 
-const FlexRowLeft = styled.div`
+const FlexRow = styled.div`
   display: flex;
   flex: 1;
-  justify-content: flex-end;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
-
-const FlexRowRight = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
+  ${({ left }) =>
+    left &&
+    `
+    justify-content: flex-end;
+  `};
+  ${({ right }) =>
+    right &&
+    `
+    justify-content: flex-start;
+  `};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -114,17 +113,17 @@ const Tab = ({ title, ext }) => {
 const Header = () => (
   <Container>
     <Menu>
-      <FlexRowLeft>
+      <FlexRow left>
         <Tab title="about" />
         <Tab title="work" />
-      </FlexRowLeft>
+      </FlexRow>
       <Link to="/">
         <Logo src={logo} />
       </Link>
-      <FlexRowRight>
+      <FlexRow right>
         <Tab title="tech-stack" />
         <Tab title="resume" ext="http://www.vishpatel.com/cv-2018" />
-      </FlexRowRight>
+      </FlexRow>
     </Menu>
   </Container>
 )
