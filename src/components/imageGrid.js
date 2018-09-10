@@ -25,7 +25,7 @@ const ImageContainer = styled.li`
 
   @media (min-width: 768px) {
     width: 50%;
-    padding: 8px;
+    padding: 0.5rem;
     margin: 0;
   }
 

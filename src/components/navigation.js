@@ -48,7 +48,7 @@ const InternalLink = styled(Link)`
   color: black;
   text-decoration: none;
   font-weight: lighter;
-  margin: 8px;
+  margin: 0.5rem;
 
   &:hover {
     color: ${colors.primary};
@@ -63,7 +63,7 @@ const ExternalLink = styled.a`
   color: black;
   text-decoration: none;
   font-weight: lighter;
-  margin: 8px;
+  margin: 0.5rem;
 
   &:hover {
     color: ${colors.primary};
@@ -75,7 +75,7 @@ const ExternalLink = styled.a`
 `
 
 const Logo = styled.img`
-  margin: 0 8px;
+  margin: 0 0.5rem;
   height: 64px;
   width: 64px;
   @media (max-width: 768px) {

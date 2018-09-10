@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 
 const PageContainer = styled.div`
-  margin: auto;
+  margin: 0.5rem;
 
   @media (max-width: 768px) {
     margin: 0 1rem;
@@ -11,7 +11,7 @@ const PageContainer = styled.div`
   }
 `
 
-const SecondPage = () => (
+const AboutPage = () => (
   <PageContainer>
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
@@ -19,4 +19,4 @@ const SecondPage = () => (
   </PageContainer>
 )
 
-export default SecondPage
+export default AboutPage

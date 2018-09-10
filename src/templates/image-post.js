@@ -79,7 +79,7 @@ const TagLink = styled.span`
   display: inline-block;
   text-decoration: none;
   color: grey;
-  margin-right: 8px;
+  margin-right: 0.5rem;
 
   &:hover {
     color: ${colors.primary};

@@ -31,7 +31,7 @@ const Menu = styled.div`
 const InternalLink = styled(Link)`
   color: ${colors.grey};
   text-decoration: none;
-  margin: 8px;
+  margin: 0.5rem;
 
   &:hover {
     color: ${colors.primaryLight};
@@ -41,7 +41,7 @@ const InternalLink = styled(Link)`
 const ExternalLink = styled.a`
   color: ${colors.grey};
   text-decoration: none;
-  margin: 8px;
+  margin: 0.5rem;
 
   &:hover {
     color: ${colors.primaryLight};
@@ -49,7 +49,7 @@ const ExternalLink = styled.a`
 `
 
 const Logo = styled.img`
-  margin: 0 8px;
+  margin: 0 0.5rem;
   height: 64px;
   width: 64px;
   @media (max-width: 768px) {

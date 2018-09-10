@@ -4,12 +4,18 @@ import styled from 'styled-components'
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
 
+const PageContainer = styled.div`
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`
+
 const WorkPage = ({ data }) => {
   return (
-    <div>
+    <PageContainer>
       <FilterMenu />
       <ImageGrid images={data.allContentfulImage.edges} />
-    </div>
+    </PageContainer>
   )
 }
 

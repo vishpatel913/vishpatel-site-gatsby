@@ -8,11 +8,12 @@ import { capitalizeString } from '../utils/helpers'
 const MenuContainer = styled.div`
   display: inline-flex;
   height: auto;
-  margin: 8px;
+  margin: 0.5rem;
   margin-bottom: 1.5rem;
   background: white;
   border: solid 1px ${colors.grey};
   border-radius: 4px;
+
   @media (max-width: 768px) {
     margin: 1rem 1rem 0;
   }
@@ -30,6 +31,10 @@ const MenuItem = styled(Link)`
   &:hover {
     color: ${colors.primaryLight};
     background: ${colors.background};
+  }
+
+  @media (max-width: 400px) {
+    padding: 0.5rem;
   }
 `
 
