@@ -9,22 +9,27 @@ import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 import colors from '../utils/colors'
 
 const PostContainer = styled.div`
-  width: 100%;
   background: white;
+  margin: 0.5rem;
+
   @media (min-width: 992px) {
     display: flex;
+  }
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0;
   }
 `
 
 const ImageContainer = styled.div`
   @media (min-width: 992px) {
-    width: 70%;
+    flex: 2;
   }
 `
 
 const ContentContainer = styled.div`
   @media (min-width: 992px) {
-    max-width: 30%;
+    flex: 1;
     padding: 1.5rem;
   }
   @media (max-width: 992px) {

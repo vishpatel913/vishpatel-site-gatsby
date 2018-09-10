@@ -16,7 +16,7 @@ const BodyContainer = styled.div`
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
-  padding: 1.5rem 2rem 2rem;
+  padding: 1.5rem 2rem;
 
   @media (max-width: 768px) {
     padding: 0;
@@ -30,7 +30,7 @@ const FooterContainer = styled.div`
   padding: 0.5rem 2rem 1rem;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
   }
 `
 

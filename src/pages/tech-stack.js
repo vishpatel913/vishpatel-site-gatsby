@@ -8,11 +8,18 @@ import { editTracedSvg } from '../utils/helpers'
 
 const PageContainer = styled.div`
   margin: 0.5rem;
-  text-align: center;
+  background: white;
 
   @media (max-width: 768px) {
-    margin: 0 1rem;
-    padding-top: 1rem;
+    margin: 0;
+    padding: 1rem;
+  }
+`
+
+const TitleContainer = styled.div`
+  text-align: center;
+  @media (min-width: 768px) {
+    padding-top: 1.5rem;
   }
 `
 
@@ -43,6 +50,10 @@ const TechContainer = styled.li`
 const TechName = styled.h2`
   margin-top: 1rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `
 
 const TechGridItem = ({ node }) => {
@@ -62,8 +73,10 @@ const TechGridItem = ({ node }) => {
 
 const TechStackPage = ({ data }) => (
   <PageContainer>
-    <h1>Tech Stack</h1>
-    <p>Technologies used for development and design</p>
+    <TitleContainer>
+      <h1>Tech Stack</h1>
+      <p>Technologies used for development and design</p>
+    </TitleContainer>
     <GridContainer elementType={'ul'}>
       {data.allContentfulTech.edges.map(({ node }) => {
         return <TechGridItem key={node.name} node={node} />
