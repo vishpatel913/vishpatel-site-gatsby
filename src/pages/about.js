@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-// import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
-import { editTracedSvg } from '../utils/helpers'
+import Icon from '../components/icon'
+import { capitalizeString, editTracedSvg } from '../utils/helpers'
 import colors from '../utils/colors'
 
 const PageContainer = styled.div`
@@ -75,22 +75,18 @@ const SocialLink = styled.a`
   margin-right: 1rem;
   margin-bottom: 1rem;
   color: grey;
+
   &:hover {
     color: ${colors.primary};
     background: ${colors.background};
   }
 `
 
-const SocialIcon = styled.span`
-  margin-right: 4px;
-  font-size: 28px;
-`
-
-const Social = ({ title, link, icon }) => {
+const Social = ({ title, link }) => {
   return (
     <SocialLink href={link} target="_blank">
-      <SocialIcon>{icon}</SocialIcon>
-      {title}
+      <Icon margin size={20} name={title} />
+      {capitalizeString(title)}
     </SocialLink>
   )
 }
@@ -121,10 +117,10 @@ const AboutPage = ({ data }) => {
           <h1>{name}</h1>
           <p>{tagLine}</p>
           <SocialContainer>
-            <Social title="GitHub" link={gitHubAccount} />
-            <Social title="LinkedIn" link={linkedInProfile} />
+            <Social title="gitHub" link={gitHubAccount} />
+            <Social title="linkedIn" link={linkedInProfile} />
             <Social
-              title="Instagram"
+              title="instagram"
               link={'http://instagram.com/' + twitterHandle}
             />
           </SocialContainer>
