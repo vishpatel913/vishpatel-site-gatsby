@@ -10,7 +10,7 @@ const SiteHead = ({ title, description, keywords, page }) => {
   if (title) {
     siteTitle += ' | ' + title
   } else if (page && page != '/') {
-    siteTitle += ' | ' + capitalizeString(page.split('/')[1])
+    siteTitle += capitalizeString(page.split('/').join(' | '))
   }
   const siteDescription = description
     ? description
