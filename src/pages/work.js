@@ -4,11 +4,7 @@ import styled from 'styled-components'
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
 
-const PageContainer = styled.div`
-  @media (max-width: 768px) {
-    text-align: center;
-  }
-`
+const PageContainer = styled.div``
 
 const WorkPage = ({ data }) => {
   return (

@@ -7,16 +7,18 @@ import ImageGrid from '../components/imageGrid'
 import NotFoundPage from '../pages/404'
 import { capitalizeString } from '../utils/helpers'
 
+const PageContainer = styled.div``
+
 const CategoryTemplate = ({ data }) => {
   return (
-    <div>
+    <PageContainer>
       <FilterMenu />
       {data.allContentfulImage ? (
         <ImageGrid images={data.allContentfulImage.edges} />
       ) : (
         <NotFoundPage />
       )}
-    </div>
+    </PageContainer>
   )
 }
 

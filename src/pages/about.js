@@ -28,7 +28,7 @@ const ImageContainer = styled.div`
     flex: 1;
   }
   @media (max-width: 768px) {
-    height: 20rem;
+    height: 15rem;
     overflow: hidden;
   }
 `
@@ -67,11 +67,17 @@ const SocialLink = styled.a`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
+  border: solid ${colors.grey} 1px;
+  font-size: 12px;
+  font-weight: 200;
+  border-radius: 4px;
   margin-right: 1rem;
   margin-bottom: 1rem;
   color: grey;
   &:hover {
     color: ${colors.primary};
+    background: ${colors.background};
   }
 `
 
@@ -147,7 +153,7 @@ export const pageQuery = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        sizes(maxWidth: 900) {
+        sizes(maxWidth: 800) {
           ...GatsbyContentfulSizes_tracedSVG
         }
       }

@@ -6,6 +6,13 @@ import colors from '../utils/colors'
 import { capitalizeString } from '../utils/helpers'
 
 const MenuContainer = styled.div`
+  display: block;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`
+
+const MenuList = styled.ul`
   display: inline-flex;
   height: auto;
   margin: 0.5rem;
@@ -19,17 +26,22 @@ const MenuContainer = styled.div`
   }
 `
 
-const MenuItem = styled(Link)`
-  padding: 0.5rem 1rem;
-  font-size: 12px;
-  font-weight: lighter;
-  color: grey;
+const MenuItem = styled.li`
+  display: inherit;
+  margin: 0;
   border-right: solid 1px ${colors.grey};
   &:last-child {
     border: none;
   }
+`
+
+const MenuLink = styled(Link)`
+  font-size: 12px;
+  font-weight: lighter;
+  padding: 0.5rem 1rem;
+  color: grey;
   &:hover {
-    color: ${colors.primaryLight};
+    color: ${colors.primary};
     background: ${colors.background};
   }
 
@@ -44,15 +56,17 @@ const Tab = ({ category }) => {
     link = '/work'
   }
   return (
-    <MenuItem
-      exact={true}
-      activeStyle={{
-        color: colors.primaryLight,
-        background: colors.background,
-      }}
-      to={link}
-    >
-      {capitalizeString(category)}
+    <MenuItem>
+      <MenuLink
+        exact={true}
+        activeStyle={{
+          color: colors.primaryLight,
+          background: colors.background,
+        }}
+        to={link}
+      >
+        {capitalizeString(category)}
+      </MenuLink>
     </MenuItem>
   )
 }
@@ -60,10 +74,12 @@ const Tab = ({ category }) => {
 const FilterMenu = props => {
   return (
     <MenuContainer>
-      <Tab category="all" />
-      <Tab category="design" />
-      <Tab category="development" />
-      <Tab category="photography" />
+      <MenuList>
+        <Tab category="all" />
+        <Tab category="design" />
+        <Tab category="development" />
+        <Tab category="photography" />
+      </MenuList>
     </MenuContainer>
   )
 }

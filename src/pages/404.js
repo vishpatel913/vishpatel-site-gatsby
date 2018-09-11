@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const PageContainer = styled.div`
-  margin: auto;
+  margin: 0.5rem;
 
   @media (max-width: 768px) {
     margin: 0 1rem;
