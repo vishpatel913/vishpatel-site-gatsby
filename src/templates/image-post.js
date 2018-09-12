@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 
 import SiteHead from '../components/siteHead'
+import CommentForm from '../components/commentForm'
+import CommentList from '../components/commentList'
 import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 import colors from '../utils/colors'
 
@@ -39,6 +41,19 @@ const ContentContainer = styled.div`
     padding: 2rem;
     max-width: 80%;
     margin: auto;
+  }
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`
+
+const CommentContainer = styled.div`
+  padding: 2rem;
+  max-width: 80%;
+  margin: auto;
+
+  @media (max-width: 992px) {
+    padding-top: 0;
   }
   @media (max-width: 768px) {
     max-width: 100%;
@@ -113,6 +128,8 @@ const ImageTemplate = ({ data }) => {
     tags,
   } = data.contentfulImage
 
+  const comments = data.allCommentsYaml && data.allCommentsYaml.edges
+
   const metaDescription = imageCaption ? imageCaption.imageCaption : category
 
   return (
@@ -144,6 +161,10 @@ const ImageTemplate = ({ data }) => {
           {tags.sort().map(tag => <Tag key={tag} title={tag} />)}
         </ContentContainer>
       </FlexContainer>
+      <CommentContainer>
+        {comments && <CommentList comments={comments} />}
+        <CommentForm slug={slug} />
+      </CommentContainer>
     </PostContainer>
   )
 }
@@ -169,6 +190,18 @@ export const pageQuery = graphql`
       dateCreated(formatString: "Do MMMM YYYY")
       category
       tags
+    }
+    allCommentsYaml(
+      sort: { fields: [date], order: DESC }
+      filter: { slug: { eq: $slug } }
+    ) {
+      edges {
+        node {
+          name
+          message
+          date
+        }
+      }
     }
   }
 `
