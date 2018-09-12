@@ -33,6 +33,23 @@ const typography = new Typography({
     'a:hover': {
       color: colors.primaryLight,
     },
+    button: {
+      display: 'inherit',
+      color: 'grey',
+      background: colors.background,
+      margin: '0',
+      padding: '0.5rem 1rem',
+      border: 'solid 1px',
+      borderColor: colors.grey,
+      borderRadius: '4px',
+      fontWeight: 'lighter',
+      transition: 'all 0.5s ease 0s',
+    },
+    'button:hover': {
+      color: 'white',
+      background: colors.primary,
+      borderColor: colors.primaryDark,
+    },
   }),
 })
 
