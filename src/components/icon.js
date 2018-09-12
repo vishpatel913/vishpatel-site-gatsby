@@ -5,7 +5,7 @@ import { FaInstagram } from 'react-icons/lib/fa'
 import { FaLinkedin } from 'react-icons/lib/fa'
 import { FaGithub } from 'react-icons/lib/fa'
 import { FaEnvelope } from 'react-icons/lib/fa'
-import { FaUser } from 'react-icons/fa'
+import { FaUser } from 'react-icons/lib/fa'
 
 const IconContainer = styled.span`
   display: inherit;
