@@ -110,7 +110,7 @@ const Tab = ({ title, ext }) => {
   }
 }
 
-const Header = () => (
+const Navigation = () => (
   <Container>
     <Menu>
       <FlexRow left>
@@ -128,4 +128,4 @@ const Header = () => (
   </Container>
 )
 
-export default Header
+export default Navigation

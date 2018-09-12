@@ -82,10 +82,15 @@ const SocialLink = styled.a`
   }
 `
 
+const SocialIcon = styled(Icon)`
+  margin-right: 4px;
+  font-size: 20px;
+`
+
 const Social = ({ title, link }) => {
   return (
     <SocialLink href={link} target="_blank">
-      <Icon margin size={20} name={title} />
+      <SocialIcon name={title} />
       {capitalizeString(title)}
     </SocialLink>
   )
