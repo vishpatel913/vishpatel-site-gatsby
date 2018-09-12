@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
-import { FaUser } from 'react-icons/fa'
 
+import Icon from '../components/icon'
 import { capitalizeString } from '../utils/helpers'
 import colors from '../utils/colors'
 
@@ -55,7 +55,7 @@ const Comment = ({ author, time, message }) => {
     <CommentContainer>
       <CommentHeader>
         <CommentIcon>
-          <FaUser />
+          <Icon name="user" />
         </CommentIcon>
         <CommentTitle>
           <strong>{author}</strong>
