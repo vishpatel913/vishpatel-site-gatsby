@@ -91,7 +91,7 @@ const EmailLink = styled.a`
   display: inline-flex;
   align-items: center;
   font-weight: 200;
-  margin-left: 4px;
+  margin-left: 1px;
   margin-bottom: 1rem;
   color: grey;
 
