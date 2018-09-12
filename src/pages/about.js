@@ -87,6 +87,19 @@ const SocialIcon = styled(Icon)`
   font-size: 20px;
 `
 
+const EmailLink = styled.a`
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+  margin-left: 4px;
+  margin-bottom: 1rem;
+  color: grey;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+`
+
 const Social = ({ title, link }) => {
   return (
     <SocialLink href={link} target="_blank">
@@ -100,6 +113,7 @@ const AboutPage = ({ data }) => {
   const {
     name,
     tagLine,
+    emailAddress,
     twitterHandle,
     gitHubAccount,
     linkedInProfile,
@@ -121,6 +135,10 @@ const AboutPage = ({ data }) => {
         <MetaContainer>
           <h1>{name}</h1>
           <p>{tagLine}</p>
+          <EmailLink href={'mailto:' + emailAddress}>
+            <SocialIcon name="mail" />
+            {emailAddress}
+          </EmailLink>
           <SocialContainer>
             <Social title="gitHub" link={gitHubAccount} />
             <Social title="linkedIn" link={linkedInProfile} />
@@ -150,6 +168,7 @@ export const pageQuery = graphql`
     contentfulAuthor(name: { eq: "Vish Patel" }) {
       name
       tagLine
+      emailAddress
       twitterHandle
       gitHubAccount
       linkedInProfile
