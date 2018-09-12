@@ -88,7 +88,7 @@ const SocialIcon = styled(Icon)`
 `
 
 const EmailLink = styled.a`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-weight: 200;
   margin-left: 4px;
