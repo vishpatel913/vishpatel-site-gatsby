@@ -28,13 +28,16 @@ const CommentIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
   color: ${colors.grey};
   background: ${colors.background};
-  font-size: 32px;
-  padding: 0.5rem 0.25rem 0;
-  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 400;
   overflow: hidden;
-  margin-right: 0.5rem;
 `
 
 const CommentTitle = styled.div`
@@ -55,7 +58,7 @@ const Comment = ({ author, time, message }) => {
     <CommentContainer>
       <CommentHeader>
         <CommentIcon>
-          <Icon name="user" />
+          <span>{initial}</span>
         </CommentIcon>
         <CommentTitle>
           <strong>{author}</strong>

@@ -5,7 +5,6 @@ import { FaInstagram } from 'react-icons/lib/fa'
 import { FaLinkedinSquare } from 'react-icons/lib/fa'
 import { FaGithub } from 'react-icons/lib/fa'
 import { FaEnvelopeO } from 'react-icons/lib/fa'
-import { FaUser } from 'react-icons/lib/fa'
 
 const IconContainer = styled.span`
   display: inherit;
@@ -25,9 +24,6 @@ const Icon = ({ className, name }) => {
       break
     case 'mail':
       icon = <FaEnvelopeO />
-      break
-    case 'user':
-      icon = <FaUser />
       break
     default:
   }
