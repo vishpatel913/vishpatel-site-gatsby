@@ -7,19 +7,9 @@ import { FaGithub } from 'react-icons/fa'
 
 const IconContainer = styled.span`
   display: inherit;
-  ${({ margin }) =>
-    margin &&
-    `
-    margin-right: 4px;
-  `};
-  ${({ size }) =>
-    size &&
-    `
-    font-size: ${size}px;
-  `};
 `
 
-const Icon = ({ margin, name, size }) => {
+const Icon = ({ className, name }) => {
   let icon
   switch (name) {
     case 'instagram':
@@ -36,11 +26,7 @@ const Icon = ({ margin, name, size }) => {
       break
     default:
   }
-  return (
-    <IconContainer margin={margin} size={size}>
-      {icon}
-    </IconContainer>
-  )
+  return <IconContainer className={className}>{icon}</IconContainer>
 }
 
 export default Icon

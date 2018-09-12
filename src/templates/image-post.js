@@ -12,12 +12,15 @@ const PostContainer = styled.div`
   background: white;
   margin: 0.5rem;
 
-  @media (min-width: 992px) {
-    display: flex;
-  }
   @media (max-width: 768px) {
     margin: 0;
     padding: 0;
+  }
+`
+
+const FlexContainer = styled.div`
+  @media (min-width: 992px) {
+    display: flex;
   }
 `
 
@@ -115,30 +118,32 @@ const ImageTemplate = ({ data }) => {
   return (
     <PostContainer>
       <SiteHead title={title} description={metaDescription} keywords={tags} />
-      <ImageContainer>
-        <PostImage
-          sizes={editTracedSvg(photo.sizes)}
-          title={title}
-          alt={getAltText(title, category)}
-        />
-      </ImageContainer>
-      <ContentContainer>
-        <h1>{title}</h1>
-        {imageCaption && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: imageCaption.childMarkdownRemark.html,
-            }}
+      <FlexContainer>
+        <ImageContainer>
+          <PostImage
+            sizes={editTracedSvg(photo.sizes)}
+            title={title}
+            alt={getAltText(title, category)}
           />
-        )}
-        <ImageMetaContainer>
-          <DateText>{dateCreated}</DateText>
-          <CategoryLink to={'/work/' + category}>
-            {capitalizeString(category)}
-          </CategoryLink>
-        </ImageMetaContainer>
-        {tags.sort().map(tag => <Tag key={tag} title={tag} />)}
-      </ContentContainer>
+        </ImageContainer>
+        <ContentContainer>
+          <h1>{title}</h1>
+          {imageCaption && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: imageCaption.childMarkdownRemark.html,
+              }}
+            />
+          )}
+          <ImageMetaContainer>
+            <DateText>{dateCreated}</DateText>
+            <CategoryLink to={'/work/' + category}>
+              {capitalizeString(category)}
+            </CategoryLink>
+          </ImageMetaContainer>
+          {tags.sort().map(tag => <Tag key={tag} title={tag} />)}
+        </ContentContainer>
+      </FlexContainer>
     </PostContainer>
   )
 }
