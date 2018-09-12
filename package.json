@@ -21,7 +21,7 @@
     "gatsby-transformer-yaml": "^1.5.18",
     "lodash": "^4.17.10",
     "react-helmet": "^5.2.0",
-    "react-icons": "^3.0.5",
+    "react-icons": "^2.2.7",
     "react-masonry-component": "^6.2.1",
     "styled-components": "^3.4.5"
   },
