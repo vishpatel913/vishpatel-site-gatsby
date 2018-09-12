@@ -37,7 +37,7 @@ const ContentContainer = styled.div`
   }
   @media (max-width: 992px) {
     padding: 2rem;
-    max-width: 85%;
+    max-width: 80%;
     margin: auto;
   }
   @media (max-width: 768px) {
