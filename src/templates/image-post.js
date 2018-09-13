@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 
 import SiteHead from '../components/siteHead'
 import CommentForm from '../components/commentForm'
 import CommentList from '../components/commentList'
-import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 import colors from '../utils/colors'
+import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 
 const PostContainer = styled.div`
   background: white;

@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
-import Masonry from 'react-masonry-component'
+import Link from 'gatsby-link'
 import Img from 'gatsby-image'
+import Masonry from 'react-masonry-component'
 
 import { editTracedSvg } from '../utils/helpers'
 

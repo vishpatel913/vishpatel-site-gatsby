@@ -1,76 +1,57 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
+
 import colors from '../utils/colors'
-import logo from '../../static/logo/logo.png'
+import logo from '../../static/logo/logo-light.svg'
 
 const Container = styled.div`
-  background: white;
-  border-bottom: ${colors.grey} 1px solid;
-`
-
-const Menu = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 1200px;
+  background: #333333;
   padding: 1.5rem 2rem;
-
   @media (max-width: 768px) {
     padding: 1rem;
   }
 `
 
-const FlexRow = styled.div`
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto 0.5rem;
+  max-width: 1200px;
+`
+
+const Navigation = styled.div`
   display: flex;
   flex: 1;
-
-  ${({ left }) =>
-    left &&
-    `
-    justify-content: flex-end;
-  `};
-  ${({ right }) =>
-    right &&
-    `
-    justify-content: flex-start;
-  `};
+  justify-content: flex-end;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+    width: 50%;
+    flex-wrap: wrap;
   }
 `
 
 const InternalLink = styled(Link)`
-  color: black;
+  font-size: 12px;
+  color: ${colors.grey};
   text-decoration: none;
-  font-weight: lighter;
-  margin: 0.5rem;
+  margin: 0.25rem 0.5rem;
 
   &:hover {
-    color: ${colors.primary};
-  }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
+    color: ${colors.primaryLight};
   }
 `
 
 const ExternalLink = styled.a`
-  color: black;
+  font-size: 12px;
+  color: ${colors.grey};
   text-decoration: none;
-  font-weight: lighter;
-  margin: 0.5rem;
+  margin: 0.25rem 0.5rem;
 
   &:hover {
-    color: ${colors.primary};
-  }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
+    color: ${colors.primaryLight};
   }
 `
 
@@ -78,9 +59,10 @@ const Logo = styled.img`
   margin: 0 0.5rem;
   height: 64px;
   width: 64px;
+
   @media (max-width: 768px) {
-    height: 56px;
-    width: 56px;
+    height: 44px;
+    width: 44px;
   }
 `
 
@@ -110,22 +92,20 @@ const Tab = ({ title, ext }) => {
   }
 }
 
-const Navigation = () => (
+const Header = () => (
   <Container>
-    <Menu>
-      <FlexRow left>
-        <Tab title="about" />
-        <Tab title="work" />
-      </FlexRow>
+    <FlexContainer>
       <Link to="/">
         <Logo src={logo} />
       </Link>
-      <FlexRow right>
+      <Navigation>
+        <Tab title="about" />
+        <Tab title="work" />
         <Tab title="tech-stack" />
         <Tab title="resume" ext="http://www.vishpatel.com/cv-2018" />
-      </FlexRow>
-    </Menu>
+      </Navigation>
+    </FlexContainer>
   </Container>
 )
 
-export default Navigation
+export default Header

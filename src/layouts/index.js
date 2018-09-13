@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import SiteHead from '../components/siteHead'
-import Navigation from '../components/navigation'
+import Header from '../components/header'
+import Footer from '../components/footer'
 import colors from '../utils/colors'
 import icon32 from '../../static/logo/favicon-32.png'
 // import './index.css'
@@ -23,31 +24,12 @@ const BodyContainer = styled.div`
   }
 `
 
-const FooterContainer = styled.div`
-  margin: 0 auto;
-  text-align: center;
-  max-width: 1200px;
-  padding: 0.5rem 2rem 1rem;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-`
-
 const Layout = ({ children, data, location }) => (
   <SiteContainer>
     <SiteHead page={location.pathname} />
-    <Navigation />
+    <Header />
     <BodyContainer>{children()}</BodyContainer>
-    <FooterContainer>
-      <a href="https://www.contentful.com/" rel="nofollow" target="_blank">
-        <img
-          src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-          style={{ maxWidth: '100px', width: '100%', filter: 'opacity(0.8)' }}
-          alt="Powered by Contentful"
-        />
-      </a>
-    </FooterContainer>
+    <Footer />
   </SiteContainer>
 )
 

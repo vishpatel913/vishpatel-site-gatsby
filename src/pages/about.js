@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 
 import Icon from '../components/icon'
-import { capitalizeString, editTracedSvg } from '../utils/helpers'
 import colors from '../utils/colors'
+import { capitalizeString, editTracedSvg } from '../utils/helpers'
 
 const PageContainer = styled.div`
   background: white;
@@ -38,7 +38,6 @@ const MetaContainer = styled.div`
     flex: 2;
     padding: 1.5rem;
   }
-
   @media (max-width: 768px) {
     max-width: 100%;
     padding: 2rem;

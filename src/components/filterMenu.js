@@ -1,12 +1,13 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 
 import colors from '../utils/colors'
 import { capitalizeString } from '../utils/helpers'
 
 const MenuContainer = styled.div`
   display: block;
+
   @media (max-width: 768px) {
     text-align: center;
   }
