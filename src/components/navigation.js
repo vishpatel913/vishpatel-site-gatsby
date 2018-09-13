@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 import colors from '../utils/colors'
-import logo from '../../static/logo/logo.png'
+import logo from '../../static/logo/logo.svg'
 
 const Container = styled.div`
   background: white;
