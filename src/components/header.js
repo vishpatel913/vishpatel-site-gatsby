@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 
 import colors from '../utils/colors'
 import logo from '../../static/logo/logo.svg'
+import cv2018 from '../../static/files/cv-2018.pdf'
 
 const Container = styled.div`
   background: white;
@@ -123,7 +124,7 @@ const Header = () => (
       </Link>
       <FlexRow right>
         <Tab title="tech-stack" />
-        <Tab title="resume" ext="http://www.vishpatel.com/cv-2018" />
+        <Tab title="resume" ext={cv2018} />
       </FlexRow>
     </Navigation>
   </Container>
