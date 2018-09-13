@@ -81,11 +81,6 @@ const SocialLink = styled.a`
   }
 `
 
-const SocialIcon = styled(Icon)`
-  margin-right: 4px;
-  font-size: 20px;
-`
-
 const EmailLink = styled.a`
   display: inline-flex;
   align-items: center;
@@ -102,7 +97,7 @@ const EmailLink = styled.a`
 const Social = ({ title, link }) => {
   return (
     <SocialLink href={link} target="_blank">
-      <SocialIcon name={title} />
+      <Icon name={title} />
       {capitalizeString(title)}
     </SocialLink>
   )
@@ -135,7 +130,7 @@ const AboutPage = ({ data }) => {
           <h1>{name}</h1>
           <p>{tagLine}</p>
           <EmailLink href={'mailto:' + emailAddress}>
-            <SocialIcon name="mail" />
+            <Icon name="mail" />
             {emailAddress}
           </EmailLink>
           <SocialContainer>

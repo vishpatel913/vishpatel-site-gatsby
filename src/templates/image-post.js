@@ -5,6 +5,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 
 import SiteHead from '../components/siteHead'
+import Icon from '../components/icon'
 import colors from '../utils/colors'
 import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
 
@@ -73,7 +74,7 @@ const DateText = styled.span`
 `
 
 const CategoryLink = styled(Link)`
-  display: block;
+  display: inline-block;
   margin-bottom: 4px;
   text-decoration: none;
   color: grey;
@@ -138,6 +139,7 @@ const ImageTemplate = ({ data }) => {
           <ImageMetaContainer>
             <DateText>{dateCreated}</DateText>
             <CategoryLink to={'/work/' + category}>
+              <Icon name="category" />
               {capitalizeString(category)}
             </CategoryLink>
           </ImageMetaContainer>
