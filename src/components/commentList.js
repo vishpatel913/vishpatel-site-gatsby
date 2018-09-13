@@ -30,14 +30,18 @@ const CommentIcon = styled.div`
   align-items: center;
   height: 2.5rem;
   width: 2.5rem;
-  padding: 0.5rem;
+  // padding: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 50%;
   color: ${colors.grey};
   background: ${colors.background};
-  font-size: 28px;
-  font-weight: 400;
+  font-size: 64px;
+  font-weight: 700;
   overflow: hidden;
+
+  & span {
+    line-height: 1px;
+  }
 `
 
 const CommentTitle = styled.div`

@@ -77,7 +77,7 @@ const ImageMetaContainer = styled.div`
     display: block;
     width: 48px;
     height: 2px;
-    background: #ddd;
+    background: ${colors.grey};
     margin-bottom: 1rem;
   }
 `
