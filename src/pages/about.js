@@ -135,11 +135,11 @@ const AboutPage = ({ data }) => {
           </EmailLink>
           <SocialContainer>
             <Social title="gitHub" link={gitHubAccount} />
-            <Social title="linkedIn" link={linkedInProfile} />
             <Social
               title="instagram"
               link={'http://instagram.com/' + twitterHandle}
             />
+            <Social title="linkedIn" link={linkedInProfile} />
           </SocialContainer>
         </MetaContainer>
       </FlexContainer>
