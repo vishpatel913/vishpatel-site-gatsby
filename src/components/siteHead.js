@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 import GatsbyConfig from '../../gatsby-config'
 import { capitalizeString } from '../utils/helpers'
-import colors from '../utils/color'
+import colors from '../utils/colors'
 import icon32 from '../../static/logo/favicon-32.png'
 
 const SiteHead = ({ title, description, keywords, page }) => {
