@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import GatsbyConfig from '../../gatsby-config'
 import { capitalizeString } from '../utils/helpers'
+import colors from '../utils/color'
 import icon32 from '../../static/logo/favicon-32.png'
 
 const SiteHead = ({ title, description, keywords, page }) => {
@@ -35,6 +36,10 @@ const SiteHead = ({ title, description, keywords, page }) => {
           name: 'author',
           content: 'Vish Patel',
         },
+        {
+          name: 'theme-color',
+          content: colors.primary,
+        }
       ]}
       link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
     />
