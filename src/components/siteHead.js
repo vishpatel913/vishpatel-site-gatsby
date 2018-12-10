@@ -39,10 +39,12 @@ const SiteHead = ({ title, description, keywords, page }) => {
         {
           name: 'theme-color',
           content: colors.primary,
-        }
+        },
       ]}
       link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
-    />
+    >
+      <html lang="en" />
+    </Helmet>
   )
 }
 

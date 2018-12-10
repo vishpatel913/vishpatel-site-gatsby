@@ -13,7 +13,7 @@ const SiteContainer = styled.div`
   background: ${colors.background};
 `
 
-const BodyContainer = styled.div`
+const BodyContainer = styled.main`
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
