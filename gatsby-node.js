@@ -6,8 +6,8 @@
 
 const path = require('path')
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
   return new Promise((resolve, reject) => {
     const imagePostTemplate = path.resolve(`src/templates/image-post.js`)
     const categoryGridTemplate = path.resolve(`src/templates/category-grid.js`)
@@ -58,3 +58,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     )
   })
 }
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node : {
+      fs : "empty"
+    }
+  })
+};

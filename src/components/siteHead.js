@@ -10,7 +10,7 @@ const SiteHead = ({ title, description, keywords, page }) => {
   let siteTitle = GatsbyConfig.siteMetadata.title
   if (title) {
     siteTitle += ' | ' + title
-  } else if (page && page != '/') {
+  } else if (page && page !== '/') {
     siteTitle += capitalizeString(page.split('/').join(' | '))
   }
   const siteDescription = description
@@ -39,10 +39,12 @@ const SiteHead = ({ title, description, keywords, page }) => {
         {
           name: 'theme-color',
           content: colors.primary,
-        }
+        },
       ]}
       link={[{ rel: 'shortcut icon', type: 'image/png', href: `${icon32}` }]}
-    />
+    >
+      <html lang="en" />
+    </Helmet>
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled.footer`
   margin: 0 auto;
   text-align: center;
   max-width: 1200px;
@@ -25,7 +25,11 @@ const ContentfulLogo = styled.img`
 
 const Footer = () => (
   <Container>
-    <a href="https://www.contentful.com/" rel="nofollow" target="_blank">
+    <a
+      href="https://www.contentful.com/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
       <ContentfulLogo
         src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
         alt="Powered by Contentful"
