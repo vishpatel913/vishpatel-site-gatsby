@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "dotenv": "^6.2.0",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-babel": "^5.2.1",
@@ -52,6 +53,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/vishpatel913/vishpatel-site-gatsby"
   }
 }

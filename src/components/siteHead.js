@@ -10,7 +10,7 @@ const SiteHead = ({ title, description, keywords, page }) => {
   let siteTitle = GatsbyConfig.siteMetadata.title
   if (title) {
     siteTitle += ' | ' + title
-  } else if (page && page != '/') {
+  } else if (page && page !== '/') {
     siteTitle += capitalizeString(page.split('/').join(' | '))
   }
   const siteDescription = description
