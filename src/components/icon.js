@@ -1,16 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { FaInstagram } from 'react-icons/lib/fa'
-import { FaLinkedinSquare } from 'react-icons/lib/fa'
-import { FaGithub } from 'react-icons/lib/fa'
-import { FaEnvelopeO } from 'react-icons/lib/fa'
-import { FaFolderO } from 'react-icons/lib/fa'
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaTelegramPlane,
+  FaFolderOpen,
+  FaUser,
+} from 'react-icons/fa'
 
 const IconContainer = styled.span`
   display: inherit;
   font-size: 18px;
   margin-right: 4px;
+  vertical-align: middle;
 `
 
 const Icon = ({ className, name }) => {
@@ -20,16 +24,19 @@ const Icon = ({ className, name }) => {
       icon = <FaInstagram />
       break
     case 'linkedIn':
-      icon = <FaLinkedinSquare />
+      icon = <FaLinkedin />
       break
     case 'gitHub':
       icon = <FaGithub />
       break
     case 'mail':
-      icon = <FaEnvelopeO />
+      icon = <FaTelegramPlane />
       break
     case 'category':
-      icon = <FaFolderO />
+      icon = <FaFolderOpen />
+      break
+    case 'user':
+      icon = <FaUser />
       break
     default:
   }

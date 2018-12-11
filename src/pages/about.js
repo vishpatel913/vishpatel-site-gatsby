@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
+import Layout from '../components/layout'
 import Icon from '../components/icon'
 import colors from '../utils/colors'
 import { capitalizeString, editTracedSvg } from '../utils/helpers'
@@ -103,7 +104,7 @@ const Social = ({ title, link }) => {
   )
 }
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data, location }) => {
   const {
     name,
     tagLine,
@@ -116,48 +117,50 @@ const AboutPage = ({ data }) => {
   } = data.contentfulAuthor
 
   return (
-    <PageContainer>
-      <FlexContainer>
-        <ImageContainer>
-          <Img
-            sizes={editTracedSvg(profilePhoto.sizes)}
-            title={name}
-            alt={'Profile picture for ' + name}
-            imgStyle={{ verticalAlign: 'middle' }}
-          />
-        </ImageContainer>
-        <MetaContainer>
-          <h1>{name}</h1>
-          <p>{tagLine}</p>
-          <EmailLink href={'mailto:' + emailAddress}>
-            <Icon name="mail" />
-            {emailAddress}
-          </EmailLink>
-          <SocialContainer>
-            <Social title="gitHub" link={gitHubAccount} />
-            <Social
-              title="instagram"
-              link={'http://instagram.com/' + twitterHandle}
+    <Layout page={location.pathname}>
+      <PageContainer>
+        <FlexContainer>
+          <ImageContainer>
+            <Img
+              fluid={editTracedSvg(profilePhoto.fluid)}
+              title={name}
+              alt={'Profile picture for ' + name}
+              imgStyle={{ verticalAlign: 'middle' }}
             />
-            <Social title="linkedIn" link={linkedInProfile} />
-          </SocialContainer>
-        </MetaContainer>
-      </FlexContainer>
-      <ContentContainer>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: biography.childMarkdownRemark.html,
-          }}
-        />
-        <Link to="/">Go back to the homepage</Link>
-      </ContentContainer>
-    </PageContainer>
+          </ImageContainer>
+          <MetaContainer>
+            <h1>{name}</h1>
+            <p>{tagLine}</p>
+            <EmailLink href={'mailto:' + emailAddress}>
+              <Icon name="mail" />
+              {emailAddress}
+            </EmailLink>
+            <SocialContainer>
+              <Social title="gitHub" link={gitHubAccount} />
+              <Social
+                title="instagram"
+                link={'http://instagram.com/' + twitterHandle}
+              />
+              <Social title="linkedIn" link={linkedInProfile} />
+            </SocialContainer>
+          </MetaContainer>
+        </FlexContainer>
+        <ContentContainer>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: biography.childMarkdownRemark.html,
+            }}
+          />
+          <Link to="/">Go back to the homepage</Link>
+        </ContentContainer>
+      </PageContainer>
+    </Layout>
   )
 }
 
 export default AboutPage
 
-export const pageQuery = graphql`
+export const query = graphql`
   query authorPostQuery {
     contentfulAuthor(name: { eq: "Vish Patel" }) {
       name
@@ -167,8 +170,8 @@ export const pageQuery = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        sizes(maxWidth: 800) {
-          ...GatsbyContentfulSizes_tracedSVG
+        fluid(maxWidth: 800) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       biography {

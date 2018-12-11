@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
 
+import Layout from '../components/layout'
 import { editTracedSvg } from '../utils/helpers'
 
 const PageContainer = styled.div`
@@ -37,7 +38,7 @@ const TechContainer = styled.li`
   }
 
   @media (min-width: 768px) {
-    width: 33.3333%
+    width: 33.3333%;
     padding: 1rem 2rem;
     margin: 0;
   }
@@ -56,13 +57,13 @@ const TechName = styled.h2`
   }
 `
 
-const TechGridItem = ({ node }) => {
+const GridTechItem = ({ node }) => {
   const { name, logo } = node
 
   return (
     <TechContainer>
       <Img
-        sizes={editTracedSvg(logo.sizes)}
+        fluid={editTracedSvg(logo.fluid)}
         title={name}
         alt={'Logo for ' + name}
       />
@@ -71,18 +72,20 @@ const TechGridItem = ({ node }) => {
   )
 }
 
-const TechStackPage = ({ data }) => (
-  <PageContainer>
-    <TitleContainer>
-      <h1>Tech Stack</h1>
-      <p>Technologies used for development and design</p>
-    </TitleContainer>
-    <GridContainer elementType={'ul'}>
-      {data.allContentfulTech.edges.map(({ node }) => {
-        return <TechGridItem key={node.name} node={node} />
-      })}
-    </GridContainer>
-  </PageContainer>
+const TechStackPage = ({ data, location }) => (
+  <Layout page={location.pathname}>
+    <PageContainer>
+      <TitleContainer>
+        <h1>Tech Stack</h1>
+        <p>Technologies used for development and design</p>
+      </TitleContainer>
+      <GridContainer elementType={'ul'}>
+        {data.allContentfulTech.edges.map(({ node }) => {
+          return <GridTechItem key={node.name} node={node} />
+        })}
+      </GridContainer>
+    </PageContainer>
+  </Layout>
 )
 
 export default TechStackPage
@@ -94,8 +97,8 @@ export const query = graphql`
         node {
           name
           logo {
-            sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_tracedSVG
+            fluid(maxWidth: 800) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
