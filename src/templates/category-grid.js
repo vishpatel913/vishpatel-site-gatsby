@@ -14,7 +14,7 @@ const CategoryTemplate = ({ data, location }) => (
     <PageContainer>
       <FilterMenu />
       {data.allContentfulImage ? (
-        <ImageGrid images={data.allContentfulImage.edges} />
+        <ImageGrid data={data.allContentfulImage.edges} />
       ) : (
         <NotFoundMessage />
       )}

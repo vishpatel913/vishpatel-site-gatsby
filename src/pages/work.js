@@ -12,7 +12,7 @@ const WorkPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
       <FilterMenu />
-      <ImageGrid images={data.allContentfulImage.edges} />
+      <ImageGrid data={data.allContentfulImage.edges} />
     </PageContainer>
   </Layout>
 );

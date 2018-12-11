@@ -7,7 +7,7 @@ import ImageGrid from "../components/imageGrid";
 const IndexPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <div>
-      <ImageGrid images={data.allContentfulImage.edges} />
+      <ImageGrid data={data.allContentfulImage.edges} />
     </div>
   </Layout>
 );

@@ -57,8 +57,8 @@ const TechName = styled.h2`
   }
 `;
 
-const GridTechItem = ({ data }) => {
-  const { name, logo } = data;
+const GridTechItem = ({ node }) => {
+  const { name, logo } = node;
 
   return (
     <TechContainer>
@@ -77,7 +77,7 @@ const TechStackPage = ({ data, location }) => (
       </TitleContainer>
       <GridContainer elementType="ul">
         {data.allContentfulTech.edges.map(({ node }) => (
-          <GridTechItem key={node.name} data={node} />
+          <GridTechItem key={node.name} node={node} />
         ))}
       </GridContainer>
     </PageContainer>

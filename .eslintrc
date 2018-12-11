@@ -22,7 +22,7 @@
     "react/no-danger": 0,
     "react/no-children-prop": ["off"],
     "react/destructuring-assignment": ["off"],
-    "react/prop-types": [1, { "ignore": ["data", "location"] }],
+    "react/prop-types": [1, { "ignore": ["data", "node", "location", "children"] }],
     "react/require-default-props": [0],
     "babel/new-cap": 1,
     "babel/object-curly-spacing": [2, "always"],
