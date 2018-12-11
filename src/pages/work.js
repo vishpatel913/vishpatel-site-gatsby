@@ -1,25 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import Layout from '../components/layout'
-import FilterMenu from '../components/filterMenu'
-import ImageGrid from '../components/imageGrid'
+import Layout from "../components/layout";
+import FilterMenu from "../components/filterMenu";
+import ImageGrid from "../components/imageGrid";
 
-const PageContainer = styled.div``
+const PageContainer = styled.div``;
 
-const WorkPage = ({ data, location }) => {
-  return (
-    <Layout page={location.pathname}>
-      <PageContainer>
-        <FilterMenu />
-        <ImageGrid images={data.allContentfulImage.edges} />
-      </PageContainer>
-    </Layout>
-  )
-}
+const WorkPage = ({ data, location }) => (
+  <Layout page={location.pathname}>
+    <PageContainer>
+      <FilterMenu />
+      <ImageGrid images={data.allContentfulImage.edges} />
+    </PageContainer>
+  </Layout>
+);
 
-export default WorkPage
+export default WorkPage;
 
 export const query = graphql`
   {
@@ -40,4 +38,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
