@@ -6,8 +6,6 @@ import SiteHead from '../components/siteHead'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import colors from '../utils/colors'
-import icon32 from '../../static/logo/favicon-32.png'
-// import './index.css'
 
 const SiteContainer = styled.div`
   background: ${colors.background};
@@ -24,27 +22,18 @@ const BodyContainer = styled.main`
   }
 `
 
-const Layout = ({ children, data, location }) => (
+const Layout = ({ children, page }) => (
   <SiteContainer>
-    <SiteHead page={location.pathname} />
+    <SiteHead page={page} />
     <Header />
-    <BodyContainer>{children()}</BodyContainer>
+    <BodyContainer>{children}</BodyContainer>
     <Footer />
   </SiteContainer>
 )
 
 Layout.propTypes = {
   children: PropTypes.func,
+  page: PropTypes.string,
 }
 
 export default Layout
-
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

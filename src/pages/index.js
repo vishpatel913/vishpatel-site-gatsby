@@ -1,20 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
+import Layout from '../components/layout'
 import ImageGrid from '../components/imageGrid'
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   return (
-    <div>
-      <ImageGrid images={data.allContentfulImage.edges} />
-    </div>
+    <Layout page={location.pathname}>
+      <div>
+        <ImageGrid images={data.allContentfulImage.edges} />
+      </div>
+    </Layout>
   )
 }
 
 export default IndexPage
 
 export const query = graphql`
-  query featuredImageQuery {
+  {
     allContentfulImage(
       filter: { featured: { eq: true } }
       sort: { fields: [updatedAt], order: DESC }
@@ -25,8 +29,8 @@ export const query = graphql`
           slug
           featured
           photo {
-            sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_tracedSVG
+            fluid(maxWidth: 800) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           dateCreated(formatString: "Do MMMM YYYY")

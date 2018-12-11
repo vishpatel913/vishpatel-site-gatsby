@@ -1,31 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
-import SiteHead from '../components/siteHead'
+import Layout from '../components/layout'
 import FilterMenu from '../components/filterMenu'
 import ImageGrid from '../components/imageGrid'
-import NotFoundPage from '../pages/404'
-import { capitalizeString } from '../utils/helpers'
+import NotFoundMessage from '../components/not-found-message'
 
 const PageContainer = styled.div``
 
-const CategoryTemplate = ({ data }) => {
+const CategoryTemplate = ({ data, location }) => {
   return (
-    <PageContainer>
-      <FilterMenu />
-      {data.allContentfulImage ? (
-        <ImageGrid images={data.allContentfulImage.edges} />
-      ) : (
-        <NotFoundPage />
-      )}
-    </PageContainer>
+    <Layout page={location.pathname}>
+      <PageContainer>
+        <FilterMenu />
+        {data.allContentfulImage ? (
+          <ImageGrid images={data.allContentfulImage.edges} />
+        ) : (
+          <NotFoundMessage />
+        )}
+      </PageContainer>
+    </Layout>
   )
 }
 
 export default CategoryTemplate
 
 export const query = graphql`
-  query categoryImageQuery($slug: String!) {
+  query($slug: String!) {
     allContentfulImage(
       sort: { fields: [dateCreated], order: DESC }
       filter: { category: { eq: $slug } }
@@ -35,8 +37,8 @@ export const query = graphql`
           title
           slug
           photo {
-            sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_tracedSVG
+            fluid(maxWidth: 800) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           dateCreated(formatString: "Do MMMM YYYY")
