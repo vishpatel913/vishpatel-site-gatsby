@@ -1,9 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Link } from "gatsby";
 
-import colors from '../utils/colors'
-import { capitalizeString } from '../utils/helpers'
+import colors from "../utils/colors";
+import { capitalizeString } from "../utils/helpers";
 
 const MenuContainer = styled.div`
   display: block;
@@ -11,7 +12,7 @@ const MenuContainer = styled.div`
   @media (max-width: 768px) {
     text-align: center;
   }
-`
+`;
 
 const MenuList = styled.ul`
   display: inline-flex;
@@ -25,7 +26,7 @@ const MenuList = styled.ul`
   @media (max-width: 768px) {
     margin: 1rem 1rem 0;
   }
-`
+`;
 
 const MenuItem = styled.li`
   display: inherit;
@@ -34,7 +35,7 @@ const MenuItem = styled.li`
   &:last-child {
     border: none;
   }
-`
+`;
 
 const MenuLink = styled(Link)`
   font-size: 12px;
@@ -49,40 +50,42 @@ const MenuLink = styled(Link)`
   @media (max-width: 400px) {
     padding: 0.5rem;
   }
-`
+`;
 
 const Tab = ({ category }) => {
-  let link = '/work/' + category
-  if (category === 'all') {
-    link = '/work'
+  let link = `/work/${category}`;
+  if (category === "all") {
+    link = "/work";
   }
   return (
     <MenuItem>
       <MenuLink
-        exact={true}
+        exact
         activeStyle={{
           color: colors.primaryLight,
-          background: colors.background,
+          background: colors.background
         }}
         to={link}
       >
         {capitalizeString(category)}
       </MenuLink>
     </MenuItem>
-  )
-}
+  );
+};
 
-const FilterMenu = () => {
-  return (
-    <MenuContainer>
-      <MenuList>
-        <Tab category="all" />
-        <Tab category="design" />
-        <Tab category="development" />
-        <Tab category="photography" />
-      </MenuList>
-    </MenuContainer>
-  )
-}
+Tab.propTypes = {
+  category: PropTypes.string
+};
 
-export default FilterMenu
+const FilterMenu = () => (
+  <MenuContainer>
+    <MenuList>
+      <Tab category="all" />
+      <Tab category="design" />
+      <Tab category="development" />
+      <Tab category="photography" />
+    </MenuList>
+  </MenuContainer>
+);
+
+export default FilterMenu;

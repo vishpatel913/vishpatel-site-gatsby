@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import Masonry from 'react-masonry-component'
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+import Masonry from "react-masonry-component";
 
-import Layout from '../components/layout'
-import { editTracedSvg } from '../utils/helpers'
+import Layout from "../components/layout";
+import { editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
@@ -15,18 +15,18 @@ const PageContainer = styled.div`
     margin: 0;
     padding: 1rem;
   }
-`
+`;
 
 const TitleContainer = styled.div`
   text-align: center;
   @media (min-width: 768px) {
     padding-top: 1.5rem;
   }
-`
+`;
 
 const GridContainer = styled(Masonry)`
   margin: auto;
-`
+`;
 
 const TechContainer = styled.li`
   display: block;
@@ -46,7 +46,7 @@ const TechContainer = styled.li`
   @media (min-width: 992px) {
     width: 25%;
   }
-`
+`;
 
 const TechName = styled.h2`
   margin-top: 1rem;
@@ -55,22 +55,18 @@ const TechName = styled.h2`
   @media (max-width: 768px) {
     font-size: 20px;
   }
-`
+`;
 
 const GridTechItem = ({ node }) => {
-  const { name, logo } = node
+  const { name, logo } = node;
 
   return (
     <TechContainer>
-      <Img
-        fluid={editTracedSvg(logo.fluid)}
-        title={name}
-        alt={'Logo for ' + name}
-      />
+      <Img fluid={editTracedSvg(logo.fluid)} title={name} alt={`Logo for ${name}`} />
       <TechName>{name}</TechName>
     </TechContainer>
-  )
-}
+  );
+};
 
 const TechStackPage = ({ data, location }) => (
   <Layout page={location.pathname}>
@@ -79,16 +75,16 @@ const TechStackPage = ({ data, location }) => (
         <h1>Tech Stack</h1>
         <p>Technologies used for development and design</p>
       </TitleContainer>
-      <GridContainer elementType={'ul'}>
-        {data.allContentfulTech.edges.map(({ node }) => {
-          return <GridTechItem key={node.name} node={node} />
-        })}
+      <GridContainer elementType="ul">
+        {data.allContentfulTech.edges.map(({ node }) => (
+          <GridTechItem key={node.name} node={node} />
+        ))}
       </GridContainer>
     </PageContainer>
   </Layout>
-)
+);
 
-export default TechStackPage
+export default TechStackPage;
 
 export const query = graphql`
   {
@@ -105,4 +101,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

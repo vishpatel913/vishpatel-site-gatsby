@@ -1,13 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 
-import Layout from '../components/layout'
-import SiteHead from '../components/siteHead'
-import Icon from '../components/icon'
-import colors from '../utils/colors'
-import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
+import Layout from "../components/layout";
+import SiteHead from "../components/siteHead";
+import Icon from "../components/icon";
+import colors from "../utils/colors";
+import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
 
 const PostContainer = styled.div`
   background: white;
@@ -17,19 +18,19 @@ const PostContainer = styled.div`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const FlexContainer = styled.div`
   @media (min-width: 992px) {
     display: flex;
   }
-`
+`;
 
 const ImageContainer = styled.div`
   @media (min-width: 992px) {
     flex: 2;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   @media (min-width: 992px) {
@@ -44,12 +45,12 @@ const ContentContainer = styled.div`
   @media (max-width: 768px) {
     max-width: 100%;
   }
-`
+`;
 
 const PostImage = styled(Img)`
   width: 100%;
   margin: 0;
-`
+`;
 
 const ImageMetaContainer = styled.div`
   color: grey;
@@ -62,12 +63,12 @@ const ImageMetaContainer = styled.div`
     background: #ddd;
     margin-bottom: 1rem;
   }
-`
+`;
 
 const DateText = styled.span`
   display: block;
   margin-bottom: 4px;
-`
+`;
 
 const CategoryLink = styled(Link)`
   display: inline-block;
@@ -78,7 +79,7 @@ const CategoryLink = styled(Link)`
   &:hover {
     color: ${colors.primary};
   }
-`
+`;
 
 const TagLink = styled.span`
   display: inline-block;
@@ -89,29 +90,26 @@ const TagLink = styled.span`
   &:hover {
     color: ${colors.primary};
   }
-`
+`;
 
 const Tag = ({ title }) => {
-  let tagSlug = title
+  const tagSlug = title
     .toLowerCase()
-    .split(' ')
-    .join('-')
-  return <TagLink to={'tag/' + tagSlug}>#{title}</TagLink>
-}
+    .split(" ")
+    .join("-");
+  return <TagLink to={`tag/${tagSlug}`}>{`#${title}`}</TagLink>;
+};
+
+Tag.propTypes = {
+  title: PropTypes.string
+};
 
 const ImageTemplate = ({ data, location }) => {
   const {
-    title,
-    photo,
-    imageCaption,
-    dateCreated,
-    category,
-    tags,
-  } = data.contentfulImage
+    title, photo, imageCaption, dateCreated, category, tags
+  } = data.contentfulImage;
 
-  const metaDescription = imageCaption
-    ? imageCaption.imageCaption
-    : getAltText(title, category)
+  const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
   return (
     <Layout page={location.pathname}>
@@ -130,13 +128,13 @@ const ImageTemplate = ({ data, location }) => {
             {imageCaption && (
               <div
                 dangerouslySetInnerHTML={{
-                  __html: imageCaption.childMarkdownRemark.html,
+                  __html: imageCaption.childMarkdownRemark.html
                 }}
               />
             )}
             <ImageMetaContainer>
               <DateText>{dateCreated}</DateText>
-              <CategoryLink to={'/work/' + category}>
+              <CategoryLink to={`/work/${category}`}>
                 <Icon name="category" />
                 {capitalizeString(category)}
               </CategoryLink>
@@ -148,10 +146,10 @@ const ImageTemplate = ({ data, location }) => {
         </FlexContainer>
       </PostContainer>
     </Layout>
-  )
-}
+  );
+};
 
-export default ImageTemplate
+export default ImageTemplate;
 
 export const query = graphql`
   query($slug: String!) {
@@ -174,4 +172,4 @@ export const query = graphql`
       tags
     }
   }
-`
+`;
