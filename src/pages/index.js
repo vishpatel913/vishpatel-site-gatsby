@@ -1,20 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from '../components/layout'
-import ImageGrid from '../components/imageGrid'
+import Layout from "../components/layout";
+import ImageGrid from "../components/imageGrid";
 
-const IndexPage = ({ data, location }) => {
-  return (
-    <Layout page={location.pathname}>
-      <div>
-        <ImageGrid images={data.allContentfulImage.edges} />
-      </div>
-    </Layout>
-  )
-}
+const IndexPage = ({ data, location }) => (
+  <Layout page={location.pathname}>
+    <div>
+      <ImageGrid data={data.allContentfulImage.edges} />
+    </div>
+  </Layout>
+);
 
-export default IndexPage
+export default IndexPage;
 
 export const query = graphql`
   {
@@ -39,4 +37,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

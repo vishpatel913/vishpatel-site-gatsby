@@ -1,30 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import Layout from '../components/layout'
-import FilterMenu from '../components/filterMenu'
-import ImageGrid from '../components/imageGrid'
-import NotFoundMessage from '../components/not-found-message'
+import Layout from "../components/layout";
+import FilterMenu from "../components/filterMenu";
+import ImageGrid from "../components/imageGrid";
+import NotFoundMessage from "../components/not-found-message";
 
-const PageContainer = styled.div``
+const PageContainer = styled.div``;
 
-const CategoryTemplate = ({ data, location }) => {
-  return (
-    <Layout page={location.pathname}>
-      <PageContainer>
-        <FilterMenu />
-        {data.allContentfulImage ? (
-          <ImageGrid images={data.allContentfulImage.edges} />
-        ) : (
-          <NotFoundMessage />
-        )}
-      </PageContainer>
-    </Layout>
-  )
-}
+const CategoryTemplate = ({ data, location }) => (
+  <Layout page={location.pathname}>
+    <PageContainer>
+      <FilterMenu />
+      {data.allContentfulImage ? (
+        <ImageGrid data={data.allContentfulImage.edges} />
+      ) : (
+        <NotFoundMessage />
+      )}
+    </PageContainer>
+  </Layout>
+);
 
-export default CategoryTemplate
+export default CategoryTemplate;
 
 export const query = graphql`
   query($slug: String!) {
@@ -48,4 +46,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

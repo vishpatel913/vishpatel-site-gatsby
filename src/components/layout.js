@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import SiteHead from '../components/siteHead'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import colors from '../utils/colors'
+import SiteHead from "./siteHead";
+import Header from "./header";
+import Footer from "./footer";
+import colors from "../utils/colors";
 
 const SiteContainer = styled.div`
   background: ${colors.background};
-`
+`;
 
 const BodyContainer = styled.main`
   margin: 0 auto;
@@ -20,7 +20,7 @@ const BodyContainer = styled.main`
   @media (max-width: 768px) {
     padding: 0;
   }
-`
+`;
 
 const Layout = ({ children, page }) => (
   <SiteContainer>
@@ -29,11 +29,10 @@ const Layout = ({ children, page }) => (
     <BodyContainer>{children}</BodyContainer>
     <Footer />
   </SiteContainer>
-)
+);
 
 Layout.propTypes = {
-  children: PropTypes.func,
-  page: PropTypes.string,
-}
+  page: PropTypes.string
+};
 
-export default Layout
+export default Layout;
