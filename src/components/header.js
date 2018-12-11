@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 import colors from '../utils/colors'
 import logo from '../../static/logo/logo.svg'
@@ -120,7 +120,7 @@ const Header = () => (
         <Tab title="work" />
       </FlexRow>
       <Link to="/" name="Home link">
-        <Logo src={logo} alt="VishPatel.com Logo"/>
+        <Logo src={logo} alt="VishPatel.com Logo" />
       </Link>
       <FlexRow right>
         <Tab title="tech-stack" />

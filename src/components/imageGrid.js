@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Masonry from 'react-masonry-component'
 
@@ -71,7 +71,7 @@ const ImageGridItem = ({ node }) => {
     <ImageContainer>
       <Link to={'/' + slug}>
         <ImagePost
-          sizes={editTracedSvg(photo.sizes)}
+          fluid={editTracedSvg(photo.fluid)}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}

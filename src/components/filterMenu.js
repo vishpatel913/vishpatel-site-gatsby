@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 import colors from '../utils/colors'
 import { capitalizeString } from '../utils/helpers'
@@ -72,7 +72,7 @@ const Tab = ({ category }) => {
   )
 }
 
-const FilterMenu = props => {
+const FilterMenu = () => {
   return (
     <MenuContainer>
       <MenuList>
