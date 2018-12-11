@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
@@ -51,10 +50,6 @@ const PostImage = styled(Img)`
   width: 100%;
   margin: 0;
 `
-
-const ImageTitle = styled.h1``
-
-const ImageCaption = styled.p``
 
 const ImageMetaContainer = styled.div`
   color: grey;
@@ -111,7 +106,6 @@ const ImageTemplate = ({ data, location }) => {
     imageCaption,
     dateCreated,
     category,
-    slug,
     tags,
   } = data.contentfulImage
 

@@ -1,9 +1,8 @@
-// require('dotenv').config()
-let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || "development"
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
 console.log(`Using environment config: '${activeEnv}'`)
 
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 

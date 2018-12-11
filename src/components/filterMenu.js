@@ -53,7 +53,7 @@ const MenuLink = styled(Link)`
 
 const Tab = ({ category }) => {
   let link = '/work/' + category
-  if (category == 'all') {
+  if (category === 'all') {
     link = '/work'
   }
   return (

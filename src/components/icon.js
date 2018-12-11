@@ -14,7 +14,7 @@ const IconContainer = styled.span`
   display: inherit;
   font-size: 18px;
   margin-right: 4px;
-  vertical-align: middle;
+  vertical-align: text-top;
 `
 
 const Icon = ({ className, name }) => {
