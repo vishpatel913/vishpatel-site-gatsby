@@ -91,7 +91,7 @@ const TechStackPage = ({ data, location }) => (
 export default TechStackPage
 
 export const query = graphql`
-  query techStackQuery {
+  {
     allContentfulTech(sort: { fields: [name] }) {
       edges {
         node {

@@ -18,7 +18,7 @@ const IndexPage = ({ data, location }) => {
 export default IndexPage
 
 export const query = graphql`
-  query featuredImageQuery {
+  {
     allContentfulImage(
       filter: { featured: { eq: true } }
       sort: { fields: [updatedAt], order: DESC }

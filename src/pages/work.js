@@ -22,7 +22,7 @@ const WorkPage = ({ data, location }) => {
 export default WorkPage
 
 export const query = graphql`
-  query allImageQuery {
+  {
     allContentfulImage(sort: { fields: [dateCreated], order: DESC }) {
       edges {
         node {

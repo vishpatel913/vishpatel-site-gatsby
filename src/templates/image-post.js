@@ -160,7 +160,7 @@ const ImageTemplate = ({ data, location }) => {
 export default ImageTemplate
 
 export const query = graphql`
-  query imagePostQuery($slug: String!) {
+  query($slug: String!) {
     contentfulImage(slug: { eq: $slug }) {
       title
       slug

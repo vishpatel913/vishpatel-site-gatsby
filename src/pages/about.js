@@ -161,7 +161,7 @@ const AboutPage = ({ data, location }) => {
 export default AboutPage
 
 export const query = graphql`
-  query authorPostQuery {
+  {
     contentfulAuthor(name: { eq: "Vish Patel" }) {
       name
       tagLine

@@ -72,7 +72,7 @@ const Tab = ({ category }) => {
   )
 }
 
-const FilterMenu = props => {
+const FilterMenu = () => {
   return (
     <MenuContainer>
       <MenuList>
