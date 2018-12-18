@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import colors from "../utils/colors";
-import logo from "../../static/logo/logo.svg";
+import logo from "../../static/images/logo.svg";
 import cv2018 from "../../static/files/cv-2018.pdf";
 
 const Container = styled.header`

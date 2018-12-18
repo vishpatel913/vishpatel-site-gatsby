@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import colors from "../utils/colors";
-import logo from "../../static/logo/logo-light.svg";
+import logo from "../../static/images/logo-light.svg";
 
 const Container = styled.div`
   background: #333333;
