@@ -9,6 +9,13 @@ import NotFoundMessage from "../components/not-found-message";
 
 const PageContainer = styled.div``;
 
+const ErrorContainer = styled.div`
+  @media (max-width: 768px) {
+    margin: 0 1rem;
+    padding-top: 1rem;
+  }
+`;
+
 const CategoryTemplate = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
@@ -16,7 +23,9 @@ const CategoryTemplate = ({ data, location }) => (
       {data.allContentfulImage ? (
         <ImageGrid data={data.allContentfulImage.edges} />
       ) : (
-        <NotFoundMessage />
+        <ErrorContainer>
+          <NotFoundMessage />
+        </ErrorContainer>
       )}
     </PageContainer>
   </Layout>
