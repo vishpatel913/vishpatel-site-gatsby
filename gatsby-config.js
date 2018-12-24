@@ -1,36 +1,40 @@
+require("dotenv").config({
+  path: ".env"
+});
+
 module.exports = {
   siteMetadata: {
-    title: 'VishPatel.com',
+    title: "VishPatel.com"
   },
-  pathPrefix: `/`,
+  pathPrefix: "/",
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: `src/utils/typography.js`,
-      },
+        pathToConfigModule: "src/utils/typography.js"
+      }
     },
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: "gatsby-source-contentful",
       options: {
-        spaceId: `qcrphhesuv4n`,
-        accessToken: `53275fa1db2534ec36b9dd363f767359773ce40ef008ef519b32e5d29574b83e`,
-      },
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      }
     },
-    'gatsby-image',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-remark',
+    "gatsby-image",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-remark",
     // 'gatsby-paginate',
-    'gatsby-transformer-yaml',
+    "gatsby-transformer-yaml",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/_data/comments`,
-        name: 'comments',
-      },
-    },
-  ],
-}
+        name: "comments"
+      }
+    }
+  ]
+};

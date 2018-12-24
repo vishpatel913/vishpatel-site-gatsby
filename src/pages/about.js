@@ -1,11 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
-import Img from 'gatsby-image'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 
-import Icon from '../components/icon'
-import colors from '../utils/colors'
-import { capitalizeString, editTracedSvg } from '../utils/helpers'
+import Layout from "../components/layout";
+import Icon from "../components/icon";
+import colors from "../utils/colors";
+import { capitalizeString, editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
   background: white;
@@ -15,13 +17,13 @@ const PageContainer = styled.div`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const FlexContainer = styled.div`
   @media (min-width: 768px) {
     display: flex;
   }
-`
+`;
 
 const ImageContainer = styled.div`
   @media (min-width: 768px) {
@@ -31,7 +33,7 @@ const ImageContainer = styled.div`
     height: 15rem;
     overflow: hidden;
   }
-`
+`;
 
 const MetaContainer = styled.div`
   @media (min-width: 768px) {
@@ -42,7 +44,7 @@ const MetaContainer = styled.div`
     max-width: 100%;
     padding: 2rem;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   padding: 2rem;
@@ -53,13 +55,13 @@ const ContentContainer = styled.div`
     max-width: 100%;
     padding-top: 0;
   }
-`
+`;
 
 const SocialContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-`
+`;
 
 const SocialLink = styled.a`
   display: flex;
@@ -79,7 +81,7 @@ const SocialLink = styled.a`
     color: ${colors.primary};
     background: ${colors.background};
   }
-`
+`;
 
 const EmailLink = styled.a`
   display: inline-flex;
@@ -92,18 +94,21 @@ const EmailLink = styled.a`
   &:hover {
     color: ${colors.primary};
   }
-`
+`;
 
-const Social = ({ title, link }) => {
-  return (
-    <SocialLink href={link} target="_blank">
-      <Icon name={title} />
-      {capitalizeString(title)}
-    </SocialLink>
-  )
-}
+const Social = ({ title, link }) => (
+  <SocialLink href={link} target="_blank">
+    <Icon name={title} />
+    {capitalizeString(title)}
+  </SocialLink>
+);
 
-const AboutPage = ({ data }) => {
+Social.propTypes = {
+  title: PropTypes.string,
+  link: PropTypes.string
+};
+
+const AboutPage = ({ data, location }) => {
   const {
     name,
     tagLine,
@@ -112,53 +117,52 @@ const AboutPage = ({ data }) => {
     gitHubAccount,
     linkedInProfile,
     profilePhoto,
-    biography,
-  } = data.contentfulAuthor
+    biography
+  } = data.contentfulAuthor;
 
   return (
-    <PageContainer>
-      <FlexContainer>
-        <ImageContainer>
-          <Img
-            sizes={editTracedSvg(profilePhoto.sizes)}
-            title={name}
-            alt={'Profile picture for ' + name}
-            imgStyle={{ verticalAlign: 'middle' }}
-          />
-        </ImageContainer>
-        <MetaContainer>
-          <h1>{name}</h1>
-          <p>{tagLine}</p>
-          <EmailLink href={'mailto:' + emailAddress}>
-            <Icon name="mail" />
-            {emailAddress}
-          </EmailLink>
-          <SocialContainer>
-            <Social title="gitHub" link={gitHubAccount} />
-            <Social title="linkedIn" link={linkedInProfile} />
-            <Social
-              title="instagram"
-              link={'http://instagram.com/' + twitterHandle}
+    <Layout page={location.pathname}>
+      <PageContainer>
+        <FlexContainer>
+          <ImageContainer>
+            <Img
+              fluid={editTracedSvg(profilePhoto.fluid)}
+              title={name}
+              alt={`Profile picture for ${name}`}
+              imgStyle={{ verticalAlign: "middle" }}
             />
-          </SocialContainer>
-        </MetaContainer>
-      </FlexContainer>
-      <ContentContainer>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: biography.childMarkdownRemark.html,
-          }}
-        />
-        <Link to="/">Go back to the homepage</Link>
-      </ContentContainer>
-    </PageContainer>
-  )
-}
+          </ImageContainer>
+          <MetaContainer>
+            <h1>{name}</h1>
+            <p>{tagLine}</p>
+            <EmailLink href={`mailto:${emailAddress}`}>
+              <Icon name="mail" />
+              {emailAddress}
+            </EmailLink>
+            <SocialContainer>
+              <Social title="gitHub" link={gitHubAccount} />
+              <Social title="instagram" link={`http://instagram.com/${twitterHandle}`} />
+              <Social title="linkedIn" link={linkedInProfile} />
+            </SocialContainer>
+          </MetaContainer>
+        </FlexContainer>
+        <ContentContainer>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: biography.childMarkdownRemark.html
+            }}
+          />
+          <Link to="/">Go back to the homepage</Link>
+        </ContentContainer>
+      </PageContainer>
+    </Layout>
+  );
+};
 
-export default AboutPage
+export default AboutPage;
 
-export const pageQuery = graphql`
-  query authorPostQuery {
+export const query = graphql`
+  {
     contentfulAuthor(name: { eq: "Vish Patel" }) {
       name
       tagLine
@@ -167,8 +171,8 @@ export const pageQuery = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        sizes(maxWidth: 800) {
-          ...GatsbyContentfulSizes_tracedSVG
+        fluid(maxWidth: 800) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       biography {
@@ -178,4 +182,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

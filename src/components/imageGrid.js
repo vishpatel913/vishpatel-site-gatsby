@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
-import Img from 'gatsby-image'
-import Masonry from 'react-masonry-component'
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import Img from "gatsby-image";
+import Masonry from "react-masonry-component";
 
-import { getAltText, editTracedSvg } from '../utils/helpers'
+import { getAltText, editTracedSvg } from "../utils/helpers";
 
 const GridContainer = styled(Masonry)`
   margin: auto;
@@ -13,7 +13,7 @@ const GridContainer = styled(Masonry)`
     margin: 0 1rem;
     padding-top: 1rem;
   }
-`
+`;
 
 const ImageContainer = styled.li`
   display: block;
@@ -32,7 +32,7 @@ const ImageContainer = styled.li`
   @media (min-width: 992px) {
     width: 33.33333%;
   }
-`
+`;
 
 const ImagePost = styled(Img)`
   @media (min-width: 768px) {
@@ -57,38 +57,37 @@ const ImagePost = styled(Img)`
     }
 
     &:hover:after {
-      ${({ hoverText }) =>
-        hoverText ? `content: '${hoverText}';` : `content: 'View';`};
+      ${({ hoverText }) => (hoverText ? `content: '${hoverText}';` : "content: 'View';")};
       opacity: 1;
     }
   }
-`
+`;
 
 const ImageGridItem = ({ node }) => {
-  const { title, slug, photo, category } = node
+  const {
+    title, slug, photo, category
+  } = node;
 
   return (
     <ImageContainer>
-      <Link to={'/' + slug}>
+      <Link to={`/${slug}`}>
         <ImagePost
-          sizes={editTracedSvg(photo.sizes)}
+          fluid={editTracedSvg(photo.fluid)}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}
         />
       </Link>
     </ImageContainer>
-  )
-}
+  );
+};
 
-const ImageGrid = ({ images }) => {
-  return (
-    <GridContainer elementType={'ul'}>
-      {images.map(({ node }) => {
-        return <ImageGridItem key={node.slug} node={node} />
-      })}
-    </GridContainer>
-  )
-}
+const ImageGrid = ({ data }) => (
+  <GridContainer elementType="ul">
+    {data.map(({ node }) => (
+      <ImageGridItem key={node.slug} node={node} />
+    ))}
+  </GridContainer>
+);
 
-export default ImageGrid
+export default ImageGrid;

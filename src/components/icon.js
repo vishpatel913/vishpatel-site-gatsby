@@ -1,39 +1,52 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import { FaInstagram } from 'react-icons/lib/fa'
-import { FaLinkedinSquare } from 'react-icons/lib/fa'
-import { FaGithub } from 'react-icons/lib/fa'
-import { FaEnvelopeO } from 'react-icons/lib/fa'
-import { FaFolderO } from 'react-icons/lib/fa'
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaTelegramPlane,
+  FaFolderOpen,
+  FaUser
+} from "react-icons/fa";
 
 const IconContainer = styled.span`
   display: inherit;
   font-size: 18px;
   margin-right: 4px;
-`
+  vertical-align: text-top;
+`;
 
 const Icon = ({ className, name }) => {
-  let icon
+  let icon;
   switch (name) {
-    case 'instagram':
-      icon = <FaInstagram />
-      break
-    case 'linkedIn':
-      icon = <FaLinkedinSquare />
-      break
-    case 'gitHub':
-      icon = <FaGithub />
-      break
-    case 'mail':
-      icon = <FaEnvelopeO />
-      break
-    case 'category':
-      icon = <FaFolderO />
-      break
+    case "instagram":
+      icon = <FaInstagram />;
+      break;
+    case "linkedIn":
+      icon = <FaLinkedin />;
+      break;
+    case "gitHub":
+      icon = <FaGithub />;
+      break;
+    case "mail":
+      icon = <FaTelegramPlane />;
+      break;
+    case "category":
+      icon = <FaFolderOpen />;
+      break;
+    case "user":
+      icon = <FaUser />;
+      break;
     default:
   }
-  return <IconContainer className={className}>{icon}</IconContainer>
-}
+  return <IconContainer className={className}>{icon}</IconContainer>;
+};
 
-export default Icon
+Icon.propTypes = {
+  className: PropTypes.string,
+  name: PropTypes.string
+};
+
+export default Icon;

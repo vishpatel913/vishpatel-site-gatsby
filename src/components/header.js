@@ -1,15 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Link } from "gatsby";
 
-import colors from '../utils/colors'
-import logo from '../../static/logo/logo.svg'
-import cv2018 from '../../static/files/cv-2018.pdf'
+import colors from "../utils/colors";
+import logo from "../../static/images/logo.svg";
+import cv2018 from "../../static/files/cv-2018.pdf";
 
-const Container = styled.div`
+const Container = styled.header`
   background: white;
   border-bottom: ${colors.grey} 1px solid;
-`
+`;
 
 const Navigation = styled.div`
   display: flex;
@@ -23,20 +24,18 @@ const Navigation = styled.div`
   @media (max-width: 768px) {
     padding: 1rem;
   }
-`
+`;
 
 const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) =>
-    left &&
-    `
+  ${({ left }) => left
+    && `
     justify-content: flex-end;
   `};
-  ${({ right }) =>
-    right &&
-    `
+  ${({ right }) => right
+    && `
     justify-content: flex-start;
   `};
 
@@ -44,7 +43,7 @@ const FlexRow = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const InternalLink = styled(Link)`
   color: black;
@@ -59,7 +58,7 @@ const InternalLink = styled(Link)`
   @media (max-width: 768px) {
     font-size: 14px;
   }
-`
+`;
 
 const ExternalLink = styled.a`
   color: black;
@@ -74,7 +73,7 @@ const ExternalLink = styled.a`
   @media (max-width: 768px) {
     font-size: 14px;
   }
-`
+`;
 
 const Logo = styled.img`
   margin: 0 0.5rem;
@@ -84,33 +83,37 @@ const Logo = styled.img`
     height: 56px;
     width: 56px;
   }
-`
+`;
 
 const Tab = ({ title, ext }) => {
-  let label = title
+  const label = title
     .toUpperCase()
-    .split('-')
-    .join(' ')
+    .split("-")
+    .join(" ");
   if (ext) {
     return (
       <ExternalLink href={ext} target="_blank">
         {label}
       </ExternalLink>
-    )
-  } else {
-    const link = '/' + title
-    return (
-      <InternalLink
-        activeStyle={{
-          color: `${colors.primaryLight}`,
-        }}
-        to={link}
-      >
-        {label}
-      </InternalLink>
-    )
+    );
   }
-}
+  const link = `/${title}`;
+  return (
+    <InternalLink
+      activeStyle={{
+        color: `${colors.primaryLight}`
+      }}
+      to={link}
+    >
+      {label}
+    </InternalLink>
+  );
+};
+
+Tab.propTypes = {
+  title: PropTypes.string,
+  ext: PropTypes.string
+};
 
 const Header = () => (
   <Container>
@@ -119,8 +122,8 @@ const Header = () => (
         <Tab title="about" />
         <Tab title="work" />
       </FlexRow>
-      <Link to="/">
-        <Logo src={logo} />
+      <Link to="/" name="Home link">
+        <Logo src={logo} alt="VishPatel.com Logo" />
       </Link>
       <FlexRow right>
         <Tab title="tech-stack" />
@@ -128,6 +131,6 @@ const Header = () => (
       </FlexRow>
     </Navigation>
   </Container>
-)
+);
 
-export default Header
+export default Header;

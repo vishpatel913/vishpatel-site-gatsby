@@ -1,32 +1,34 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import FilterMenu from '../components/filterMenu'
-import ImageGrid from '../components/imageGrid'
+import Layout from "../components/layout";
+import FilterMenu from "../components/filterMenu";
+import ImageGrid from "../components/imageGrid";
 
-const PageContainer = styled.div``
+const PageContainer = styled.div``;
 
-const WorkPage = ({ data }) => {
-  return (
+const WorkPage = ({ data, location }) => (
+  <Layout page={location.pathname}>
     <PageContainer>
       <FilterMenu />
-      <ImageGrid images={data.allContentfulImage.edges} />
+      <ImageGrid data={data.allContentfulImage.edges} />
     </PageContainer>
-  )
-}
+  </Layout>
+);
 
-export default WorkPage
+export default WorkPage;
 
 export const query = graphql`
-  query allImageQuery {
+  {
     allContentfulImage(sort: { fields: [dateCreated], order: DESC }) {
       edges {
         node {
           title
           slug
           photo {
-            sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_tracedSVG
+            fluid(maxWidth: 800) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           dateCreated(formatString: "Do MMMM YYYY")
@@ -36,4 +38,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

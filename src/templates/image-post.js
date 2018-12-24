@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
-import Img from 'gatsby-image'
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 
-import SiteHead from '../components/siteHead'
-import CommentForm from '../components/commentForm'
-import CommentList from '../components/commentList'
-import Icon from '../components/icon'
-import colors from '../utils/colors'
-import { capitalizeString, getAltText, editTracedSvg } from '../utils/helpers'
+import Layout from "../components/layout";
+import CommentForm from "../components/commentForm";
+import CommentList from "../components/commentList";
+import SiteHead from "../components/siteHead";
+import Icon from "../components/icon";
+import colors from "../utils/colors";
+import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
 
 const PostContainer = styled.div`
   background: white;
@@ -19,19 +20,19 @@ const PostContainer = styled.div`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const FlexContainer = styled.div`
   @media (min-width: 992px) {
     display: flex;
   }
-`
+`;
 
 const ImageContainer = styled.div`
   @media (min-width: 992px) {
     flex: 2;
   }
-`
+`;
 
 const ContentContainer = styled.div`
   @media (min-width: 992px) {
@@ -46,7 +47,7 @@ const ContentContainer = styled.div`
   @media (max-width: 768px) {
     max-width: 100%;
   }
-`
+`;
 
 const CommentContainer = styled.div`
   padding: 2rem;
@@ -59,34 +60,30 @@ const CommentContainer = styled.div`
   @media (max-width: 768px) {
     max-width: 100%;
   }
-`
+`;
 
 const PostImage = styled(Img)`
   width: 100%;
   margin: 0;
-`
-
-const ImageTitle = styled.h1``
-
-const ImageCaption = styled.p``
+`;
 
 const ImageMetaContainer = styled.div`
   color: grey;
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     width: 48px;
     height: 2px;
     background: ${colors.grey};
     margin-bottom: 1rem;
   }
-`
+`;
 
 const DateText = styled.span`
   display: block;
   margin-bottom: 4px;
-`
+`;
 
 const CategoryLink = styled(Link)`
   display: inline-block;
@@ -97,7 +94,7 @@ const CategoryLink = styled(Link)`
   &:hover {
     color: ${colors.primary};
   }
-`
+`;
 
 const TagLink = styled.span`
   display: inline-block;
@@ -108,79 +105,81 @@ const TagLink = styled.span`
   &:hover {
     color: ${colors.primary};
   }
-`
+`;
 
 const Tag = ({ title }) => {
-  let tagSlug = title
+  const tagSlug = title
     .toLowerCase()
-    .split(' ')
-    .join('-')
-  return <TagLink to={'tag/' + tagSlug}>#{title}</TagLink>
-}
+    .split(" ")
+    .join("-");
+  return <TagLink to={`tag/${tagSlug}`}>{`#${title}`}</TagLink>;
+};
 
-const ImageTemplate = ({ data }) => {
+Tag.propTypes = {
+  title: PropTypes.string
+};
+
+const ImageTemplate = ({ data, location }) => {
   const {
-    title,
-    photo,
-    imageCaption,
-    dateCreated,
-    category,
-    slug,
-    tags,
-  } = data.contentfulImage
+    title, photo, imageCaption, dateCreated, category, tags, slug
+  } = data.contentfulImage;
 
-  const comments = data.allCommentsYaml && data.allCommentsYaml.edges
+  const comments = data.allCommentsYaml && data.allCommentsYaml.edges;
 
-  const metaDescription = imageCaption ? imageCaption.imageCaption : category
+  const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
   return (
-    <PostContainer>
+    <Layout page={location.pathname}>
       <SiteHead title={title} description={metaDescription} keywords={tags} />
-      <FlexContainer>
-        <ImageContainer>
-          <PostImage
-            sizes={editTracedSvg(photo.sizes)}
-            title={title}
-            alt={getAltText(title, category)}
-          />
-        </ImageContainer>
-        <ContentContainer>
-          <h1>{title}</h1>
-          {imageCaption && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: imageCaption.childMarkdownRemark.html,
-              }}
+      <PostContainer>
+        <FlexContainer>
+          <ImageContainer>
+            <PostImage
+              fluid={editTracedSvg(photo.fluid)}
+              title={title}
+              alt={getAltText(title, category)}
             />
-          )}
-          <ImageMetaContainer>
-            <DateText>{dateCreated}</DateText>
-            <CategoryLink to={'/work/' + category}>
-              <Icon name="category" />
-              {capitalizeString(category)}
-            </CategoryLink>
-          </ImageMetaContainer>
-          {tags.sort().map(tag => <Tag key={tag} title={tag} />)}
-        </ContentContainer>
-      </FlexContainer>
-      <CommentContainer>
-        {comments && <CommentList comments={comments} />}
-        <CommentForm slug={slug} />
-      </CommentContainer>
-    </PostContainer>
-  )
-}
+          </ImageContainer>
+          <ContentContainer>
+            <h1>{title}</h1>
+            {imageCaption && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: imageCaption.childMarkdownRemark.html
+                }}
+              />
+            )}
+            <ImageMetaContainer>
+              <DateText>{dateCreated}</DateText>
+              <CategoryLink to={`/work/${category}`}>
+                <Icon name="category" />
+                {capitalizeString(category)}
+              </CategoryLink>
+            </ImageMetaContainer>
+            {tags.sort().map(tag => (
+              <Tag key={tag} title={tag} />
+            ))}
+          </ContentContainer>
+        </FlexContainer>
+        <CommentContainer>
+          {comments && <CommentList comments={comments} />}
+          <CommentForm slug={slug} />
+        </CommentContainer>
+      </PostContainer>
+    </Layout>
+  );
+};
 
-export default ImageTemplate
+export default ImageTemplate;
 
-export const pageQuery = graphql`
-  query imagePostQuery($slug: String!) {
+export const query = graphql`
+  query($slug: String!) {
     contentfulImage(slug: { eq: $slug }) {
       title
       slug
       photo {
-        sizes(maxWidth: 900) {
-          ...GatsbyContentfulSizes_tracedSVG
+        fluid(maxWidth: 900) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       imageCaption {
@@ -193,10 +192,7 @@ export const pageQuery = graphql`
       category
       tags
     }
-    allCommentsYaml(
-      sort: { fields: [date], order: DESC }
-      filter: { slug: { eq: $slug } }
-    ) {
+    allCommentsYaml(sort: { fields: [date], order: DESC }, filter: { slug: { eq: $slug } }) {
       edges {
         node {
           name
@@ -206,4 +202,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

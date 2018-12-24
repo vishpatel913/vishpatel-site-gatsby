@@ -1,6 +1,7 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+import Layout from "../components/layout";
+import NotFoundMessage from "../components/not-found-message";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
@@ -9,13 +10,14 @@ const PageContainer = styled.div`
     margin: 0 1rem;
     padding-top: 1rem;
   }
-`
+`;
 
-const NotFoundPage = () => (
-  <PageContainer>
-    <h1>NOT FOUND</h1>
-    <p>You just found a page that doesn&#39;t exist... oh the sadness.</p>
-  </PageContainer>
-)
+const PageNotFound = () => (
+  <Layout page="404">
+    <PageContainer>
+      <NotFoundMessage />
+    </PageContainer>
+  </Layout>
+);
 
-export default NotFoundPage
+export default PageNotFound;
