@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Vish Patel <vishpatel913@gmail.com>",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.9.3",
     "contentful": "^7.0.5",
     "gatsby": "^2.0.65",
@@ -21,6 +22,7 @@
     "gatsby-transformer-yaml": "^2.1.6",
     "lodash": "^4.17.11",
     "moment": "^2.23.0",
+    "netlify-lambda": "^1.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -28,7 +30,6 @@
     "react-icons": "^3.2.2",
     "react-masonry-component": "^6.2.1",
     "react-typography": "^0.16.18",
-    "simple-git": "^1.107.0",
     "styled-components": "^4.1.2",
     "typography": "^0.16.18"
   },
@@ -40,7 +41,9 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "build:lambda": "netlify-lambda build src/lambda"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
