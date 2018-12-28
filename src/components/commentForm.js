@@ -47,6 +47,7 @@ const FormButton = styled.button`
 
 const CommentForm = ({ slug }) => {
   const formId = `${slug}-comment-form`;
+
   return (
     <Container>
       <h2>Leave a Comment</h2>
