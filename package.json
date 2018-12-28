@@ -20,6 +20,7 @@
     "gatsby-transformer-sharp": "^2.1.9",
     "gatsby-transformer-yaml": "^2.1.6",
     "lodash": "^4.17.11",
+    "moment": "^2.23.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

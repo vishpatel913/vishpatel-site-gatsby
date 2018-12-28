@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import colors from '../utils/colors'
+import colors from "../utils/colors";
 
-const Container = styled.div``
+const Container = styled.div``;
 
 const FormInput = styled.input`
   background: white;
@@ -21,7 +21,7 @@ const FormInput = styled.input`
     width: 100%;
     margin-right: 0;
   }
-`
+`;
 
 const FormMessage = styled.textarea`
   display: block;
@@ -36,40 +36,28 @@ const FormMessage = styled.textarea`
   &::placeholder {
     font-weight: lighter;
   }
-`
+`;
 
 const FormButton = styled.button`
   @media (max-width: 768px) {
     margin-left: auto;
   }
-`
+`;
 
-const CommentForm = ({ slug }) => {
-  return (
-    <Container>
-      <h2>Leave a Comment</h2>
-      <form
-        method="POST"
-        action="https://api.staticman.net/v2/entry/vishpatel913/vishpatel-site-gatsby/master/comments"
-      >
-        <input name="options[slug]" type="hidden" value={slug} />
-        <FormInput
-          name="fields[name]"
-          type="text"
-          placeholder="Name*"
-          required
-        />
-        <FormInput name="fields[email]" type="email" placeholder="Email" />
-        <FormMessage
-          rows="5"
-          name="fields[message]"
-          placeholder="Message*"
-          required
-        />
-        <FormButton type="submit">Submit</FormButton>
-      </form>
-    </Container>
-  )
-}
+const CommentForm = ({ slug }) => (
+  <Container>
+    <h2>Leave a Comment</h2>
+    <form
+      method="POST"
+      action="https://api.staticman.net/v2/entry/vishpatel913/vishpatel-site-gatsby/master/comments"
+    >
+      <input name="options[slug]" type="hidden" value={slug} />
+      <FormInput name="fields[name]" type="text" placeholder="Name*" required />
+      <FormInput name="fields[email]" type="email" placeholder="Email" />
+      <FormMessage rows="5" name="fields[message]" placeholder="Message*" required />
+      <FormButton type="submit">Submit</FormButton>
+    </form>
+  </Container>
+);
 
-export default CommentForm
+export default CommentForm;
