@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import colors from "../utils/colors";
@@ -50,7 +51,7 @@ const CommentForm = ({ slug }) => {
     <Container>
       <h2>Leave a Comment</h2>
       <form name={formId} method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value={formId} />
+        <input name="form-name" type="hidden" value={formId} />
         <input name="slug" type="hidden" value={slug} />
         <FormInput name="name" type="text" placeholder="Name*" required />
         <FormInput name="email" type="email" placeholder="Email" />
@@ -59,6 +60,10 @@ const CommentForm = ({ slug }) => {
       </form>
     </Container>
   );
+};
+
+CommentForm.propTypes = {
+  slug: PropTypes.string
 };
 
 export default CommentForm;
