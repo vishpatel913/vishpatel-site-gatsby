@@ -51,6 +51,7 @@ const CommentForm = ({ slug }) => {
     <Container>
       <h2>Leave a Comment</h2>
       <form name={formId} method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="bot-field" />
         <input name="form-name" type="hidden" value={formId} />
         <input name="slug" type="hidden" value={slug} />
         <FormInput name="name" type="text" placeholder="Name*" required />
