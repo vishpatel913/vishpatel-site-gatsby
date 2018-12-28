@@ -44,17 +44,21 @@ const FormButton = styled.button`
   }
 `;
 
-const CommentForm = ({ slug }) => (
-  <Container>
-    <h2>Leave a Comment</h2>
-    <form name="comment" netlify>
-      <input name="slug" type="hidden" value={slug} />
-      <FormInput name="name" type="text" placeholder="Name*" required />
-      <FormInput name="email" type="email" placeholder="Email" />
-      <FormMessage name="message" rows="5" placeholder="Message*" required />
-      <FormButton type="submit">Submit</FormButton>
-    </form>
-  </Container>
-);
+const CommentForm = ({ slug }) => {
+  const formId = `${slug}-comment-form`;
+  return (
+    <Container>
+      <h2>Leave a Comment</h2>
+      <form name={formId} method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value={formId} />
+        <input name="slug" type="hidden" value={slug} />
+        <FormInput name="name" type="text" placeholder="Name*" required />
+        <FormInput name="email" type="email" placeholder="Email" />
+        <FormMessage name="message" rows="5" placeholder="Message*" required />
+        <FormButton type="submit">Submit</FormButton>
+      </form>
+    </Container>
+  );
+};
 
 export default CommentForm;
