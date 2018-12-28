@@ -47,14 +47,11 @@ const FormButton = styled.button`
 const CommentForm = ({ slug }) => (
   <Container>
     <h2>Leave a Comment</h2>
-    <form
-      method="POST"
-      action="https://api.staticman.net/v2/entry/vishpatel913/vishpatel-site-gatsby/master/comments"
-    >
-      <input name="options[slug]" type="hidden" value={slug} />
-      <FormInput name="fields[name]" type="text" placeholder="Name*" required />
-      <FormInput name="fields[email]" type="email" placeholder="Email" />
-      <FormMessage rows="5" name="fields[message]" placeholder="Message*" required />
+    <form name="comment" method="POST" netlify>
+      <input name="slug" type="hidden" value={slug} />
+      <FormInput name="name" type="text" placeholder="Name*" required />
+      <FormInput name="email" type="email" placeholder="Email" />
+      <FormMessage name="message" rows="5" placeholder="Message*" required />
       <FormButton type="submit">Submit</FormButton>
     </form>
   </Container>
