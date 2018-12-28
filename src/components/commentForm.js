@@ -47,7 +47,7 @@ const FormButton = styled.button`
 const CommentForm = ({ slug }) => (
   <Container>
     <h2>Leave a Comment</h2>
-    <form name="comment" method="POST" netlify>
+    <form name="comment" netlify>
       <input name="slug" type="hidden" value={slug} />
       <FormInput name="name" type="text" placeholder="Name*" required />
       <FormInput name="email" type="email" placeholder="Email" />
