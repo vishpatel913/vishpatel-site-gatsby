@@ -13,6 +13,8 @@ const FormInput = styled.input`
   padding: 0.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  width: 40%;
+  box-sizing: border-box;
 
   &::placeholder {
     font-weight: lighter;
@@ -40,19 +42,19 @@ const FormMessage = styled.textarea`
 `;
 
 const FormButton = styled.button`
+  cursor: pointer;
   @media (max-width: 768px) {
     margin-left: auto;
   }
 `;
 
 const CommentForm = ({ slug }) => {
-  const formId = `${slug}-comment-form`;
+  const formId = `${slug}-comments`;
   return (
     <Container>
       <h2>Leave a Comment</h2>
       <form name={formId} method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="bot-field" />
-        <input name="form-name" type="hidden" value={formId} />
         <input name="slug" type="hidden" value={slug} />
         <FormInput name="name" type="text" placeholder="Name*" required />
         <FormInput name="email" type="email" placeholder="Email" />

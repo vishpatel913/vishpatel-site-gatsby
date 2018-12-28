@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import moment from "moment";
 
-import Icon from "./icon";
 import { capitalizeString } from "../utils/helpers";
 import colors from "../utils/colors";
 
@@ -74,9 +74,15 @@ const Comment = ({ author, time, message }) => {
   );
 };
 
-const CommentList = ({ comments }) => {
-  comments = comments.map(({ node }, i) => (
-    <Comment key={i} author={node.name} time={node.date} message={node.message} />
+Comment.propTypes = {
+  author: PropTypes.string,
+  time: PropTypes.string,
+  message: PropTypes.string
+};
+
+const CommentList = ({ data }) => {
+  const comments = data.map(({ node }) => (
+    <Comment key={node.date} author={node.name} time={node.date} message={node.message} />
   ));
 
   return (

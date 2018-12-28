@@ -38,6 +38,7 @@ const typography = new Typography({
     },
     button: {
       display: "inherit",
+      cursor: "pointer",
       color: "grey",
       background: colors.background,
       margin: "0",

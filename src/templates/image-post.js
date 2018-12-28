@@ -123,9 +123,7 @@ const ImageTemplate = ({ data, location }) => {
   const {
     title, photo, imageCaption, dateCreated, category, tags, slug
   } = data.contentfulImage;
-
   const comments = data.allCommentsYaml && data.allCommentsYaml.edges;
-
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
   return (
@@ -162,7 +160,7 @@ const ImageTemplate = ({ data, location }) => {
           </ContentContainer>
         </FlexContainer>
         <CommentContainer>
-          {comments && <CommentList comments={comments} />}
+          {comments && <CommentList data={comments} />}
           <CommentForm slug={slug} />
         </CommentContainer>
       </PostContainer>
