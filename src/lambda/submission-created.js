@@ -7,7 +7,7 @@ require("dotenv").config({
 exports.handler = (event, context, callback) => {
   const {
     name, email, message, slug
-  } = JSON.parse(event.body);
+  } = JSON.parse(event.body).data;
 
   const client = contentful.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
