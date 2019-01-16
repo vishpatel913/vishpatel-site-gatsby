@@ -36,3 +36,5 @@ exports.handler = (event, context, callback) => {
     body: JSON.stringify({ successMsg: "Comment saved as draft" })
   });
 };
+
+// TODO: change file to 'submission-created.js'
