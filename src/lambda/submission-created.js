@@ -9,9 +9,9 @@ exports.handler = (event, context, callback) => {
     name, email, message, slug
   } = JSON.parse(event.body);
 
-  console.log("event", JSON.parse(event));
+  console.log("event", event);
   console.log("body", JSON.parse(event.body));
-  console.log("context", JSON.parse(context));
+  console.log("context", context);
 
   const client = contentful.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
