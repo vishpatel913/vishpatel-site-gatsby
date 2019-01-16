@@ -123,7 +123,6 @@ const ImageTemplate = ({ data, location }) => {
   const {
     title, photo, imageCaption, dateCreated, category, tags, slug
   } = data.contentfulImage;
-  console.log(data.allContentfulPostComment);
   const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
