@@ -123,7 +123,8 @@ const ImageTemplate = ({ data, location }) => {
   const {
     title, photo, imageCaption, dateCreated, category, tags, slug
   } = data.contentfulImage;
-  const comments = data.allCommentsYaml && data.allCommentsYaml.edges;
+  console.log(data.allContentfulPostComment);
+  const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
   return (
@@ -190,12 +191,17 @@ export const query = graphql`
       category
       tags
     }
-    allCommentsYaml(sort: { fields: [date], order: DESC }, filter: { slug: { eq: $slug } }) {
+    allContentfulPostComment(
+      sort: { fields: [timestamp], order: DESC }
+      filter: { postSlug: { eq: $slug } }
+    ) {
       edges {
         node {
           name
-          message
-          date
+          message {
+            message
+          }
+          timestamp
         }
       }
     }

@@ -14,7 +14,7 @@ const ListContainer = styled.ul`
 
 const CommentContainer = styled.li`
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 const CommentHeader = styled.div`
@@ -82,7 +82,12 @@ Comment.propTypes = {
 
 const CommentList = ({ data }) => {
   const comments = data.map(({ node }) => (
-    <Comment key={node.date} author={node.name} time={node.date} message={node.message} />
+    <Comment
+      key={node.date}
+      author={node.name}
+      time={node.timestamp}
+      message={node.message.message}
+    />
   ));
 
   return (

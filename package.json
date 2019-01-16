@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.9.3",
     "contentful": "^7.0.5",
+    "contentful-management": "^5.4.0",
     "gatsby": "^2.0.65",
     "gatsby-image": "^2.0.23",
     "gatsby-paginate": "^1.0.16",
