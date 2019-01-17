@@ -5,13 +5,15 @@ require("dotenv").config({
 });
 
 exports.handler = (event, context, callback) => {
+
+  const body = JSON.parse(event.body);
+
   const {
     name, email, message, slug
-  } = JSON.parse(event.body);
+  } = body.data;
 
   console.log("event", event);
-  console.log("body", JSON.parse(event.body));
-  console.log("context", context);
+  console.log("body", body);
 
   const client = contentful.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
@@ -37,6 +39,9 @@ exports.handler = (event, context, callback) => {
 
   callback(null, {
     statusCode: 200,
-    body: JSON.stringify({ successMsg: "Comment saved as draft" })
+    body: JSON.stringify({
+      successMsg: "Comment saved as draft",
+      eventBody: JSON.parse(event.body)
+    })
   });
 };
