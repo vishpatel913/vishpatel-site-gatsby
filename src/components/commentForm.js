@@ -48,12 +48,17 @@ const FormButton = styled.button`
   }
 `;
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("event", e)
+};
+
 const CommentForm = ({ slug }) => {
   const formId = `${slug}-comments`;
   return (
     <Container>
       <h2>Leave a Comment</h2>
-      <form name={formId} method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <form name={formId} method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
         <input type="hidden" name="form-name" value={formId} />
         <input type="hidden" name="bot-field" />
         <input name="slug" type="hidden" value={slug} />

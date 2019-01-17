@@ -39,7 +39,8 @@ exports.handler = (event, context, callback) => {
   callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      successMsg: "Comment saved as draft"
+      successMsg: "Comment saved as draft",
+      body: (event)
     })
   });
 };
