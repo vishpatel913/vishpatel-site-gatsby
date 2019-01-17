@@ -1,47 +1,45 @@
-const contentful = require("contentful-management");
+// const contentful = require("contentful-management");
 
 require("dotenv").config({
   path: ".env"
 });
 
 exports.handler = (event, context, callback) => {
+  // const body = JSON.parse(event.body);
 
-  const body = JSON.parse(event.body);
+  // const {
+  //   name, email, message, slug
+  // } = body;
 
-  const {
-    name, email, message, slug
-  } = body.data;
+  console.log("EVENT", event);
+  console.log("EVENT.BODY", event.body);
 
-  console.log("event", event);
-  console.log("body", body);
+  // const client = contentful.createClient({
+  //   accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+  // });
 
-  const client = contentful.createClient({
-    accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
-  });
-
-  client
-    .getSpace(process.env.CONTENTFUL_SPACE_ID)
-    .then(space => space.createEntry("postComment", {
-      fields: {
-        postSlug: {
-          "en-US": slug
-        },
-        name: { "en-US": name },
-        email: { "en-US": email },
-        message: {
-          "en-US": message
-        },
-        timestamp: { "en-US": Math.round(new Date().getTime() / 1000) }
-      }
-    }))
-    .then(entry => console.log(entry))
-    .catch(console.error);
+  // client
+  //   .getSpace(process.env.CONTENTFUL_SPACE_ID)
+  //   .then(space => space.createEntry("postComment", {
+  //     fields: {
+  //       postSlug: {
+  //         "en-US": slug
+  //       },
+  //       name: { "en-US": name },
+  //       email: { "en-US": email },
+  //       message: {
+  //         "en-US": message
+  //       },
+  //       timestamp: { "en-US": Math.round(new Date().getTime() / 1000) }
+  //     }
+  //   }))
+  //   .then(entry => console.log(entry))
+  //   .catch(console.error);
 
   callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      successMsg: "Comment saved as draft",
-      eventBody: JSON.parse(event.body)
+      successMsg: "Comment saved as draft"
     })
   });
 };
