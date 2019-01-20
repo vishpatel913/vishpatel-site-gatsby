@@ -48,17 +48,40 @@ const FormButton = styled.button`
   }
 `;
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log("event", e)
-};
+// const encode = data => Object.keys(data)
+//   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+//   .join("&");
+//
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   fetch("/", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: encode({ "form-name": "subscribe", ...this.state }) //TODO: fix this for stateless
+//   })
+//     .then(() => {
+//       console.log("Submission successful");
+//     })
+//     .catch((error) => {
+//       throw new Error(error);
+//     })
+//     .finally(() => {
+//       alert("Comment submitted for review");
+//     });
+// };
 
 const CommentForm = ({ slug }) => {
   const formId = `${slug}-comments`;
   return (
     <Container>
       <h2>Leave a Comment</h2>
-      <form name={formId} method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
+      <form
+        name={formId}
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
         <input type="hidden" name="form-name" value={formId} />
         <input type="hidden" name="bot-field" />
         <input name="slug" type="hidden" value={slug} />
