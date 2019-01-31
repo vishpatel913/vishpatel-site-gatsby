@@ -48,26 +48,39 @@ const FormButton = styled.button`
   }
 `;
 
-// const encode = data => Object.keys(data)
-//   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-//   .join("&");
+const encode = data => Object.keys(data)
+  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+  .join("&");
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-  //   fetch("/", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: encode({ "form-name": "subscribe", ...this.state }) //TODO: fix this for stateless
-  //   })
-  //     .then(() => {
-  //       console.log("Submission successful");
-  //     })
-  //     .catch((error) => {
-  //       throw new Error(error);
-  //     })
-  //     .finally(() => {
-  //       alert("Comment submitted for review");
-  //     });
+
+  const formData = new FormData(e.target);
+  const data = {};
+
+  formData.forEach((value, prop) => {
+    data[prop] = value;
+  });
+
+  const formBody = encode(data);
+
+  // POST the request to post-comment lambda function
+  await fetch(`/.netlify/functions/post-comment?slug=${data.slug}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formBody
+  })
+    .then(() => {
+      document.getElementById("comment-form").reset();
+      alert(`Comment submitted for ${slug} pending review`);
+      // TODO: needs an alert substitute
+    })
+    .catch((err) => {
+      // TODO: do a catch alert sub too
+      console.log("error:", err);
+    });
 };
 
 const CommentForm = ({ slug }) => {
@@ -76,6 +89,8 @@ const CommentForm = ({ slug }) => {
     <Container>
       <h2>Leave a Comment</h2>
       <form
+        disabled
+        id="comment-form"
         name={formId}
         method="POST"
         data-netlify="true"
