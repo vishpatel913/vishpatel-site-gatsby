@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
   })
     .then(() => {
       document.getElementById("comment-form").reset();
-      alert(`Comment submitted for ${slug} pending review`);
+      alert(`Comment submitted for ${data.slug} pending review`);
       // TODO: needs an alert substitute
     })
     .catch((err) => {
