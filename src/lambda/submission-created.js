@@ -11,6 +11,7 @@ exports.handler = (event, context, callback) => {
   //   name, email, message, slug
   // } = body;
 
+  console.log("SUBMISSION CREATED CALLED");
   console.log("EVENT", event);
   console.log("EVENT.BODY", event.body);
 
@@ -40,7 +41,7 @@ exports.handler = (event, context, callback) => {
     statusCode: 200,
     body: JSON.stringify({
       successMsg: "Comment saved as draft",
-      body: (event)
+      body: event
     })
   });
 };

@@ -51,24 +51,24 @@ const FormButton = styled.button`
 // const encode = data => Object.keys(data)
 //   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
 //   .join("&");
-//
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   fetch("/", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-//     body: encode({ "form-name": "subscribe", ...this.state }) //TODO: fix this for stateless
-//   })
-//     .then(() => {
-//       console.log("Submission successful");
-//     })
-//     .catch((error) => {
-//       throw new Error(error);
-//     })
-//     .finally(() => {
-//       alert("Comment submitted for review");
-//     });
-// };
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: encode({ "form-name": "subscribe", ...this.state }) //TODO: fix this for stateless
+  //   })
+  //     .then(() => {
+  //       console.log("Submission successful");
+  //     })
+  //     .catch((error) => {
+  //       throw new Error(error);
+  //     })
+  //     .finally(() => {
+  //       alert("Comment submitted for review");
+  //     });
+};
 
 const CommentForm = ({ slug }) => {
   const formId = `${slug}-comments`;
