@@ -7,13 +7,8 @@ const querystring = require("querystring");
 
 exports.handler = (event, context, callback) => {
   const formBody = querystring.parse(event.body);
-
-  const {
-    name, email, message, slug
-  } = formBody;
-
-  console.log("EVENT.BODY:", formBody);
-  console.log("queryStringParameters", event.queryStringParameters);
+  const { slug } = event.queryStringParameters;
+  const { name, email, message } = formBody;
 
   const client = contentful.createClient({
     accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
