@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import Icon from "./icon";
 import colors from "../utils/colors";
 
 const Container = styled.div``;
@@ -48,6 +49,23 @@ const FormButton = styled.button`
   }
 `;
 
+const FormToast = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 12px;
+  max-width: 25em;
+  color: white;
+  background: ${colors.secondary};
+  text-align: center;
+  line-height: 0;
+  padding: 1em;
+  margin: auto;
+  transition: all 0.3s ease 0s;
+  border-radius: 4px;
+  opacity: 0;
+`;
+
 const encode = data => Object.keys(data)
   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
   .join("&");
@@ -73,13 +91,15 @@ const handleSubmit = async (e) => {
     body: formBody
   })
     .then(() => {
+      const successToast = document.getElementById("success-toast");
       document.getElementById("comment-form").reset();
-      alert(`Comment submitted for ${data.slug} pending review`);
-      // TODO: needs an alert substitute
+      successToast.style.cssText = "opacity: 1;";
+      setTimeout(() => {
+        successToast.style.cssText = "";
+      }, 2000);
     })
     .catch((err) => {
-      // TODO: do a catch alert sub too
-      console.log("error:", err);
+      alert(`Something went wrong: ${err}`);
     });
 };
 
@@ -105,6 +125,10 @@ const CommentForm = ({ slug }) => {
         <FormMessage name="message" rows="5" placeholder="Message*" required />
         <FormButton type="submit">Submit</FormButton>
       </form>
+      <FormToast id="success-toast">
+        <Icon name="check" />
+        Comment submitted, pending review
+      </FormToast>
     </Container>
   );
 };
