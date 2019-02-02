@@ -24,29 +24,11 @@ const CommentHeader = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const CommentIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.5rem;
-  width: 2.5rem;
-  // padding: 0.5rem;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  color: ${colors.grey};
-  background: ${colors.background};
-  font-size: 64px;
-  font-weight: 700;
-  overflow: hidden;
-
-  & span {
-    line-height: 1px;
-  }
-`;
-
 const CommentTitle = styled.div`
   display: flex;
   flex-direction: column;
+  border-left: 4px solid ${colors.primary};
+  padding-left: 1em;
 `;
 
 const CommentMessage = styled.div`
@@ -56,14 +38,10 @@ const CommentMessage = styled.div`
 const Comment = ({ author, time, message }) => {
   const date = moment(time * 1000).format("D MMM 'YY");
   const authorDisplay = capitalizeString(author);
-  const initial = authorDisplay.charAt(0);
 
   return (
     <CommentContainer>
       <CommentHeader>
-        <CommentIcon>
-          <span>{initial}</span>
-        </CommentIcon>
         <CommentTitle>
           <strong>{authorDisplay}</strong>
           {date}
