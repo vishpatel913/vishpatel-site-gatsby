@@ -17,7 +17,7 @@ exports.handler = (event, context, callback) => {
     accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
   });
 
-  if (activeEnv === "production") {
+  if (slug && activeEnv === "production") {
     client
       .getSpace(process.env.CONTENTFUL_SPACE_ID)
       .then(space => space.createEntry("postComment", {
