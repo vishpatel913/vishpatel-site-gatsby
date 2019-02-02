@@ -15,23 +15,23 @@ exports.handler = (event, context, callback) => {
   });
 
   // TODO: add / validation check for slug
-  // client
-  //   .getSpace(process.env.CONTENTFUL_SPACE_ID)
-  //   .then(space => space.createEntry("postComment", {
-  //     fields: {
-  //       postSlug: {
-  //         "en-US": slug
-  //       },
-  //       name: { "en-US": name },
-  //       email: { "en-US": email },
-  //       message: {
-  //         "en-US": message
-  //       },
-  //       timestamp: { "en-US": Math.round(new Date().getTime() / 1000) }
-  //     }
-  //   }))
-  //   .then(entry => console.log(entry))
-  //   .catch(console.error);
+  client
+    .getSpace(process.env.CONTENTFUL_SPACE_ID)
+    .then(space => space.createEntry("postComment", {
+      fields: {
+        postSlug: {
+          "en-US": slug
+        },
+        name: { "en-US": name },
+        email: { "en-US": email },
+        message: {
+          "en-US": message
+        },
+        timestamp: { "en-US": Math.round(new Date().getTime() / 1000) }
+      }
+    }))
+    .then(entry => console.log(entry))
+    .catch(console.error);
 
   callback(null, {
     statusCode: 200,
