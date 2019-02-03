@@ -1,6 +1,6 @@
 {
   "name": "vishpatel-gatsby-site",
-  "description": "VishPatel Gatsby Site",
+  "description": "VishPatel.com Gatsby Site",
   "version": "1.0.0",
   "author": "Vish Patel <vishpatel913@gmail.com>",
   "dependencies": {
@@ -33,7 +33,10 @@
     "typography": "^0.16.18"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "developer",
+    "design"
   ],
   "license": "MIT",
   "scripts": {
