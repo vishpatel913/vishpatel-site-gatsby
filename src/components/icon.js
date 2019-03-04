@@ -8,7 +8,8 @@ import {
   FaGithub,
   FaTelegramPlane,
   FaFolderOpen,
-  FaUser
+  FaUser,
+  FaCheckCircle
 } from "react-icons/fa";
 
 const IconContainer = styled.span`
@@ -38,6 +39,9 @@ const Icon = ({ className, name }) => {
       break;
     case "user":
       icon = <FaUser />;
+      break;
+    case "check":
+      icon = <FaCheckCircle />;
       break;
     default:
   }
