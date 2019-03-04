@@ -5,8 +5,6 @@ import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
 import Layout from "../components/layout";
-import CommentForm from "../components/commentForm";
-import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
 import Icon from "../components/icon";
 import colors from "../utils/colors";
@@ -49,19 +47,6 @@ const ContentContainer = styled.div`
   }
 `;
 
-const CommentContainer = styled.div`
-  padding: 2rem;
-  max-width: 80%;
-  margin: auto;
-
-  @media (max-width: 992px) {
-    padding-top: 0;
-  }
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
-`;
-
 const PostImage = styled(Img)`
   width: 100%;
   margin: 0;
@@ -71,11 +56,11 @@ const ImageMetaContainer = styled.div`
   color: grey;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 48px;
     height: 2px;
-    background: ${colors.grey};
+    background: #ddd;
     margin-bottom: 1rem;
   }
 `;
@@ -121,9 +106,9 @@ Tag.propTypes = {
 
 const ImageTemplate = ({ data, location }) => {
   const {
-    title, photo, imageCaption, dateCreated, category, tags, slug
+    title, photo, imageCaption, dateCreated, category, tags
   } = data.contentfulImage;
-  const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
+
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
   return (
@@ -159,10 +144,6 @@ const ImageTemplate = ({ data, location }) => {
             ))}
           </ContentContainer>
         </FlexContainer>
-        <CommentContainer>
-          {comments && <CommentList data={comments} />}
-          <CommentForm slug={slug} />
-        </CommentContainer>
       </PostContainer>
     </Layout>
   );
@@ -189,20 +170,6 @@ export const query = graphql`
       dateCreated(formatString: "Do MMMM YYYY")
       category
       tags
-    }
-    allContentfulPostComment(
-      sort: { fields: [timestamp], order: DESC }
-      filter: { postSlug: { eq: $slug } }
-    ) {
-      edges {
-        node {
-          name
-          message {
-            message
-          }
-          timestamp
-        }
-      }
     }
   }
 `;
