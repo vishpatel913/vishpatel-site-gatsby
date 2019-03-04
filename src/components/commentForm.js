@@ -125,10 +125,7 @@ const CommentForm = ({ slug }) => {
         <FormMessage name="message" rows="5" placeholder="Message*" required />
         <FormButton type="submit">Submit</FormButton>
       </form>
-      <FormToast id="success-toast">
-        <Icon name="check" />
-        Comment submitted, pending review
-      </FormToast>
+
     </Container>
   );
 };
