@@ -41,7 +41,7 @@ const MenuLink = styled(Link)`
   font-size: 12px;
   font-weight: lighter;
   padding: 0.5rem 1rem;
-  color: grey;
+  color: ${colors.greyDark};
   &:hover {
     color: ${colors.primary};
     background: ${colors.background};
@@ -57,10 +57,10 @@ const Tab = ({ category }) => {
   if (category === "all") {
     link = "/work";
   }
+
   return (
     <MenuItem>
       <MenuLink
-        exact
         activeStyle={{
           color: colors.primaryLight,
           background: colors.background
