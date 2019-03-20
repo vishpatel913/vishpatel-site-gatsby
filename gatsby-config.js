@@ -1,6 +1,7 @@
 require("dotenv").config({
   path: ".env"
 });
+const proxy = require("http-proxy-middleware");
 
 module.exports = {
   siteMetadata: {
@@ -26,7 +27,19 @@ module.exports = {
     "gatsby-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-transformer-remark"
     // 'gatsby-paginate',
-  ]
+    "gatsby-transformer-remark"
+  ],
+  // for avoiding CORS while developing Netlify Functions locally
+  developMiddleware: (app) => {
+    app.use(
+      "/.netlify/functions/",
+      proxy({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": ""
+        }
+      })
+    );
+  }
 };
