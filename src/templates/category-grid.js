@@ -20,7 +20,7 @@ const CategoryTemplate = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
       <FilterMenu />
-      {data.allContentfulImage ? (
+      {data.allContentfulImage.edges.length > 0 ? (
         <ImageGrid data={data.allContentfulImage.edges} />
       ) : (
         <ErrorContainer>
