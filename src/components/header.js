@@ -92,7 +92,7 @@ const Tab = ({ title, ext }) => {
     .join(" ");
   if (ext) {
     return (
-      <ExternalLink href={ext} target="_blank">
+      <ExternalLink href={ext} rel="noopener noreferrer" target="_blank">
         {label}
       </ExternalLink>
     );

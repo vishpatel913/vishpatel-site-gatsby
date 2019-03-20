@@ -120,9 +120,9 @@ const CommentForm = ({ slug }) => {
         <input type="hidden" name="form-name" value={formId} />
         <input type="hidden" name="bot-field" />
         <input name="slug" type="hidden" value={slug} />
-        <FormInput name="name" type="text" placeholder="Name*" required />
-        <FormInput name="email" type="email" placeholder="Email" />
-        <FormMessage name="message" rows="5" placeholder="Message*" required />
+        <FormInput name="name" type="text" aria-label="Name" placeholder="Name*" required />
+        <FormInput name="email" type="email" aria-label="Email" placeholder="Email" />
+        <FormMessage name="message" rows="5" aria-label="Message" placeholder="Message*" required />
         <FormButton type="submit">Submit</FormButton>
       </form>
       <FormToast id="success-toast">

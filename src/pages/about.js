@@ -75,7 +75,7 @@ const SocialLink = styled.a`
   border-radius: 4px;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  color: grey;
+  color: ${colors.greyDark};
 
   &:hover {
     color: ${colors.primary};
@@ -89,7 +89,7 @@ const EmailLink = styled.a`
   font-weight: 200;
   margin-left: 1px;
   margin-bottom: 1rem;
-  color: grey;
+  color: ${colors.greyDark};
 
   &:hover {
     color: ${colors.primary};
@@ -97,7 +97,7 @@ const EmailLink = styled.a`
 `;
 
 const Social = ({ title, link }) => (
-  <SocialLink href={link} target="_blank">
+  <SocialLink href={link} rel="noopener noreferrer" target="_blank">
     <Icon name={title} />
     {capitalizeString(title)}
   </SocialLink>

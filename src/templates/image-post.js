@@ -68,7 +68,7 @@ const PostImage = styled(Img)`
 `;
 
 const ImageMetaContainer = styled.div`
-  color: grey;
+  color: ${colors.greyDark};
 
   &:before {
     content: "";
@@ -89,7 +89,7 @@ const CategoryLink = styled(Link)`
   display: inline-block;
   margin-bottom: 4px;
   text-decoration: none;
-  color: grey;
+  color: ${colors.greyDark};
 
   &:hover {
     color: ${colors.primary};
@@ -99,7 +99,7 @@ const CategoryLink = styled(Link)`
 const TagLink = styled.span`
   display: inline-block;
   text-decoration: none;
-  color: grey;
+  color: ${colors.greyDark};
   margin-right: 0.5rem;
 
   &:hover {

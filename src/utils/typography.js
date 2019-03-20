@@ -39,7 +39,7 @@ const typography = new Typography({
     button: {
       display: "inherit",
       cursor: "pointer",
-      color: "grey",
+      color: colors.greyDark,
       background: colors.background,
       margin: "0",
       padding: "0.5rem 1rem",

@@ -6,7 +6,7 @@ import moment from "moment";
 import { capitalizeString } from "../utils/helpers";
 import colors from "../utils/colors";
 
-const ListContainer = styled.ul`
+const ListContainer = styled.div`
   display: block;
   margin: 0;
   margin-bottom: 2rem;
@@ -75,7 +75,7 @@ const CommentList = ({ data }) => {
         Comment
         {comments.length > 1 && "s"}
       </h2>
-      {comments}
+      <ul>{comments}</ul>
     </ListContainer>
   );
 };
