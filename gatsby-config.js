@@ -26,15 +26,7 @@ module.exports = {
     "gatsby-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-transformer-remark",
+    "gatsby-transformer-remark"
     // 'gatsby-paginate',
-    "gatsby-transformer-yaml",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/_data/comments`,
-        name: "comments"
-      }
-    }
   ]
 };
