@@ -27,7 +27,7 @@ export const query = graphql`
           featured
           photo {
             fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
           dateCreated(formatString: "Do MMMM YYYY")

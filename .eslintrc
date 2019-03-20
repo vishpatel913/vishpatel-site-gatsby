@@ -26,7 +26,8 @@
     "react/require-default-props": [0],
     "babel/new-cap": 1,
     "babel/object-curly-spacing": [2, "always"],
-    "babel/semi": 1
+    "babel/semi": 1,
+    "no-alert": ["off"]
   },
   "env": {
     "browser": true,
