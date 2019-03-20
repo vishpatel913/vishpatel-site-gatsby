@@ -6,10 +6,14 @@ import moment from "moment";
 import { capitalizeString } from "../utils/helpers";
 import colors from "../utils/colors";
 
-const ListContainer = styled.div`
+const CommentListContainer = styled.div`
   display: block;
   margin: 0;
   margin-bottom: 2rem;
+`;
+
+const ListContainer = styled.ul`
+  margin: 0;
 `;
 
 const CommentContainer = styled.li`
@@ -69,14 +73,14 @@ const CommentList = ({ data }) => {
   ));
 
   return (
-    <ListContainer>
+    <CommentListContainer>
       <h2>
         {`${comments.length} `}
         Comment
         {comments.length > 1 && "s"}
       </h2>
-      <ul>{comments}</ul>
-    </ListContainer>
+      <ListContainer>{comments}</ListContainer>
+    </CommentListContainer>
   );
 };
 
