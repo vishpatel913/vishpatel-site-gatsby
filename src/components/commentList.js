@@ -54,14 +54,14 @@ const Comment = ({ author, time, message }) => {
 
 Comment.propTypes = {
   author: PropTypes.string,
-  time: PropTypes.string,
+  time: PropTypes.number,
   message: PropTypes.string
 };
 
 const CommentList = ({ data }) => {
   const comments = data.map(({ node }) => (
     <Comment
-      key={node.date}
+      key={node.timestamp}
       author={node.name}
       time={node.timestamp}
       message={node.message.message}
