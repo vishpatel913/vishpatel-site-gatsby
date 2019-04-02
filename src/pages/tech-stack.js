@@ -88,7 +88,7 @@ export default TechStackPage;
 
 export const query = graphql`
   {
-    allContentfulTech(sort: { fields: [name] }) {
+    allContentfulTech(sort: { fields: [order, name] }) {
       edges {
         node {
           name
