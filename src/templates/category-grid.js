@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import FilterMenu from "../components/filterMenu";
 import ImageGrid from "../components/imageGrid";
-import NotFoundMessage from "../components/not-found-message";
+import NotFoundMessage from "../components/notFoundMessage";
 
 const PageContainer = styled.div``;
 
