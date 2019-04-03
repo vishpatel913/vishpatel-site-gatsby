@@ -30,7 +30,7 @@ const ImageContainer = styled.div`
     flex: 1;
   }
   @media (max-width: 768px) {
-    height: 15rem;
+    height: 20rem;
     overflow: hidden;
   }
 `;
