@@ -18,8 +18,10 @@ const PageContainer = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  text-align: center;
+  padding: 1em 1em 0;
+
   @media (min-width: 768px) {
+    text-align: center;
     padding-top: 1.5rem;
   }
 `;
