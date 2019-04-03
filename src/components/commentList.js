@@ -77,7 +77,7 @@ const CommentList = ({ data }) => {
       <h2>
         {`${comments.length} `}
         Comment
-        {comments.length > 1 && "s"}
+        {comments.length !== 1 && "s"}
       </h2>
       <ListContainer>{comments}</ListContainer>
     </CommentListContainer>
