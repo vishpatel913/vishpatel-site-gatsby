@@ -19,7 +19,6 @@
     "gatsby-source-contentful": "^2.1.49",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-remark": "^2.6.30",
-    "gatsby-transformer-sharp": "^2.2.23",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "prop-type": "0.0.1",
