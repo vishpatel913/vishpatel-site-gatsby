@@ -25,7 +25,7 @@ module.exports = {
       }
     },
     "gatsby-image",
-    "gatsby-transformer-sharp",
+    // "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     // 'gatsby-paginate',
     "gatsby-transformer-remark"
