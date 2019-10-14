@@ -5,6 +5,7 @@ export default {
   primaryLight: "#8559da",
   // primaryLight: '#ab99c9',
   secondary: "#35cdbc",
+  secondaryLight: "#99ede4",
   // secondary: '#E91D63',
   grey: "#E0E0E0",
   greyDark: "#595959",

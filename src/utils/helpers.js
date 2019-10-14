@@ -1,6 +1,8 @@
-export const capitalizeString = string => string
+import colors from "./colors";
+
+export const capitalizeString = (string) => string
   .split(/\s|-/)
-  .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+  .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
   .join(" ");
 
 export const getAltText = (title, category) => {
@@ -17,8 +19,8 @@ export const getAltText = (title, category) => {
 };
 
 export const editTracedSvg = (fluid) => {
-  // const color = "#311B9255";
+  const color = `${colors.secondary.slice(1)}80`;
   const newFluid = fluid;
-  // newFluid.tracedSVG = fluid.tracedSVG.replace("lightgray", color);
+  newFluid.tracedSVG = fluid.tracedSVG.replace("d3d3d3", color);
   return newFluid;
 };
