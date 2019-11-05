@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import FilterMenu from "../components/filterMenu";
+import TabMenu from "../components/tabMenu";
 import ImageGrid from "../components/imageGrid";
 
 const PageContainer = styled.div``;
@@ -11,7 +11,7 @@ const PageContainer = styled.div``;
 const WorkPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
-      <FilterMenu />
+      <TabMenu />
       <ImageGrid data={data.allContentfulImage.edges} />
     </PageContainer>
   </Layout>

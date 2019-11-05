@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import FilterMenu from "../components/filterMenu";
+import TabMenu from "../components/tabMenu";
 import ImageGrid from "../components/imageGrid";
 import NotFoundMessage from "../components/notFoundMessage";
 
@@ -19,7 +19,7 @@ const ErrorContainer = styled.div`
 const CategoryTemplate = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
-      <FilterMenu />
+      <TabMenu />
       {data.allContentfulImage.edges.length > 0 ? (
         <ImageGrid data={data.allContentfulImage.edges} />
       ) : (

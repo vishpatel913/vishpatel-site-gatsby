@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-import colors from "../utils/colors";
+import theme from "../assets/theme";
 import logo from "../../static/images/logo-light.svg";
 
 const Container = styled.div`
@@ -36,23 +36,23 @@ const Navigation = styled.div`
 
 const InternalLink = styled(Link)`
   font-size: 12px;
-  color: ${colors.grey};
+  color: ${theme.color.grey};
   text-decoration: none;
   margin: 0.25rem 0.5rem;
 
   &:hover {
-    color: ${colors.primaryLight};
+    color: ${theme.color.primaryLight};
   }
 `;
 
 const ExternalLink = styled.a`
   font-size: 12px;
-  color: ${colors.grey};
+  color: ${theme.color.grey};
   text-decoration: none;
   margin: 0.25rem 0.5rem;
 
   &:hover {
-    color: ${colors.primaryLight};
+    color: ${theme.color.primaryLight};
   }
 `;
 
@@ -83,7 +83,7 @@ const Tab = ({ title, ext }) => {
   return (
     <InternalLink
       activeStyle={{
-        color: `${colors.primaryLight}`
+        color: `${theme.color.primaryLight}`
       }}
       to={link}
     >

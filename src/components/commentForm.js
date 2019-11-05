@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Icon from "./icon";
-import colors from "../utils/colors";
+import theme from "../assets/theme";
 
 const Container = styled.div``;
 
 const FormInput = styled.input`
   background: white;
-  border: solid 1px ${colors.grey};
+  border: solid 1px ${theme.color.grey};
   border-radius: 4px;
   padding: 0.5rem;
   margin-right: 1rem;
@@ -31,7 +31,7 @@ const FormMessage = styled.textarea`
   display: block;
   width: 100%;
   background: white;
-  border: solid 1px ${colors.grey};
+  border: solid 1px ${theme.color.grey};
   border-radius: 4px;
   padding: 0.5rem;
   margin-right: 1rem;
@@ -56,7 +56,7 @@ const FormToast = styled.div`
   font-size: 12px;
   max-width: 25em;
   color: white;
-  background: ${colors.secondary};
+  background: ${theme.color.secondary};
   text-align: center;
   line-height: 0;
   padding: 1em;
@@ -70,7 +70,7 @@ const encode = data => Object.keys(data)
   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
   .join("&");
 
-const handleSubmit = async (e) => {
+const handleSubmit = async e => {
   e.preventDefault();
 
   const formData = new FormData(e.target);
@@ -98,7 +98,7 @@ const handleSubmit = async (e) => {
         successToast.style.cssText = "";
       }, 2000);
     })
-    .catch((err) => {
+    .catch(err => {
       alert(`Something went wrong: ${err}`);
     });
 };

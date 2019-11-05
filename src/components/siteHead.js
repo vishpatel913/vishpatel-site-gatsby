@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 
 import GatsbyConfig from "../../gatsby-config";
 import { capitalizeString } from "../utils/helpers";
-import colors from "../utils/colors";
+import theme from "../assets/theme";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({
@@ -38,7 +38,7 @@ const SiteHead = ({
         },
         {
           name: "theme-color",
-          content: colors.primary
+          content: theme.color.primary
         }
       ]}
       link={[{ rel: "shortcut icon", type: "image/png", href: `${icon32}` }]}
