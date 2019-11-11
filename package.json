@@ -11,15 +11,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js'",
-    "test": "jest",
+    "dev": "gatsby develop",
     "start": "run-p start:**",
     "start:app": "npm run develop",
     "start:lambda": "netlify-lambda serve src/lambda",
     "build": "run-p build:**",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda",
+    "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
