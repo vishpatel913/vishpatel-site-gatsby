@@ -16,7 +16,7 @@ const SiteHead = ({
   } else if (page && page !== "/") {
     siteTitle += `${capitalizeString(page.split("/").join(" | "))}`;
   }
-  const siteDescription = description || "Front-end Development and Design Porfolio";
+  const siteDescription = description || "Front-end Development and Design Portfolio";
   const siteKeywords = keywords
     || "front-end, development, design, portfolio, javascript, photoshop, illustrator, react, gatsby, graphql";
 
