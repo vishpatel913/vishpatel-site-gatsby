@@ -6,7 +6,6 @@ import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 import Icon from "../components/icon";
-import colors from "../utils/colors";
 import { capitalizeString, editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
@@ -69,17 +68,17 @@ const SocialLink = styled.a`
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  border: solid ${colors.grey} 1px;
+  border: solid ${({ theme }) => theme.color.grey} 1px;
   font-size: 12px;
   font-weight: 200;
   border-radius: 4px;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  color: ${colors.greyDark};
+  color: ${({ theme }) => theme.color.greyDark};
 
   &:hover {
-    color: ${colors.primary};
-    background: ${colors.background};
+    color: ${({ theme }) => theme.color.primary};
+    background: ${({ theme }) => theme.color.background};
   }
 `;
 
@@ -89,10 +88,10 @@ const EmailLink = styled.a`
   font-weight: 200;
   margin-left: 1px;
   margin-bottom: 1rem;
-  color: ${colors.greyDark};
+  color: ${({ theme }) => theme.color.greyDark};
 
   &:hover {
-    color: ${colors.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 

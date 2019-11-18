@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import SiteHead from "./siteHead";
 import Header from "./header";
 import Footer from "./footer";
-import colors from "../utils/colors";
+import theme from "../assets/theme";
 
 const SiteContainer = styled.div`
-  background: ${colors.background};
+  background: ${theme.color.background};
 `;
 
 const BodyContainer = styled.main`
@@ -23,12 +23,14 @@ const BodyContainer = styled.main`
 `;
 
 const Layout = ({ children, page }) => (
-  <SiteContainer>
-    <SiteHead page={page} />
-    <Header />
-    <BodyContainer>{children}</BodyContainer>
-    <Footer />
-  </SiteContainer>
+  <ThemeProvider theme={theme}>
+    <SiteContainer>
+      <SiteHead page={page} />
+      <Header />
+      <BodyContainer>{children}</BodyContainer>
+      <Footer />
+    </SiteContainer>
+  </ThemeProvider>
 );
 
 Layout.propTypes = {

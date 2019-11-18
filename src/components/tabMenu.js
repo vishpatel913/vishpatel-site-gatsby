@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-import colors from "../utils/colors";
+import theme from "../assets/theme";
 import { capitalizeString } from "../utils/helpers";
 
 const MenuContainer = styled.div`
@@ -20,7 +20,7 @@ const MenuList = styled.ul`
   margin: 0.5rem;
   margin-bottom: 1.5rem;
   background: white;
-  border: solid 1px ${colors.grey};
+  border: solid 1px ${theme.color.grey};
   border-radius: 4px;
 
   @media (max-width: 768px) {
@@ -31,7 +31,7 @@ const MenuList = styled.ul`
 const MenuItem = styled.li`
   display: inherit;
   margin: 0;
-  border-right: solid 1px ${colors.grey};
+  border-right: solid 1px ${theme.color.grey};
   &:last-child {
     border: none;
   }
@@ -41,10 +41,10 @@ const MenuLink = styled(Link)`
   font-size: 12px;
   font-weight: lighter;
   padding: 0.5rem 1rem;
-  color: ${colors.greyDark};
+  color: ${theme.color.greyDark};
   &:hover {
-    color: ${colors.primary};
-    background: ${colors.background};
+    color: ${theme.color.primary};
+    background: ${theme.color.background};
   }
 
   @media (max-width: 400px) {
@@ -62,8 +62,8 @@ const Tab = ({ category }) => {
     <MenuItem>
       <MenuLink
         activeStyle={{
-          color: colors.primaryLight,
-          background: colors.background
+          color: theme.color.primaryLight,
+          background: theme.color.background
         }}
         to={link}
       >
@@ -77,7 +77,7 @@ Tab.propTypes = {
   category: PropTypes.string
 };
 
-const FilterMenu = () => (
+const TabMenu = () => (
   <MenuContainer>
     <MenuList>
       <Tab category="all" />
@@ -88,4 +88,4 @@ const FilterMenu = () => (
   </MenuContainer>
 );
 
-export default FilterMenu;
+export default TabMenu;

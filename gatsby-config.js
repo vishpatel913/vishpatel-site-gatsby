@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "src/utils/typography.js"
+        pathToConfigModule: "src/assets/typography.js"
       }
     },
     {
@@ -25,13 +25,13 @@ module.exports = {
       }
     },
     "gatsby-image",
-    "gatsby-transformer-sharp",
+    // "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     // 'gatsby-paginate',
     "gatsby-transformer-remark"
   ],
   // for avoiding CORS while developing Netlify Functions locally
-  developMiddleware: (app) => {
+  developMiddleware: app => {
     app.use(
       "/.netlify/functions/",
       proxy({

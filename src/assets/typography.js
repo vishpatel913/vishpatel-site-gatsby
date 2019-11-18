@@ -1,5 +1,5 @@
 import Typography from "typography";
-import colors from "./colors";
+import theme from "./theme";
 
 const typography = new Typography({
   baseFontSize: "18px",
@@ -21,7 +21,7 @@ const typography = new Typography({
   boldWeight: 700,
   overrideStyles: () => ({
     body: {
-      background: colors.background
+      background: theme.color.background
     },
     p: {
       marginBottom: "1rem"
@@ -31,28 +31,28 @@ const typography = new Typography({
     },
     a: {
       textDecoration: "none",
-      color: colors.primary
+      color: theme.color.primary
     },
     "a:hover": {
-      color: colors.primaryLight
+      color: theme.color.primaryLight
     },
     button: {
       display: "inherit",
       cursor: "pointer",
-      color: colors.greyDark,
-      background: colors.background,
+      color: theme.color.greyDark,
+      background: theme.color.background,
       margin: "0",
       padding: "0.5rem 1rem",
       border: "solid 1px",
-      borderColor: colors.grey,
+      borderColor: theme.color.grey,
       borderRadius: "4px",
       fontWeight: "lighter",
       transition: "all 0.3s ease 0s"
     },
     "button:hover": {
       color: "white",
-      background: colors.primary,
-      borderColor: colors.primaryDark
+      background: theme.color.primary,
+      borderColor: theme.color.primaryDark
     }
   })
 });

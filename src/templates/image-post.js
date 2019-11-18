@@ -9,7 +9,6 @@ import CommentForm from "../components/commentForm";
 import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
 import Icon from "../components/icon";
-import colors from "../utils/colors";
 import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
 
 const PostContainer = styled.div`
@@ -68,14 +67,14 @@ const PostImage = styled(Img)`
 `;
 
 const ImageMetaContainer = styled.div`
-  color: ${colors.greyDark};
+  color: ${({ theme }) => theme.color.greyDark};
 
   &:before {
     content: "";
     display: block;
     width: 48px;
     height: 2px;
-    background: ${colors.grey};
+    background: ${({ theme }) => theme.color.grey};
     margin-bottom: 1rem;
   }
 `;
@@ -89,21 +88,21 @@ const CategoryLink = styled(Link)`
   display: inline-block;
   margin-bottom: 4px;
   text-decoration: none;
-  color: ${colors.greyDark};
+  color: ${({ theme }) => theme.color.greyDark};
 
   &:hover {
-    color: ${colors.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
 const TagLink = styled.span`
   display: inline-block;
   text-decoration: none;
-  color: ${colors.greyDark};
+  color: ${({ theme }) => theme.color.greyDark};
   margin-right: 0.5rem;
 
   &:hover {
-    color: ${colors.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
