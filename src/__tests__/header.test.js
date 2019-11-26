@@ -1,10 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import renderWithTheme from "../utils/test-renderer";
 import Header from "../components/header";
 
 describe("Header", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<Header />)
+    const tree = renderWithTheme(<Header />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

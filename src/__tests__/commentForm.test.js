@@ -1,11 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import renderWithTheme from "../utils/test-renderer";
 import CommentForm from "../components/commentForm";
 
 describe("CommentForm", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<CommentForm slug="test" />)
+    const tree = renderWithTheme(<CommentForm slug="test" />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

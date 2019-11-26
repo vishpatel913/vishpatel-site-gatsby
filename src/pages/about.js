@@ -171,7 +171,7 @@ export const query = graphql`
       linkedInProfile
       profilePhoto {
         fluid(maxWidth: 800) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       biography {

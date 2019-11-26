@@ -1,5 +1,5 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import renderWithTheme from "../utils/test-renderer";
 import CommentList from "../components/commentList";
 
 describe("CommentList", () => {
@@ -18,15 +18,13 @@ describe("CommentList", () => {
   });
 
   it("renders correctly without data", () => {
-    const tree = renderer
-      .create(<CommentList data={[]} />)
+    const tree = renderWithTheme(<CommentList data={[]} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("renders correctly with data", () => {
-    const tree = renderer
-      .create(<CommentList data={mockData} />)
+    const tree = renderWithTheme(<CommentList data={mockData} />)
       .toJSON(); expect(tree).toMatchSnapshot();
   });
 });

@@ -176,7 +176,7 @@ export const query = graphql`
       slug
       photo {
         fluid(maxWidth: 900) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       imageCaption {

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import moment from "moment";
 
 import { capitalizeString } from "../utils/helpers";
-import theme from "../assets/theme";
 
 const CommentListContainer = styled.div`
   display: block;
@@ -31,7 +30,7 @@ const CommentHeader = styled.div`
 const CommentTitle = styled.div`
   display: flex;
   flex-direction: column;
-  border-left: 4px solid ${theme.color.primary};
+  border-left: 4px solid ${({ theme }) => theme.color.primary};
   padding-left: 1em;
 `;
 

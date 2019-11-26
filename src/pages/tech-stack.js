@@ -96,7 +96,7 @@ export const query = graphql`
           name
           logo {
             fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_noBase64
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
