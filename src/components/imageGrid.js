@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import Img from "gatsby-image";
 import Masonry from "react-masonry-component";
 
-import { getAltText, editTracedSvg } from "../utils/helpers";
+import { getAltText } from "../utils/helpers";
 
 const GridContainer = styled(Masonry)`
   margin: auto;
@@ -72,7 +72,7 @@ const ImageGridItem = ({ node }) => {
     <ImageContainer>
       <Link to={`/${slug}`}>
         <ImagePost
-          fluid={editTracedSvg(photo.fluid)}
+          fluid={photo.fluid}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}

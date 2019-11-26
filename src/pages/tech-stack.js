@@ -5,7 +5,6 @@ import Img from "gatsby-image";
 import Masonry from "react-masonry-component";
 
 import Layout from "../components/layout";
-import { editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
@@ -64,7 +63,7 @@ const GridTechItem = ({ node }) => {
 
   return (
     <TechContainer>
-      <Img fluid={editTracedSvg(logo.fluid)} title={name} alt={`Logo for ${name}`} />
+      <Img fluid={logo.fluid} title={name} alt={`Logo for ${name}`} />
       <TechName>{name}</TechName>
     </TechContainer>
   );
