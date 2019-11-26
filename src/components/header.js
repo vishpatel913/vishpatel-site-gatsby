@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
@@ -85,6 +85,7 @@ const Logo = styled.img`
 `;
 
 const Tab = ({ title, ext }) => {
+  const theme = useContext(ThemeContext);
   const label = title
     .toUpperCase()
     .split("-")
@@ -100,7 +101,7 @@ const Tab = ({ title, ext }) => {
   return (
     <InternalLink
       activeStyle={{
-        color: `${({ theme }) => theme.color.primaryLight}`
+        color: `${theme.color.primaryLight}`
       }}
       to={link}
     >
