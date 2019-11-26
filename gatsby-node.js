@@ -1,9 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
@@ -25,13 +19,13 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
-      `).then((result) => {
+      `).then(result => {
         if (result.errors) {
           reject(result.errors);
         }
 
         // Create image post pages.
-        result.data.allContentfulImage.edges.forEach((edge) => {
+        result.data.allContentfulImage.edges.forEach(edge => {
           createPage({
             path: edge.node.slug, // required
             component: imagePostTemplate,
@@ -43,7 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         const categories = ["design", "development", "photography"];
 
-        categories.forEach((category) => {
+        categories.forEach(category => {
           createPage({
             path: `work/${category}`, // required
             component: categoryGridTemplate,
