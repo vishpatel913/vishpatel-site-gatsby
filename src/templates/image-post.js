@@ -9,7 +9,7 @@ import CommentForm from "../components/commentForm";
 import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
 import Icon from "../components/icon";
-import { capitalizeString, getAltText } from "../utils/helpers";
+import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
 
 const PostContainer = styled.div`
   background: white;
@@ -132,7 +132,7 @@ const ImageTemplate = ({ data, location }) => {
         <FlexContainer>
           <ImageContainer>
             <PostImage
-              fluid={photo.fluid}
+              fluid={editTracedSvg(photo.fluid)}
               title={title}
               alt={getAltText(title, category)}
             />
@@ -176,7 +176,7 @@ export const query = graphql`
       slug
       photo {
         fluid(maxWidth: 900) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       imageCaption {
