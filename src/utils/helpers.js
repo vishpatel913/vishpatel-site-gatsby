@@ -1,4 +1,4 @@
-// import theme from "../assets/theme";
+import theme from "../assets/theme";
 
 export const capitalizeString = string => string
   .split(/\s|-/)
@@ -19,8 +19,8 @@ export const getAltText = (title, category) => {
 };
 
 export const editTracedSvg = fluid => {
-  // const color = `${colors.secondary.slice(1)}80`;
+  const color = `${theme.color.secondary.slice(1)}80`;
   const newFluid = fluid;
-  // newFluid.tracedSVG = fluid.tracedSVG.replace("d3d3d3", color);
+  newFluid.tracedSVG = fluid.tracedSVG.replace("d3d3d3", color);
   return newFluid;
 };
