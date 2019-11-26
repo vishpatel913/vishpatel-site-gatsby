@@ -12,7 +12,8 @@ export default {
     grey: "#E0E0E0",
     greyDark: "#595959"
   },
-  size: {
-    spacing: "1rem"
+  spacing: {
+    single: "1rem",
+    half: "0.5rem"
   }
 };

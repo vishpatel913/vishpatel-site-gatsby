@@ -5,11 +5,10 @@ import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
 import cv2018 from "../../static/files/cv-2018.pdf";
-import theme from "../assets/theme";
 
 const Container = styled.header`
   background: white;
-  border-bottom: ${theme.color.grey} 1px solid;
+  border-bottom: ${({ theme }) => theme.color.grey} 1px solid;
 `;
 
 const Navigation = styled.div`
@@ -52,7 +51,7 @@ const InternalLink = styled(Link)`
   margin: 0.5rem;
 
   &:hover {
-    color: ${theme.color.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 
   @media (max-width: 768px) {
@@ -67,7 +66,7 @@ const ExternalLink = styled.a`
   margin: 0.5rem;
 
   &:hover {
-    color: ${theme.color.primary};
+    color: ${({ theme }) => theme.color.primary};
   }
 
   @media (max-width: 768px) {
@@ -101,7 +100,7 @@ const Tab = ({ title, ext }) => {
   return (
     <InternalLink
       activeStyle={{
-        color: `${theme.color.primaryLight}`
+        color: `${({ theme }) => theme.color.primaryLight}`
       }}
       to={link}
     >

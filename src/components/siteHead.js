@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { ThemeContext } from "styled-components";
+
 import Helmet from "react-helmet";
 
 import GatsbyConfig from "../../gatsby-config";
 import { capitalizeString } from "../utils/helpers";
-import theme from "../assets/theme";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({
   title, description, keywords, page
 }) => {
+  const theme = useContext(ThemeContext);
   let siteTitle = GatsbyConfig.siteMetadata.title;
   if (title) {
     siteTitle += ` | ${title}`;

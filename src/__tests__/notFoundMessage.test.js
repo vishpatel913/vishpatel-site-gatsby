@@ -1,11 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import renderWithTheme from "../utils/test-renderer";
 import NotFoundMessage from "../components/notFoundMessage";
 
 describe("NotFoundMessage", () => {
   it("renders correctly", () => {
-    const tree = renderer
-      .create(<NotFoundMessage />)
+    const tree = renderWithTheme(<NotFoundMessage />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

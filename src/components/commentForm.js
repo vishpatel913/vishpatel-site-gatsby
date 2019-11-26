@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Icon from "./icon";
-import theme from "../assets/theme";
 
 const Container = styled.div``;
 
 const FormInput = styled.input`
   background: white;
-  border: solid 1px ${theme.color.grey};
+  border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
   padding: 0.5rem;
   margin-right: 1rem;
@@ -31,7 +30,7 @@ const FormMessage = styled.textarea`
   display: block;
   width: 100%;
   background: white;
-  border: solid 1px ${theme.color.grey};
+  border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
   padding: 0.5rem;
   margin-right: 1rem;
@@ -56,7 +55,7 @@ const FormToast = styled.div`
   font-size: 12px;
   max-width: 25em;
   color: white;
-  background: ${theme.color.secondary};
+  background: ${({ theme }) => theme.color.secondary};
   text-align: center;
   line-height: 0;
   padding: 1em;
