@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeContext } from "styled-components";
 import { Link } from "gatsby";
+import { connect } from "react-redux";
 
 import logo from "../../static/images/logo.svg";
+import logoLight from "../../static/images/logo-light.svg";
 import cv2018 from "../../static/files/cv-2018.pdf";
 
 const Container = styled.header`
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   border-bottom: ${({ theme }) => theme.color.grey} 1px solid;
 `;
 
@@ -45,7 +47,7 @@ const FlexRow = styled.div`
 `;
 
 const InternalLink = styled(Link)`
-  color: black;
+  color: ${({ theme }) => theme.color.black};
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
@@ -60,7 +62,7 @@ const InternalLink = styled(Link)`
 `;
 
 const ExternalLink = styled.a`
-  color: black;
+  color: ${({ theme }) => theme.color.black};
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
@@ -115,7 +117,7 @@ Tab.propTypes = {
   ext: PropTypes.string
 };
 
-const Header = () => (
+const Header = ({ isDarkMode }) => (
   <Container>
     <Navigation>
       <FlexRow left>
@@ -123,7 +125,7 @@ const Header = () => (
         <Tab title="work" />
       </FlexRow>
       <Link to="/" name="Home link">
-        <Logo src={logo} alt="VishPatel.com Logo" />
+        <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
       </Link>
       <FlexRow right>
         <Tab title="tech-stack" />
@@ -133,4 +135,13 @@ const Header = () => (
   </Container>
 );
 
-export default Header;
+Header.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
+
+export default connect(
+  mapStateToProps,
+  null
+)(Header);

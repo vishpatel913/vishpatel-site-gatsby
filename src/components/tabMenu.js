@@ -18,7 +18,7 @@ const MenuList = styled.ul`
   height: auto;
   margin: 0.5rem;
   margin-bottom: 1.5rem;
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
 

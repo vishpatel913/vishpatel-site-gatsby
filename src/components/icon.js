@@ -9,7 +9,9 @@ import {
   FaTelegramPlane,
   FaFolderOpen,
   FaUser,
-  FaCheckCircle
+  FaCheckCircle,
+  FaSun,
+  FaMoon
 } from "react-icons/fa";
 
 const IconContainer = styled.span`
@@ -42,6 +44,12 @@ const Icon = ({ className, name }) => {
       break;
     case "check":
       icon = <FaCheckCircle />;
+      break;
+    case "sun":
+      icon = <FaSun />;
+      break;
+    case "moon":
+      icon = <FaMoon />;
       break;
     default:
   }

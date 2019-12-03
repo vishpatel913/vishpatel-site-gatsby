@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import DarkModeToggle from "./darkModeToggle";
 
 const Container = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
-  text-align: center;
   max-width: 1200px;
   padding: 0.5rem 2rem 1rem;
 
@@ -23,15 +29,28 @@ const ContentfulLogo = styled.img`
   }
 `;
 
-const Footer = () => (
-  <Container>
-    <a href="https://www.contentful.com/" rel="noopener noreferrer" target="_blank">
-      <ContentfulLogo
-        src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-        alt="Powered by Contentful"
-      />
-    </a>
-  </Container>
-);
+const Footer = ({ isDarkMode }) => {
+  const imgSrc = `https://images.ctfassets.net/fo9twyrwpveg/${isDarkMode ? "7F5pMEOhJ6Y2WukCa2cYws/398e290725ef2d3b3f0f5a73ae8401d6" : "44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55"}/PoweredByContentful_${isDarkMode ? "Dark" : "Light"}Background.svg`;
+  return (
+    <Container>
+      <a href="https://www.contentful.com/" rel="noopener noreferrer" target="_blank">
+        <ContentfulLogo
+          src={imgSrc}
+          alt="Powered by Contentful"
+        />
+      </a>
+      <DarkModeToggle />
+    </Container>
+  );
+};
 
-export default Footer;
+Footer.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
+
+export default connect(
+  mapStateToProps,
+  null
+)(Footer);

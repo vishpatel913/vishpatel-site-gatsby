@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Masonry from "react-masonry-component";
@@ -9,7 +11,7 @@ import { editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
-  background: white;
+  background: ${({ theme }) => theme.color.white};
 
   @media (max-width: 768px) {
     margin: 0;
@@ -59,18 +61,27 @@ const TechName = styled.h2`
   }
 `;
 
-const GridTechItem = ({ node }) => {
+const GridTechItem = ({ node, isDarkMode }) => {
   const { name, logo } = node;
 
   return (
     <TechContainer>
-      <Img fluid={editTracedSvg(logo.fluid)} title={name} alt={`Logo for ${name}`} />
+      <Img
+        fluid={editTracedSvg(logo.fluid)}
+        title={name}
+        alt={`Logo for ${name}`}
+        imgStyle={isDarkMode && { filter: "brightness(120%) sepia(10%)" }}
+      />
       <TechName>{name}</TechName>
     </TechContainer>
   );
 };
 
-const TechStackPage = ({ data, location }) => (
+GridTechItem.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const TechStackPage = ({ data, location, isDarkMode }) => (
   <Layout page={location.pathname}>
     <PageContainer>
       <TitleContainer>
@@ -79,14 +90,23 @@ const TechStackPage = ({ data, location }) => (
       </TitleContainer>
       <GridContainer elementType="ul">
         {data.allContentfulTech.edges.map(({ node }) => (
-          <GridTechItem key={node.name} node={node} />
+          <GridTechItem key={node.name} node={node} isDarkMode={isDarkMode} />
         ))}
       </GridContainer>
     </PageContainer>
   </Layout>
 );
 
-export default TechStackPage;
+TechStackPage.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
+
+export default connect(
+  mapStateToProps,
+  null
+)(TechStackPage);
 
 export const query = graphql`
   {
