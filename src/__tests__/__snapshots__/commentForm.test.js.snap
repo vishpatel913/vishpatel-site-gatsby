@@ -42,22 +42,22 @@ exports[`CommentForm renders correctly 1`] = `
 }
 
 .c0::-webkit-input-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0::-moz-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0:-ms-input-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0::placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
@@ -74,22 +74,22 @@ exports[`CommentForm renders correctly 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1::-moz-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1:-ms-input-placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1::placeholder {
-  color: #595959;
+  color: #323232;
   font-weight: lighter;
 }
 
