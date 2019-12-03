@@ -12,7 +12,7 @@ import Icon from "../components/icon";
 import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
 
 const PostContainer = styled.div`
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
   @media (max-width: 768px) {
