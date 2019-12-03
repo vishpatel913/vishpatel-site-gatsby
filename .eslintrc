@@ -23,12 +23,13 @@
     "react/no-danger": 0,
     "react/no-children-prop": ["off"],
     "react/destructuring-assignment": ["off"],
-    "react/prop-types": [1, { "ignore": ["data", "node", "location", "children"] }],
+    "react/prop-types": [1, { "ignore": ["data", "node", "location", "children", "dispatch"] }],
     "react/require-default-props": [0],
     "babel/new-cap": 1,
     "babel/object-curly-spacing": [2, "always"],
     "babel/semi": 1,
-    "no-alert": ["off"]
+    "no-alert": ["off"],
+    "react/jsx-props-no-spreading": 0
   },
   "env": {
     "browser": true,
