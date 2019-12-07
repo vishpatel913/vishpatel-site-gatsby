@@ -1,5 +1,4 @@
 import Typography from "typography";
-import theme from "./theme";
 
 const typography = new Typography({
   baseFontSize: "18px",
@@ -20,8 +19,11 @@ const typography = new Typography({
   lightWeight: 200,
   boldWeight: 700,
   overrideStyles: () => ({
-    body: {
-      background: theme.color.background
+    "html, body": {
+      height: "100%"
+    },
+    "#___gatsby, #gatsby-focus-wrapper": {
+      height: "100%"
     },
     p: {
       marginBottom: "1rem"
@@ -30,29 +32,7 @@ const typography = new Typography({
       margin: "0"
     },
     a: {
-      textDecoration: "none",
-      color: theme.color.primary
-    },
-    "a:hover": {
-      color: theme.color.primaryLight
-    },
-    button: {
-      display: "inherit",
-      cursor: "pointer",
-      color: theme.color.greyDark,
-      background: theme.color.background,
-      margin: "0",
-      padding: "0.5rem 1rem",
-      border: "solid 1px",
-      borderColor: theme.color.grey,
-      borderRadius: "4px",
-      fontWeight: "lighter",
-      transition: "all 0.3s ease 0s"
-    },
-    "button:hover": {
-      color: "white",
-      background: theme.color.primary,
-      borderColor: theme.color.primaryDark
+      textDecoration: "none"
     }
   })
 });

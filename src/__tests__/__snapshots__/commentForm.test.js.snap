@@ -8,10 +8,32 @@ exports[`CommentForm renders correctly 1`] = `
   vertical-align: text-top;
 }
 
+.c2 {
+  display: inherit;
+  cursor: pointer;
+  color: #595959;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: solid 1px;
+  border-color: #E0E0E0;
+  border-radius: 4px;
+  font-weight: lighter;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c2:hover {
+  color: #fff;
+  background: #512DA8;
+  border-color: #140078;
+}
+
 .c0 {
-  background: white;
+  background: #fff;
   border: solid 1px #E0E0E0;
   border-radius: 4px;
+  color: #323232;
   padding: 0.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
@@ -20,50 +42,55 @@ exports[`CommentForm renders correctly 1`] = `
 }
 
 .c0::-webkit-input-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0::-moz-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0:-ms-input-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c0::placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1 {
   display: block;
   width: 100%;
-  background: white;
+  background: #fff;
   border: solid 1px #E0E0E0;
   border-radius: 4px;
+  color: #323232;
   padding: 0.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
 
 .c1::-webkit-input-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1::-moz-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1:-ms-input-placeholder {
+  color: #323232;
   font-weight: lighter;
 }
 
 .c1::placeholder {
+  color: #323232;
   font-weight: lighter;
-}
-
-.c2 {
-  cursor: pointer;
 }
 
 .c3 {
@@ -81,7 +108,7 @@ exports[`CommentForm renders correctly 1`] = `
   align-items: center;
   font-size: 12px;
   max-width: 25em;
-  color: white;
+  color: #fff;
   background: #35cdbc;
   text-align: center;
   line-height: 0;
@@ -97,12 +124,6 @@ exports[`CommentForm renders correctly 1`] = `
   .c0 {
     width: 100%;
     margin-right: 0;
-  }
-}
-
-@media (max-width:768px) {
-  .c2 {
-    margin-left: auto;
   }
 }
 

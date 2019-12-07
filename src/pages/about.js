@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
@@ -9,7 +10,7 @@ import Icon from "../components/icon";
 import { capitalizeString, editTracedSvg } from "../utils/helpers";
 
 const PageContainer = styled.div`
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
   @media (max-width: 768px) {
@@ -107,7 +108,7 @@ Social.propTypes = {
   link: PropTypes.string
 };
 
-const AboutPage = ({ data, location }) => {
+const AboutPage = ({ data, location, isDarkMode }) => {
   const {
     name,
     tagLine,
@@ -128,7 +129,10 @@ const AboutPage = ({ data, location }) => {
               fluid={editTracedSvg(profilePhoto.fluid)}
               title={name}
               alt={`Profile picture for ${name}`}
-              imgStyle={{ verticalAlign: "middle" }}
+              imgStyle={{
+                verticalAlign: "middle",
+                filter: isDarkMode ? "brightness(80%) sepia(10%)" : "none"
+              }}
             />
           </ImageContainer>
           <MetaContainer>
@@ -158,7 +162,16 @@ const AboutPage = ({ data, location }) => {
   );
 };
 
-export default AboutPage;
+AboutPage.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
+
+export default connect(
+  mapStateToProps,
+  null
+)(AboutPage);
 
 export const query = graphql`
   {

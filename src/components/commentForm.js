@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Icon from "./icon";
+import Button from "./button";
 
 const Container = styled.div``;
 
 const FormInput = styled.input`
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
+  color: ${({ theme }) => theme.color.main};
   padding: 0.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
@@ -17,6 +19,7 @@ const FormInput = styled.input`
   box-sizing: border-box;
 
   &::placeholder {
+    color: ${({ theme }) => theme.color.main};
     font-weight: lighter;
   }
 
@@ -29,22 +32,17 @@ const FormInput = styled.input`
 const FormMessage = styled.textarea`
   display: block;
   width: 100%;
-  background: white;
+  background: ${({ theme }) => theme.color.white};
   border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
+  color: ${({ theme }) => theme.color.main};
   padding: 0.5rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
 
   &::placeholder {
+    color: ${({ theme }) => theme.color.main};
     font-weight: lighter;
-  }
-`;
-
-const FormButton = styled.button`
-  cursor: pointer;
-  @media (max-width: 768px) {
-    margin-left: auto;
   }
 `;
 
@@ -54,7 +52,7 @@ const FormToast = styled.div`
   align-items: center;
   font-size: 12px;
   max-width: 25em;
-  color: white;
+  color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.secondary};
   text-align: center;
   line-height: 0;
@@ -122,7 +120,7 @@ const CommentForm = ({ slug }) => {
         <FormInput name="name" type="text" aria-label="Name" placeholder="Name*" required />
         <FormInput name="email" type="email" aria-label="Email" placeholder="Email" />
         <FormMessage name="message" rows="5" aria-label="Message" placeholder="Message*" required />
-        <FormButton type="submit">Submit</FormButton>
+        <Button type="submit">Submit</Button>
       </form>
       <FormToast id="success-toast">
         <Icon name="check" />

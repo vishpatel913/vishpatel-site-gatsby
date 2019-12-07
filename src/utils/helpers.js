@@ -19,7 +19,8 @@ export const getAltText = (title, category) => {
 };
 
 export const editTracedSvg = fluid => {
-  const color = `${theme.color.secondary.slice(1)}80`;
+  const color = theme.dark.color.primary.slice(1);
+  // const color = `${theme.dark.color.primary.slice(1)}80`;
   const newFluid = fluid;
   newFluid.tracedSVG = fluid.tracedSVG.replace("d3d3d3", color);
   return newFluid;
