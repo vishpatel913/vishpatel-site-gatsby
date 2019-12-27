@@ -5,6 +5,7 @@ import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
 import Layout from "../components/layout";
+import MarkdownRenderer from "../components/markdownRenderer";
 import CommentForm from "../components/commentForm";
 import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
@@ -140,11 +141,7 @@ const ImageTemplate = ({ data, location }) => {
           <ContentContainer>
             <h1>{title}</h1>
             {imageCaption && (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: imageCaption.childMarkdownRemark.html
-                }}
-              />
+              <MarkdownRenderer source={imageCaption.childMarkdownRemark.rawMarkdownBody} />
             )}
             <ImageMetaContainer>
               <DateText>{dateCreated}</DateText>
@@ -182,7 +179,7 @@ export const query = graphql`
       imageCaption {
         imageCaption
         childMarkdownRemark {
-          html
+          rawMarkdownBody
         }
       }
       dateCreated(formatString: "Do MMMM YYYY")

@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
 import Layout from "../components/layout";
+import MarkdownRenderer from "../components/markdownRenderer";
 import Icon from "../components/icon";
 import { capitalizeString, editTracedSvg } from "../utils/helpers";
 
@@ -150,12 +151,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
           </MetaContainer>
         </FlexContainer>
         <ContentContainer>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: biography.childMarkdownRemark.html
-            }}
-          />
-          <Link to="/">Go back to the homepage</Link>
+          <MarkdownRenderer source={biography.childMarkdownRemark.rawMarkdownBody} />
         </ContentContainer>
       </PageContainer>
     </Layout>
@@ -168,10 +164,7 @@ AboutPage.propTypes = {
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(AboutPage);
+export default connect(mapStateToProps, null)(AboutPage);
 
 export const query = graphql`
   {
@@ -189,7 +182,7 @@ export const query = graphql`
       }
       biography {
         childMarkdownRemark {
-          html
+          rawMarkdownBody
         }
       }
     }

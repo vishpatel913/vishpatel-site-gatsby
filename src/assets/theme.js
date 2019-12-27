@@ -15,7 +15,8 @@ export default {
       white: "#fff",
       black: "#000",
       grey: "#E0E0E0",
-      greyDark: "#595959"
+      greyDark: "#595959",
+      navLink: "#323232"
     }
   },
   dark: {
@@ -23,14 +24,15 @@ export default {
       main: "#f7f7f7",
       background: "#1c1c1c",
       primary: "#35cdbc",
-      primaryDark: "#105d54",
-      primaryLight: "#99ede4",
+      primaryLight: "#105d54",
+      primaryDark: "#99ede4",
       secondary: "#512DA8",
       secondaryLight: "#140078",
       white: "#1c1c1c",
       black: "#fff",
       grey: "#323232",
-      greyDark: "#E0E0E0"
+      greyDark: "#E0E0E0",
+      navLink: "#35cdbc"
     }
   }
 };

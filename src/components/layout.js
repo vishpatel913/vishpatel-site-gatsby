@@ -12,15 +12,6 @@ const SiteContainer = styled.div`
   background: ${({ theme }) => theme.color.background};
   color: ${({ theme }) => theme.color.main};
   min-height: 100%;
-
-  & a {
-    text-decoration: "none";
-    color: ${({ theme }) => theme.color.primary};
-  }
-
-  & a:hover {
-    color: ${({ theme }) => theme.color.primaryLight};
-  }
 `;
 
 const BodyContainer = styled.main`

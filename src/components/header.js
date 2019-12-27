@@ -46,23 +46,8 @@ const FlexRow = styled.div`
   }
 `;
 
-const InternalLink = styled(Link)`
-  color: ${({ theme }) => theme.color.black};
-  text-decoration: none;
-  font-weight: lighter;
-  margin: 0.5rem;
-
-  &:hover {
-    color: ${({ theme }) => theme.color.primary};
-  }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
 const ExternalLink = styled.a`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.navLink};
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
@@ -75,6 +60,8 @@ const ExternalLink = styled.a`
     font-size: 14px;
   }
 `;
+
+const InternalLink = ExternalLink.withComponent(Link);
 
 const Logo = styled.img`
   margin: 0 0.5rem;
@@ -86,9 +73,9 @@ const Logo = styled.img`
   }
 `;
 
-const Tab = ({ title, ext }) => {
+const Tab = ({ id, ext }) => {
   const theme = useContext(ThemeContext);
-  const label = title
+  const label = id
     .toUpperCase()
     .split("-")
     .join(" ");
@@ -99,11 +86,11 @@ const Tab = ({ title, ext }) => {
       </ExternalLink>
     );
   }
-  const link = `/${title}`;
+  const link = `/${id}`;
   return (
     <InternalLink
       activeStyle={{
-        color: `${theme.color.primaryLight}`
+        color: `${theme.color.primaryDark}`
       }}
       to={link}
     >
@@ -113,7 +100,7 @@ const Tab = ({ title, ext }) => {
 };
 
 Tab.propTypes = {
-  title: PropTypes.string,
+  id: PropTypes.string,
   ext: PropTypes.string
 };
 
@@ -121,15 +108,15 @@ const Header = ({ isDarkMode }) => (
   <Container>
     <Navigation>
       <FlexRow left>
-        <Tab title="about" />
-        <Tab title="work" />
+        <Tab id="about" />
+        <Tab id="work" />
       </FlexRow>
       <Link to="/" name="Home link">
         <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
       </Link>
       <FlexRow right>
-        <Tab title="tech-stack" />
-        <Tab title="resume" ext={cv2018} />
+        <Tab id="tech-stack" />
+        <Tab id="resume" ext={cv2018} />
       </FlexRow>
     </Navigation>
   </Container>

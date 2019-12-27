@@ -62,7 +62,7 @@ const Tab = ({ category }) => {
     <MenuItem>
       <MenuLink
         activeStyle={{
-          color: theme.color.primaryLight,
+          color: theme.color.primary,
           background: theme.color.background
         }}
         to={link}
