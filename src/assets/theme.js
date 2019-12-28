@@ -22,17 +22,17 @@ export default {
   dark: {
     color: {
       main: "#f7f7f7",
-      background: "#1c1c1c",
-      primary: "#35cdbc",
-      primaryLight: "#105d54",
-      primaryDark: "#99ede4",
-      secondary: "#512DA8",
-      secondaryLight: "#140078",
-      white: "#1c1c1c",
+      background: "#210531",
+      primary: "#00ff86",
+      primaryLight: "#00ff86",
+      primaryDark: "#9fff31",
+      secondary: "#e4ff01",
+      secondaryLight: "#11aa61",
+      white: "#210531",
       black: "#fff",
       grey: "#323232",
       greyDark: "#E0E0E0",
-      navLink: "#35cdbc"
+      navLink: "#00ff86"
     }
   }
 };

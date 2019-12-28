@@ -67,7 +67,7 @@ const GridTechItem = ({ node, isDarkMode }) => {
   return (
     <TechContainer>
       <Img
-        fluid={editTracedSvg(logo.fluid)}
+        fluid={editTracedSvg(logo.fluid, isDarkMode)}
         title={name}
         alt={`Logo for ${name}`}
         imgStyle={isDarkMode && { filter: "brightness(120%) sepia(10%)" }}
@@ -103,10 +103,7 @@ TechStackPage.propTypes = {
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(TechStackPage);
+export default connect(mapStateToProps, null)(TechStackPage);
 
 export const query = graphql`
   {

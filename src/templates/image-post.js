@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
@@ -119,7 +120,7 @@ Tag.propTypes = {
   title: PropTypes.string
 };
 
-const ImageTemplate = ({ data, location }) => {
+const ImageTemplate = ({ data, location, isDarkMode }) => {
   const {
     title, photo, imageCaption, dateCreated, category, tags, slug
   } = data.contentfulImage;
@@ -133,7 +134,7 @@ const ImageTemplate = ({ data, location }) => {
         <FlexContainer>
           <ImageContainer>
             <PostImage
-              fluid={editTracedSvg(photo.fluid)}
+              fluid={editTracedSvg(photo.fluid, isDarkMode)}
               title={title}
               alt={getAltText(title, category)}
             />
@@ -164,7 +165,13 @@ const ImageTemplate = ({ data, location }) => {
   );
 };
 
-export default ImageTemplate;
+ImageTemplate.propTypes = {
+  isDarkMode: PropTypes.bool
+};
+
+const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
+
+export default connect(mapStateToProps, null)(ImageTemplate);
 
 export const query = graphql`
   query($slug: String!) {

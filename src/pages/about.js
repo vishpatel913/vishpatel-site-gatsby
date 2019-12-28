@@ -127,7 +127,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
         <FlexContainer>
           <ImageContainer>
             <Img
-              fluid={editTracedSvg(profilePhoto.fluid)}
+              fluid={editTracedSvg(profilePhoto.fluid, isDarkMode)}
               title={name}
               alt={`Profile picture for ${name}`}
               imgStyle={{

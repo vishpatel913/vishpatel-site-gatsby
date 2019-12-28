@@ -39,7 +39,7 @@ const ImageContainer = styled.li`
 const ImagePost = styled(Img)`
   @media (min-width: 768px) {
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       display: flex;
       align-items: center;
@@ -74,7 +74,7 @@ const ImageGridItem = ({ node, isDarkMode }) => {
     <ImageContainer>
       <Link to={`/${slug}`}>
         <ImagePost
-          fluid={editTracedSvg(photo.fluid)}
+          fluid={editTracedSvg(photo.fluid, isDarkMode)}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}
@@ -103,7 +103,4 @@ ImageGrid.propTypes = {
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(ImageGrid);
+export default connect(mapStateToProps, null)(ImageGrid);

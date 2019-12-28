@@ -128,7 +128,4 @@ Header.propTypes = {
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(Header);
+export default connect(mapStateToProps, null)(Header);
