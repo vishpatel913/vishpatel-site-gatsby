@@ -1,7 +1,7 @@
 export default {
   spacing: {
     single: "1rem",
-    half: "0.5rem"
+    half: "0.5rem",
   },
   light: {
     color: {
@@ -16,8 +16,8 @@ export default {
       black: "#000",
       grey: "#E0E0E0",
       greyDark: "#595959",
-      navLink: "#323232"
-    }
+      navLink: "#323232",
+    },
   },
   dark: {
     color: {
@@ -32,7 +32,7 @@ export default {
       black: "#fff",
       grey: "#323232",
       greyDark: "#E0E0E0",
-      navLink: "#00ff86"
-    }
-  }
+      navLink: "#00ff86",
+    },
+  },
 };

@@ -31,12 +31,14 @@ const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) => left
-    && `
+  ${({ left }) =>
+    left &&
+    `
     justify-content: flex-end;
   `};
-  ${({ right }) => right
-    && `
+  ${({ right }) =>
+    right &&
+    `
     justify-content: flex-start;
   `};
 
@@ -90,7 +92,7 @@ const Tab = ({ id, ext }) => {
   return (
     <InternalLink
       activeStyle={{
-        color: `${theme.color.primaryDark}`
+        color: `${theme.color.primaryDark}`,
       }}
       to={link}
     >
@@ -101,7 +103,7 @@ const Tab = ({ id, ext }) => {
 
 Tab.propTypes = {
   id: PropTypes.string,
-  ext: PropTypes.string
+  ext: PropTypes.string,
 };
 
 const Header = ({ isDarkMode }) => (
@@ -123,9 +125,12 @@ const Header = ({ isDarkMode }) => (
 );
 
 Header.propTypes = {
-  isDarkMode: PropTypes.bool
+  isDarkMode: PropTypes.bool,
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(
+  mapStateToProps,
+  null
+)(Header);

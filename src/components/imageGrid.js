@@ -59,16 +59,15 @@ const ImagePost = styled(Img)`
     }
 
     &:hover:after {
-      ${({ hoverText }) => (hoverText ? `content: '${hoverText}';` : "content: 'View';")};
+      ${({ hoverText }) =>
+        hoverText ? `content: '${hoverText}';` : "content: 'View';"};
       opacity: 1;
     }
   }
 `;
 
 const ImageGridItem = ({ node, isDarkMode }) => {
-  const {
-    title, slug, photo, category
-  } = node;
+  const { title, slug, photo, category } = node;
 
   return (
     <ImageContainer>
@@ -86,7 +85,7 @@ const ImageGridItem = ({ node, isDarkMode }) => {
 };
 
 ImageGridItem.propTypes = {
-  isDarkMode: PropTypes.bool
+  isDarkMode: PropTypes.bool,
 };
 
 const ImageGrid = ({ data, isDarkMode }) => (
@@ -98,9 +97,12 @@ const ImageGrid = ({ data, isDarkMode }) => (
 );
 
 ImageGrid.propTypes = {
-  isDarkMode: PropTypes.bool
+  isDarkMode: PropTypes.bool,
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(mapStateToProps, null)(ImageGrid);
+export default connect(
+  mapStateToProps,
+  null
+)(ImageGrid);
