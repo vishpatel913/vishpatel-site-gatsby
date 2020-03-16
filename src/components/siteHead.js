@@ -9,7 +9,7 @@ import { capitalizeString } from "../utils/helpers";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({
-  title, description, keywords, page
+ title, description, keywords, page
 }) => {
   const theme = useContext(ThemeContext);
   let siteTitle = GatsbyConfig.siteMetadata.title;

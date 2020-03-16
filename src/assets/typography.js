@@ -25,6 +25,9 @@ const typography = new Typography({
     "#___gatsby, #gatsby-focus-wrapper": {
       height: "100%"
     },
+    h1: {
+      marginBottom: "1rem"
+    },
     p: {
       marginBottom: "1rem"
     },

@@ -15,12 +15,15 @@ const ExternalLink = styled.a`
 
 const InternalLink = ExternalLink.withComponent(Link);
 
-
 const LinkRenderer = ({ href, title, children }) => {
   const internal = href.indexOf("/") === 0;
-  return internal
-    ? <InternalLink to={href}>{children}</InternalLink>
-    : <ExternalLink href={href} title={title}>{children}</ExternalLink>;
+  return internal ? (
+    <InternalLink to={href}>{children}</InternalLink>
+  ) : (
+    <ExternalLink href={href} title={title}>
+      {children}
+    </ExternalLink>
+  );
 };
 
 LinkRenderer.propTypes = {

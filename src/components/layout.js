@@ -43,7 +43,7 @@ const Layout = ({ children, page, isDarkMode }) => {
 
 Layout.propTypes = {
   page: PropTypes.string,
-  isDarkMode: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });

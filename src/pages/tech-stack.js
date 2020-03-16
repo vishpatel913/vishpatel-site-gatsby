@@ -78,7 +78,7 @@ const GridTechItem = ({ node, isDarkMode }) => {
 };
 
 GridTechItem.propTypes = {
-  isDarkMode: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 };
 
 const TechStackPage = ({ data, location, isDarkMode }) => (
@@ -98,7 +98,7 @@ const TechStackPage = ({ data, location, isDarkMode }) => (
 );
 
 TechStackPage.propTypes = {
-  isDarkMode: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });

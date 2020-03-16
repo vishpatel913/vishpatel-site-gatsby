@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
-import cv2018 from "../../static/files/cv-2018.pdf";
 
 const Container = styled.header`
   background: ${({ theme }) => theme.color.white};
@@ -31,14 +30,12 @@ const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) =>
-    left &&
-    `
+  ${({ left }) => left
+    && `
     justify-content: flex-end;
   `};
-  ${({ right }) =>
-    right &&
-    `
+  ${({ right }) => right
+    && `
     justify-content: flex-start;
   `};
 
@@ -48,8 +45,8 @@ const FlexRow = styled.div`
   }
 `;
 
-const ExternalLink = styled.a`
-  color: ${({ theme }) => theme.color.navLink};
+const InternalLink = styled(Link)`
+  color: ${({ theme }) => theme.color.greyDark};
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
@@ -63,7 +60,7 @@ const ExternalLink = styled.a`
   }
 `;
 
-const InternalLink = ExternalLink.withComponent(Link);
+const ExternalLink = InternalLink.withComponent("a");
 
 const Logo = styled.img`
   margin: 0 0.5rem;
@@ -92,7 +89,7 @@ const Tab = ({ id, ext }) => {
   return (
     <InternalLink
       activeStyle={{
-        color: `${theme.color.primaryDark}`,
+        color: `${theme.color.primary}`
       }}
       to={link}
     >
@@ -103,7 +100,7 @@ const Tab = ({ id, ext }) => {
 
 Tab.propTypes = {
   id: PropTypes.string,
-  ext: PropTypes.string,
+  ext: PropTypes.string
 };
 
 const Header = ({ isDarkMode }) => (
@@ -118,19 +115,16 @@ const Header = ({ isDarkMode }) => (
       </Link>
       <FlexRow right>
         <Tab id="tech-stack" />
-        <Tab id="resume" ext={cv2018} />
+        <Tab id="resume" />
       </FlexRow>
     </Navigation>
   </Container>
 );
 
 Header.propTypes = {
-  isDarkMode: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(Header);
+export default connect(mapStateToProps, null)(Header);

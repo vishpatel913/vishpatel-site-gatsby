@@ -106,7 +106,7 @@ const Social = ({ title, link }) => (
 
 Social.propTypes = {
   title: PropTypes.string,
-  link: PropTypes.string,
+  link: PropTypes.string
 };
 
 const AboutPage = ({ data, location, isDarkMode }) => {
@@ -118,7 +118,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
     gitHubAccount,
     linkedInProfile,
     profilePhoto,
-    biography,
+    biography
   } = data.contentfulAuthor;
 
   return (
@@ -132,7 +132,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
               alt={`Profile picture for ${name}`}
               imgStyle={{
                 verticalAlign: "middle",
-                filter: isDarkMode ? "brightness(80%) sepia(10%)" : "none",
+                filter: isDarkMode ? "brightness(80%) sepia(10%)" : "none"
               }}
             />
           </ImageContainer>
@@ -145,18 +145,13 @@ const AboutPage = ({ data, location, isDarkMode }) => {
             </EmailLink>
             <SocialContainer>
               <Social title="gitHub" link={gitHubAccount} />
-              <Social
-                title="instagram"
-                link={`http://instagram.com/${twitterHandle}`}
-              />
+              <Social title="instagram" link={`http://instagram.com/${twitterHandle}`} />
               <Social title="linkedIn" link={linkedInProfile} />
             </SocialContainer>
           </MetaContainer>
         </FlexContainer>
         <ContentContainer>
-          <MarkdownRenderer
-            source={biography.childMarkdownRemark.rawMarkdownBody}
-          />
+          <MarkdownRenderer source={biography.childMarkdownRemark.rawMarkdownBody} />
         </ContentContainer>
       </PageContainer>
     </Layout>
@@ -164,15 +159,12 @@ const AboutPage = ({ data, location, isDarkMode }) => {
 };
 
 AboutPage.propTypes = {
-  isDarkMode: PropTypes.bool,
+  isDarkMode: PropTypes.bool
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 
-export default connect(
-  mapStateToProps,
-  null
-)(AboutPage);
+export default connect(mapStateToProps, null)(AboutPage);
 
 export const query = graphql`
   {

@@ -37,7 +37,4 @@ const mapDispatchToProps = dispatch => ({
   toggleDarkMode: () => dispatch({ type: "TOGGLE_DARKMODE" })
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DarkModeToggle);
+export default connect(mapStateToProps, mapDispatchToProps)(DarkModeToggle);
