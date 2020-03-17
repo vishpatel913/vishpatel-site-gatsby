@@ -12,13 +12,13 @@ import {
   FaCheckCircle,
   FaSun,
   FaMoon,
-  FaFilePdf
+  FaDownload
 } from "react-icons/fa";
 
 const IconContainer = styled.span`
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 `;
 
@@ -52,8 +52,8 @@ const Icon = ({ className, name }) => {
     case "moon":
       icon = <FaMoon />;
       break;
-    case "pdf":
-      icon = <FaFilePdf />;
+    case "download":
+      icon = <FaDownload />;
       break;
     default:
   }

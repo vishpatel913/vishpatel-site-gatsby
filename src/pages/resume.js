@@ -4,8 +4,8 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import MarkdownRenderer from "../components/markdownRenderer";
+import Button from "../components/button";
 import Icon from "../components/icon";
-import cv2018 from "../../static/files/cv-2018.pdf";
 
 const PageContainer = styled.div`
   display: grid;
@@ -56,14 +56,6 @@ const TechGrid = styled.ul`
   }
 `;
 
-const PdfLink = styled.a`
-  color: ${({ theme }) => theme.color.primary};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.primaryDark};
-  }
-`;
-
 const SectionContainer = styled.div`
   padding: 1.5rem;
 
@@ -96,11 +88,32 @@ const MetaItemContainer = styled.div`
   }
 `;
 
+const IntroHeading = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    height: fit-content;
+    padding: 0.5rem 0.5rem;
+  }
+`;
+
 const IntroContent = ({ name, title, bio }) => {
   const [devTitle] = title.toUpperCase().split(" AND ");
   return (
     <div>
-      <h1>{name}</h1>
+      <IntroHeading>
+        <h1>{name}</h1>
+        <Button
+          small
+          outline
+          onClick={() => {
+            window.print();
+          }}
+        >
+          <Icon name="download" />
+        </Button>
+      </IntroHeading>
       <p>
         <strong>{devTitle}</strong>
       </p>
@@ -196,10 +209,6 @@ const ResumePage = ({ data, location }) => {
               www.vishpatel.com
               <br />
             </p>
-            <PdfLink href={cv2018} rel="noopener noreferrer" target="_blank">
-              <Icon name="pdf" />
-              View PDF
-            </PdfLink>
           </SectionContainer>
         </SideContainer>
         <MainContainer>
