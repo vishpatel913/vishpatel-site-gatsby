@@ -111,7 +111,7 @@ const IntroContent = ({ name, title, bio }) => {
             window.print();
           }}
         >
-          <Icon name="download" />
+          <Icon name="file-download" />
         </Button>
       </IntroHeading>
       <p>

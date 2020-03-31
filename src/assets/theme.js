@@ -22,7 +22,7 @@ export default {
   dark: {
     color: {
       main: "#f7f7f7",
-      background: "#210531",
+      background: "#19143c",
       primary: "#00ff86",
       primaryLight: "#11aa61",
       primaryDark: "#75fbbb",
@@ -30,9 +30,9 @@ export default {
       secondaryLight: "#a4184e",
       // secondary: "#e4ff01",
       // secondaryLight: "#11aa61",
-      white: "#210531",
+      white: "#1d1642",
       black: "#fff",
-      grey: "#323232",
+      grey: "#2a2442",
       greyDark: "#E0E0E0"
     }
   }
