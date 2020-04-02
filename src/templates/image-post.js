@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 import MarkdownRenderer from "../components/markdownRenderer";
+import Link from "../components/link";
 import CommentForm from "../components/commentForm";
 import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
@@ -89,12 +89,7 @@ const DateText = styled.span`
 const CategoryLink = styled(Link)`
   display: inline-block;
   margin-bottom: 4px;
-  text-decoration: none;
   color: ${({ theme }) => theme.color.greyDark};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.primary};
-  }
 `;
 
 const TagLink = styled.span`
@@ -109,21 +104,14 @@ const TagLink = styled.span`
 `;
 
 const Tag = ({ title }) => {
-  const tagSlug = title
-    .toLowerCase()
-    .split(" ")
-    .join("-");
+  const tagSlug = title.toLowerCase().split(" ").join("-");
   return <TagLink to={`tag/${tagSlug}`}>{`#${title}`}</TagLink>;
-};
-
-Tag.propTypes = {
-  title: PropTypes.string
 };
 
 const ImageTemplate = ({ data, location, isDarkMode }) => {
   const {
-    title, photo, imageCaption, dateCreated, category, tags, slug
-  } = data.contentfulImage;
+ title, photo, imageCaption, dateCreated, category, tags, slug
+} = data.contentfulImage;
   const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
@@ -146,7 +134,7 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
             )}
             <ImageMetaContainer>
               <DateText>{dateCreated}</DateText>
-              <CategoryLink to={`/work/${category}`}>
+              <CategoryLink href={`/work/${category}`} title={category}>
                 <Icon name="category" />
                 {capitalizeString(category)}
               </CategoryLink>
@@ -163,10 +151,6 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
       </PostContainer>
     </Layout>
   );
-};
-
-ImageTemplate.propTypes = {
-  isDarkMode: PropTypes.bool
 };
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });

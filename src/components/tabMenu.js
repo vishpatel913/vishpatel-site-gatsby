@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
-import styled, { ThemeContext } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import { Link } from "gatsby";
 
 import { capitalizeString } from "../utils/helpers";
@@ -41,7 +40,9 @@ const MenuLink = styled(Link)`
   font-weight: lighter;
   padding: 0.5rem 1rem;
   color: ${({ theme }) => theme.color.greyDark};
-  &:hover {
+
+  &:hover, 
+  &.active {
     color: ${({ theme }) => theme.color.primary};
     background: ${({ theme }) => theme.color.background};
   }
@@ -52,7 +53,6 @@ const MenuLink = styled(Link)`
 `;
 
 const Tab = ({ category }) => {
-  const theme = useContext(ThemeContext);
   let link = `/work/${category}`;
   if (category === "all") {
     link = "/work";
@@ -61,20 +61,13 @@ const Tab = ({ category }) => {
   return (
     <MenuItem>
       <MenuLink
-        activeStyle={{
-          color: theme.color.primary,
-          background: theme.color.background
-        }}
+        activeClassName="active"
         to={link}
       >
         {capitalizeString(category)}
       </MenuLink>
     </MenuItem>
   );
-};
-
-Tab.propTypes = {
-  category: PropTypes.string
 };
 
 const TabMenu = () => (

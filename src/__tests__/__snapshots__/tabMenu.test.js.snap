@@ -35,7 +35,8 @@ exports[`TabMenu renders correctly 1`] = `
   color: #595959;
 }
 
-.c3:hover {
+.c3:hover,
+.c3.active {
   color: #512DA8;
   background: #f7f7f7;
 }

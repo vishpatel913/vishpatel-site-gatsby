@@ -35,7 +35,8 @@ const typography = new Typography({
       margin: "0"
     },
     a: {
-      textDecoration: "none"
+      textDecoration: "none",
+      transition: "all 0.2s"
     }
   })
 });

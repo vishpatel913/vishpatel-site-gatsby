@@ -4,7 +4,7 @@ exports[`Icon renders the category icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -36,7 +36,7 @@ exports[`Icon renders the check icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -68,7 +68,7 @@ exports[`Icon renders the gitHub icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -100,7 +100,7 @@ exports[`Icon renders the icon with the correct class 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -132,7 +132,7 @@ exports[`Icon renders the instagram icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -164,7 +164,7 @@ exports[`Icon renders the linkedIn icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -196,7 +196,7 @@ exports[`Icon renders the mail icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
@@ -228,7 +228,7 @@ exports[`Icon renders the user icon correctly 1`] = `
 .c0 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 

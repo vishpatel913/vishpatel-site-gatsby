@@ -4,23 +4,24 @@ exports[`CommentForm renders correctly 1`] = `
 .c4 {
   display: inherit;
   font-size: 18px;
-  margin-right: 4px;
+  margin: 0 4px;
   vertical-align: text-top;
 }
 
 .c2 {
   display: inherit;
   cursor: pointer;
-  color: #595959;
-  background: #f7f7f7;
   margin: 0;
-  padding: 0.5rem 1rem;
   border: solid 1px;
-  border-color: #E0E0E0;
   border-radius: 4px;
-  font-weight: lighter;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  font-weight: lighter;
+  outline-color: #35cdbc;
+  color: #595959;
+  background: #f7f7f7;
+  border-color: #E0E0E0;
+  padding: 0.5rem 1rem;
 }
 
 .c2:hover {

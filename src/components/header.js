@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
-import styled, { ThemeContext } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import { Link } from "gatsby";
 import { connect } from "react-redux";
 
@@ -45,22 +44,38 @@ const FlexRow = styled.div`
   }
 `;
 
-const InternalLink = styled(Link)`
+const HeaderLink = styled(Link)`
   color: ${({ theme }) => theme.color.greyDark};
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
+  position: relative;
 
-  &:hover {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: ${({ theme }) => theme.color.primary};
+    left: 0;
+    right: 0;
+    bottom: -0.25rem;
+    transition: all 0.2s;
+    height: 1px;
+    width: 0;
+  }
+
+  &:hover,
+  &.active {
     color: ${({ theme }) => theme.color.primary};
+    &::after {
+      width: 100%;
+    }
   }
 
   @media (max-width: 768px) {
     font-size: 14px;
   }
 `;
-
-const ExternalLink = InternalLink.withComponent("a");
 
 const Logo = styled.img`
   margin: 0 0.5rem;
@@ -72,35 +87,14 @@ const Logo = styled.img`
   }
 `;
 
-const Tab = ({ id, ext }) => {
-  const theme = useContext(ThemeContext);
-  const label = id
-    .toUpperCase()
-    .split("-")
-    .join(" ");
-  if (ext) {
-    return (
-      <ExternalLink href={ext} rel="noopener noreferrer" target="_blank">
-        {label}
-      </ExternalLink>
-    );
-  }
+const Tab = ({ id }) => {
+  const label = id.toUpperCase().split("-").join(" ");
   const link = `/${id}`;
   return (
-    <InternalLink
-      activeStyle={{
-        color: `${theme.color.primary}`
-      }}
-      to={link}
-    >
+    <HeaderLink activeClassName="active" to={link}>
       {label}
-    </InternalLink>
+    </HeaderLink>
   );
-};
-
-Tab.propTypes = {
-  id: PropTypes.string,
-  ext: PropTypes.string
 };
 
 const Header = ({ isDarkMode }) => (
@@ -120,10 +114,6 @@ const Header = ({ isDarkMode }) => (
     </Navigation>
   </Container>
 );
-
-Header.propTypes = {
-  isDarkMode: PropTypes.bool
-};
 
 const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
 

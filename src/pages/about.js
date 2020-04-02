@@ -80,7 +80,7 @@ const SocialLink = styled.a`
 
   &:hover {
     color: ${({ theme }) => theme.color.primary};
-    background: ${({ theme }) => theme.color.background};
+    border-color: ${({ theme }) => theme.color.primary};
   }
 `;
 
