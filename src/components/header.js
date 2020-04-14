@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { connect } from "react-redux";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
+import DarkModeContext from "../context/darkModeContext";
 
 const Container = styled.header`
   background: ${({ theme }) => theme.color.white};
@@ -97,7 +97,9 @@ const Tab = ({ id }) => {
   );
 };
 
-const Header = ({ isDarkMode }) => (
+const Header = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+  return (
   <Container>
     <Navigation>
       <FlexRow left>
@@ -113,8 +115,7 @@ const Header = ({ isDarkMode }) => (
       </FlexRow>
     </Navigation>
   </Container>
-);
+  );
+};
 
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;

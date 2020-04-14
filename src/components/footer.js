@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import DarkModeToggle from "./darkModeToggle";
+import DarkModeContext from "../context/darkModeContext";
 
 const Container = styled.footer`
   display: flex;
@@ -29,7 +28,8 @@ const ContentfulLogo = styled.img`
   }
 `;
 
-const Footer = ({ isDarkMode }) => {
+const Footer = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const imgSrc = `https://images.ctfassets.net/fo9twyrwpveg/${isDarkMode ? "7F5pMEOhJ6Y2WukCa2cYws/398e290725ef2d3b3f0f5a73ae8401d6" : "44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55"}/PoweredByContentful_${isDarkMode ? "Dark" : "Light"}Background.svg`;
   return (
     <Container>
@@ -44,13 +44,5 @@ const Footer = ({ isDarkMode }) => {
   );
 };
 
-Footer.propTypes = {
-  isDarkMode: PropTypes.bool
-};
 
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(
-  mapStateToProps,
-  null
-)(Footer);
+export default Footer;

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
@@ -12,6 +11,7 @@ import CommentList from "../components/commentList";
 import SiteHead from "../components/siteHead";
 import Icon from "../components/icon";
 import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
+import { withDarkMode } from "../context/darkModeContext";
 
 const PostContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
@@ -110,8 +110,8 @@ const Tag = ({ title }) => {
 
 const ImageTemplate = ({ data, location, isDarkMode }) => {
   const {
- title, photo, imageCaption, dateCreated, category, tags, slug
-} = data.contentfulImage;
+    title, photo, imageCaption, dateCreated, category, tags, slug
+  } = data.contentfulImage;
   const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
   const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
 
@@ -153,9 +153,7 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
   );
 };
 
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(mapStateToProps, null)(ImageTemplate);
+export default withDarkMode(ImageTemplate);
 
 export const query = graphql`
   query($slug: String!) {

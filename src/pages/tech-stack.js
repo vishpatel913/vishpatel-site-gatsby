@@ -1,13 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Masonry from "react-masonry-component";
 
 import Layout from "../components/layout";
 import { editTracedSvg } from "../utils/helpers";
+import { withDarkMode } from "../context/darkModeContext";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
@@ -77,10 +76,6 @@ const GridTechItem = ({ node, isDarkMode }) => {
   );
 };
 
-GridTechItem.propTypes = {
-  isDarkMode: PropTypes.bool
-};
-
 const TechStackPage = ({ data, location, isDarkMode }) => (
   <Layout page={location.pathname}>
     <PageContainer>
@@ -97,16 +92,7 @@ const TechStackPage = ({ data, location, isDarkMode }) => (
   </Layout>
 );
 
-TechStackPage.propTypes = {
-  isDarkMode: PropTypes.bool
-};
-
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(
-  mapStateToProps,
-  null
-)(TechStackPage);
+export default withDarkMode(TechStackPage);
 
 export const query = graphql`
   {
