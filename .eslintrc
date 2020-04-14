@@ -1,7 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
-  "plugins": ["babel"],
+  "extends": ["airbnb"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": ["error", "double"],
@@ -15,23 +14,39 @@
       }
     ],
     "template-curly-spacing": "off",
-    "indent": "off",
-    "no-console": ["off", { "allow": ["info", "error"] }],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["info", "error"]
+      }
+    ],
     "no-underscore-dangle": ["off"],
     "no-unused-expressions": ["off"],
     "no-use-before-define": ["off"],
     "arrow-parens": ["error", "as-needed"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
     "react/no-danger": 0,
     "react/no-children-prop": ["off"],
     "react/destructuring-assignment": ["off"],
     "react/prop-types": [0],
     "react/require-default-props": [0],
-    "babel/new-cap": 1,
-    "babel/object-curly-spacing": [2, "always"],
-    "babel/semi": 1,
     "no-alert": ["off"],
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-curly-spacing": "off",
+    "react/jsx-equals-spacing": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-max-props-per-line": "off",
+    "react/jsx-tag-spacing": "off",
+    "react/jsx-wrap-multilines": "off"
   },
   "env": {
     "browser": true,

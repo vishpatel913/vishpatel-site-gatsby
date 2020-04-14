@@ -1,7 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
@@ -9,6 +7,7 @@ import Layout from "../components/layout";
 import MarkdownRenderer from "../components/markdownRenderer";
 import Icon from "../components/icon";
 import { capitalizeString, editTracedSvg } from "../utils/helpers";
+import { withDarkMode } from "../context/darkModeContext";
 
 const PageContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
@@ -104,11 +103,6 @@ const Social = ({ title, link }) => (
   </SocialLink>
 );
 
-Social.propTypes = {
-  title: PropTypes.string,
-  link: PropTypes.string
-};
-
 const AboutPage = ({ data, location, isDarkMode }) => {
   const {
     name,
@@ -158,13 +152,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
   );
 };
 
-AboutPage.propTypes = {
-  isDarkMode: PropTypes.bool
-};
-
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(mapStateToProps, null)(AboutPage);
+export default withDarkMode(AboutPage);
 
 export const query = graphql`
   {

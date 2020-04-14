@@ -1,12 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { connect } from "react-redux";
 
 import SiteHead from "./siteHead";
 import Header from "./header";
 import Footer from "./footer";
 import themeConfig from "../assets/theme";
+import DarkModeContext from "../context/darkModeContext";
 
 const SiteContainer = styled.div`
   background: ${({ theme }) => theme.color.background};
@@ -25,7 +24,8 @@ const BodyContainer = styled.main`
   }
 `;
 
-const Layout = ({ children, page, isDarkMode }) => {
+const Layout = ({ children, page }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
   const themeColor = themeConfig[isDarkMode ? "dark" : "light"];
   const updatedTheme = { ...themeConfig, ...themeColor };
 
@@ -41,14 +41,4 @@ const Layout = ({ children, page, isDarkMode }) => {
   );
 };
 
-Layout.propTypes = {
-  page: PropTypes.string,
-  isDarkMode: PropTypes.bool
-};
-
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(
-  mapStateToProps,
-  null
-)(Layout);
+export default Layout;

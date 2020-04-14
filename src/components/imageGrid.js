@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 import Masonry from "react-masonry-component";
 
 import { getAltText, editTracedSvg } from "../utils/helpers";
+import DarkModeContext from "../context/darkModeContext";
 
 const GridContainer = styled(Masonry)`
   margin: auto;
@@ -67,8 +66,8 @@ const ImagePost = styled(Img)`
 
 const ImageGridItem = ({ node, isDarkMode }) => {
   const {
- title, slug, photo, category
-} = node;
+    title, slug, photo, category
+  } = node;
 
   return (
     <ImageContainer>
@@ -85,25 +84,15 @@ const ImageGridItem = ({ node, isDarkMode }) => {
   );
 };
 
-ImageGridItem.propTypes = {
-  isDarkMode: PropTypes.bool
-};
-
-const ImageGrid = ({ data, isDarkMode }) => (
+const ImageGrid = ({ data }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+  return (
   <GridContainer elementType="ul">
     {data.map(({ node }) => (
       <ImageGridItem key={node.slug} node={node} isDarkMode={isDarkMode} />
     ))}
   </GridContainer>
-);
-
-ImageGrid.propTypes = {
-  isDarkMode: PropTypes.bool
+  );
 };
 
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-export default connect(
-  mapStateToProps,
-  null
-)(ImageGrid);
+export default ImageGrid;

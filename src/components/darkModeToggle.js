@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import Icon from "./icon";
+import DarkModeContext from "../context/darkModeContext";
 
 const ToggleButton = styled.button`
   background: none;
@@ -16,7 +15,9 @@ const ToggleButton = styled.button`
   vertical-align: middle;
 `;
 
-const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => (
+const DarkModeToggle = () => {
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  return (
   <ToggleButton
     onClick={() => {
       toggleDarkMode();
@@ -24,17 +25,7 @@ const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => (
   >
     <Icon name={isDarkMode ? "moon" : "sun"} />
   </ToggleButton>
-);
-
-DarkModeToggle.propTypes = {
-  isDarkMode: PropTypes.bool,
-  toggleDarkMode: PropTypes.func
+  );
 };
 
-const mapStateToProps = ({ isDarkMode }) => ({ isDarkMode });
-
-const mapDispatchToProps = dispatch => ({
-  toggleDarkMode: () => dispatch({ type: "TOGGLE_DARKMODE" })
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DarkModeToggle);
+export default DarkModeToggle;
