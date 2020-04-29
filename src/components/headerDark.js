@@ -8,7 +8,7 @@ import logo from "../../static/images/logo-light.svg";
 const Container = styled.div`
   background: #333333;
   padding: 1.5rem 2rem;
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 1rem;
   }
 `;
@@ -27,7 +27,7 @@ const Navigation = styled.div`
   flex: 1;
   justify-content: flex-end;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     width: 50%;
     flex-wrap: wrap;
   }
@@ -60,7 +60,7 @@ const Logo = styled.img`
   height: 64px;
   width: 64px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     height: 44px;
     width: 44px;
   }

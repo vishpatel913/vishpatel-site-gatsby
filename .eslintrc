@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": ["error", "double"],

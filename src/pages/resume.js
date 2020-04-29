@@ -14,7 +14,7 @@ const PageContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     grid-template-columns: 1fr;
     margin: 0;
     padding: 0;
@@ -50,7 +50,7 @@ const TechGrid = styled.ul`
     text-overflow: ellipsis;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 0.5rem;
   }
@@ -59,7 +59,7 @@ const TechGrid = styled.ul`
 const SectionContainer = styled.div`
   padding: 1.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 2rem;
   }
 `;
@@ -137,7 +137,7 @@ const TechCategory = ({ title, data }) => {
 };
 
 const SectionContent = ({
- title, subTitle, location, started, finished, markdown
+  title, subTitle, location, started, finished, markdown
 }) => (
   <div>
     <MetaHeaderContainer>
@@ -159,8 +159,9 @@ const SectionContent = ({
 
 const ResumePage = ({ data, location }) => {
   const {
- name, tagLine, emailAddress, phone, shortBio
-} = data.contentfulAuthor;
+    name, tagLine, emailAddress, phone, shortBio
+  } = data.contentfulAuthor;
+  const projects = data.allContentfulProject.nodes;
   const { education, employment } = data.allContentfulResume.nodes.reduce(
     (p, c) => {
       p[c.type].push(c);
@@ -171,20 +172,18 @@ const ResumePage = ({ data, location }) => {
       employment: []
     }
   );
-  const projects = data.allContentfulProject.nodes;
-  const techByCategory = data.allContentfulTech.nodes.reduce(
-    (p, c) => {
-      p[c.category].push(c.name);
-      return p;
-    },
-    {
-      language: ["JavaScript", "Bash"],
-      framework: [],
-      platform: [],
-      tool: ["Git"],
-      design: []
-    }
-  );
+  const techByCategory = data.allContentfulTech.nodes
+    .sort((a, b) => (a.competence === null) - (b.competence === null))
+    .reduce(
+      (acc, tech) => ({ ...acc, [tech.category]: [...acc[tech.category], tech.name] }),
+      {
+        language: ["JavaScript", "Bash"],
+        framework: [],
+        platform: [],
+        tool: ["Git"],
+        design: []
+      }
+    );
 
   return (
     <Layout page={location.pathname}>
@@ -301,10 +300,11 @@ export const query = graphql`
         }
       }
     }
-    allContentfulTech(sort: { fields: order }) {
+    allContentfulTech(sort: { fields: competence, order: DESC }) {
       nodes {
         name
         category
+        competence
       }
     }
   }

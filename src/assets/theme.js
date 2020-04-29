@@ -3,6 +3,11 @@ export default {
     single: "1rem",
     half: "0.5rem"
   },
+  bp: {
+    md: "992px",
+    sm: "768px",
+    xs: "480px"
+  },
   light: {
     color: {
       main: "#323232",

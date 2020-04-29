@@ -19,7 +19,7 @@ const BodyContainer = styled.main`
   height: 100%;
   padding: 1.5rem 2rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 0;
   }
 `;

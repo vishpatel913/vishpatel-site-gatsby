@@ -7,7 +7,7 @@ import { capitalizeString } from "../utils/helpers";
 const MenuContainer = styled.div`
   display: block;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     text-align: center;
   }
 `;
@@ -21,7 +21,7 @@ const MenuList = styled.ul`
   border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 1rem 1rem 0;
   }
 `;

@@ -6,7 +6,7 @@ import NotFoundMessage from "../components/notFoundMessage";
 const PageContainer = styled.div`
   margin: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0 1rem;
     padding-top: 1rem;
   }

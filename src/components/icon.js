@@ -12,7 +12,9 @@ import {
   FaCheckCircle,
   FaSun,
   FaMoon,
-  FaFileDownload
+  FaFileDownload,
+  FaFire,
+  FaStar
 } from "react-icons/fa";
 
 const IconContainer = styled.span`
@@ -54,6 +56,12 @@ const Icon = ({ className, name }) => {
       break;
     case "file-download":
       icon = <FaFileDownload />;
+      break;
+    case "fire":
+      icon = <FaFire />;
+      break;
+    case "star":
+      icon = <FaStar />;
       break;
     default:
   }

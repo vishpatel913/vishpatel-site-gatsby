@@ -12,7 +12,7 @@ const Container = styled.footer`
   max-width: 1200px;
   padding: 0.5rem 2rem 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 1rem;
   }
 `;

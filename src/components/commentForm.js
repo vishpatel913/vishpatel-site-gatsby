@@ -23,7 +23,7 @@ const FormInput = styled.input`
     font-weight: lighter;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     width: 100%;
     margin-right: 0;
   }

@@ -10,7 +10,7 @@ import DarkModeContext from "../context/darkModeContext";
 const GridContainer = styled(Masonry)`
   margin: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0 1rem;
     padding-top: 1rem;
   }
@@ -19,24 +19,24 @@ const GridContainer = styled(Masonry)`
 const ImageContainer = styled.li`
   display: block;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     width: 100%;
     margin-bottom: 1rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
     width: 50%;
     padding: 0.5rem;
     margin: 0;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     width: 33.33333%;
   }
 `;
 
 const ImagePost = styled(Img)`
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
     &:after {
       content: "";
       position: absolute;

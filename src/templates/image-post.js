@@ -17,35 +17,35 @@ const PostContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0;
     padding: 0;
   }
 `;
 
 const FlexContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     display: flex;
   }
 `;
 
 const ImageContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     flex: 2;
   }
 `;
 
 const ContentContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     flex: 1;
     padding: 1.5rem;
   }
-  @media (max-width: 992px) {
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
     padding: 2rem;
     max-width: 80%;
     margin: auto;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
   }
 `;
@@ -55,10 +55,10 @@ const CommentContainer = styled.div`
   max-width: 80%;
   margin: auto;
 
-  @media (max-width: 992px) {
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
     padding-top: 0;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
   }
 `;
