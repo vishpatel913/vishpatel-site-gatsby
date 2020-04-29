@@ -19,7 +19,7 @@ const ExternalLink = styled.a`
     right: -0.15rem;
     left: -0.1rem;
     opacity: 0.3;
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.secondary};
     transform: translateY(0%) rotateZ(-2deg);
     transition: all 0.2s;
   }

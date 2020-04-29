@@ -3,15 +3,17 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import Layout from "../components/layout";
-import MarkdownRenderer from "../components/markdownRenderer";
-import Link from "../components/link";
-import CommentForm from "../components/commentForm";
-import CommentList from "../components/commentList";
-import SiteHead from "../components/siteHead";
-import Icon from "../components/icon";
-import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
-import { withDarkMode } from "../context/darkModeContext";
+import {
+  Layout,
+  MarkdownRenderer,
+  Link,
+  CommentForm,
+  CommentList,
+  SiteHead,
+  Icon
+} from "../components";
+import { capitalizeString, getAltText, editTracedSvg } from "../utils";
+import { withDarkMode } from "../context/darkMode";
 
 const PostContainer = styled.div`
   background: ${({ theme }) => theme.color.white};

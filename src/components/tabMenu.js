@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-import { capitalizeString } from "../utils/helpers";
-
 const MenuContainer = styled.div`
   display: block;
 
@@ -52,28 +50,16 @@ const MenuLink = styled(Link)`
   }
 `;
 
-const Tab = ({ category }) => {
-  let link = `/work/${category}`;
-  if (category === "all") {
-    link = "/work";
-  }
-
-  return (
-    <MenuItem>
-      <MenuLink activeClassName="active" to={link}>
-        {capitalizeString(category)}
-      </MenuLink>
-    </MenuItem>
-  );
-};
-
-const TabMenu = () => (
+const TabMenu = ({ links }) => (
   <MenuContainer>
     <MenuList>
-      <Tab category="all" />
-      <Tab category="design" />
-      <Tab category="development" />
-      <Tab category="photography" />
+      {links.map(item => (
+        <MenuItem>
+          <MenuLink activeClassName="active" to={item.url}>
+            {item.title}
+          </MenuLink>
+        </MenuItem>
+      ))}
     </MenuList>
   </MenuContainer>
 );

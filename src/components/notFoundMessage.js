@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import vector from "../../static/images/404-vector.svg";
-import DarkModeContext from "../context/darkModeContext";
+import errorVector from "../../static/images/404-vector.svg";
+import { useDarkMode } from "../context/darkMode";
 
 const Container = styled.div`
   text-align: center;
@@ -13,11 +13,11 @@ const NotFoundVector = styled.img`
 `;
 
 const NotFoundMessage = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   return (
     <Container>
       <h1>NOT FOUND</h1>
-      <NotFoundVector invert={isDarkMode} src={vector} />
+      <NotFoundVector invert={isDarkMode} src={errorVector} />
       <p>You just found a page that doesn&#39;t exist... oh the sadness.</p>
     </Container>
   );

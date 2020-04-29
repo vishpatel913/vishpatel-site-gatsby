@@ -1,9 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Icon from "./icon";
-import Button from "./button";
+import { Icon, Button } from ".";
 
 const Container = styled.div``;
 
@@ -146,10 +144,6 @@ const CommentForm = ({ slug }) => {
       </FormToast>
     </Container>
   );
-};
-
-CommentForm.propTypes = {
-  slug: PropTypes.string
 };
 
 export default CommentForm;

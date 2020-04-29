@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import Icon from "./icon";
-import DarkModeContext from "../context/darkModeContext";
+import { Icon } from ".";
+import { useDarkMode } from "../context/darkMode";
 
 const ToggleButton = styled.button`
   background: none;
@@ -16,7 +16,7 @@ const ToggleButton = styled.button`
 `;
 
 const DarkModeToggle = () => {
-  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
     <ToggleButton
       onClick={() => {

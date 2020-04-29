@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Icon from "./icon";
+import { Icon } from ".";
 
 const RatingContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const RatingItem = styled(Icon)`
   color: ${({ theme, on }) => theme.color[on ? "primary" : "grey"]};
 `;
 
-const Number = styled.span`
+const Label = styled.span`
   font-size: inherit;
   color: ${({ theme }) => theme.color.primary};
 `;
@@ -26,7 +26,7 @@ const Rating = ({ value, max = 5, showAll = true, icon = "star" }) => (
     ) : (
       <>
         <RatingItem name={icon} on />
-        <Number>{value}</Number>
+        <Label>{value}</Label>
       </>
     )}
   </RatingContainer>

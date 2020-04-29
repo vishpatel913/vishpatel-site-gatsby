@@ -1,8 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import ImageGrid from "../components/imageGrid";
+import { Layout, ImageGrid } from "../components";
 
 const IndexPage = ({ data, location }) => (
   <Layout page={location.pathname}>

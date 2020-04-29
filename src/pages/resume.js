@@ -2,10 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import MarkdownRenderer from "../components/markdownRenderer";
-import Button from "../components/button";
-import Icon from "../components/icon";
+import { Layout, MarkdownRenderer, Button, Icon } from "../components";
 
 const PageContainer = styled.div`
   display: grid;

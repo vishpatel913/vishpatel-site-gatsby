@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { ThemeContext } from "styled-components";
-
 import Helmet from "react-helmet";
 
 import GatsbyConfig from "../../gatsby-config";
-import { capitalizeString } from "../utils/helpers";
+import { capitalizeString } from "../utils";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({ title, description, keywords, page }) => {
@@ -48,13 +46,6 @@ const SiteHead = ({ title, description, keywords, page }) => {
       <html lang="en" />
     </Helmet>
   );
-};
-
-SiteHead.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  page: PropTypes.string
 };
 
 export default SiteHead;

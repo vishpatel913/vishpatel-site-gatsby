@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
-import SiteHead from "./siteHead";
-import Header from "./header";
-import Footer from "./footer";
+import { SiteHead, Header, Footer } from ".";
 import themeConfig from "../assets/theme";
-import DarkModeContext from "../context/darkModeContext";
+import { useDarkMode } from "../context/darkMode";
 
 const SiteContainer = styled.div`
   background: ${({ theme }) => theme.color.background};
@@ -25,12 +23,11 @@ const BodyContainer = styled.main`
 `;
 
 const Layout = ({ children, page }) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-  const themeColor = themeConfig[isDarkMode ? "dark" : "light"];
-  const updatedTheme = { ...themeConfig, ...themeColor };
+  const { isDarkMode } = useDarkMode();
+  const color = themeConfig[isDarkMode ? "dark" : "light"];
 
   return (
-    <ThemeProvider theme={updatedTheme}>
+    <ThemeProvider theme={{ ...themeConfig, color }}>
       <SiteContainer>
         <SiteHead page={page} />
         <Header />

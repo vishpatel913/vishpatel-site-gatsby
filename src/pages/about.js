@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import Layout from "../components/layout";
-import MarkdownRenderer from "../components/markdownRenderer";
-import Icon from "../components/icon";
-import { capitalizeString, editTracedSvg } from "../utils/helpers";
-import { withDarkMode } from "../context/darkModeContext";
+import { Layout, MarkdownRenderer, Icon } from "../components";
+import { capitalizeString, editTracedSvg } from "../utils";
+import { withDarkMode } from "../context/darkMode";
 
 const PageContainer = styled.div`
   background: ${({ theme }) => theme.color.white};

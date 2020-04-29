@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import {
@@ -66,11 +65,6 @@ const Icon = ({ className, name }) => {
     default:
   }
   return <IconContainer className={className}>{icon}</IconContainer>;
-};
-
-Icon.propTypes = {
-  className: PropTypes.string,
-  name: PropTypes.string
 };
 
 export default Icon;

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
-import DarkModeContext from "../context/darkModeContext";
+import { useDarkMode } from "../context/darkMode";
 
 const Container = styled.header`
   background: ${({ theme }) => theme.color.white};
@@ -29,16 +29,8 @@ const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) =>
-    left &&
-    `
-    justify-content: flex-end;
-  `};
-  ${({ right }) =>
-    right &&
-    `
-    justify-content: flex-start;
-  `};
+  ${({ left }) => left && "justify-content: flex-end;"};
+  ${({ right }) => right && "justify-content: flex-start;"};
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     flex-direction: column;
@@ -100,7 +92,7 @@ const Tab = ({ id }) => {
 };
 
 const Header = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   return (
     <Container>
       <Navigation>

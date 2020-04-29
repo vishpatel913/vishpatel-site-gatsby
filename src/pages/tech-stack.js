@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import TechItem from "../components/techItem";
+
+import { Layout, TechItem } from "../components";
 
 const PageContainer = styled.div`
   margin: 0.5rem;

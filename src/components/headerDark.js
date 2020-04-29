@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
@@ -86,11 +85,6 @@ const Tab = ({ title, ext }) => {
       {label}
     </InternalLink>
   );
-};
-
-Tab.propTypes = {
-  title: PropTypes.string,
-  ext: PropTypes.string
 };
 
 const Header = () => (

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
 
-import Rating from "./rating";
-import { editTracedSvg } from "../utils/helpers";
-import { useDarkMode } from "../context/darkModeContext";
+import { Rating } from ".";
+import { editTracedSvg } from "../utils";
+import { useDarkMode } from "../context/darkMode";
 
 const TechContainer = styled.li`
   display: grid;
@@ -12,7 +12,6 @@ const TechContainer = styled.li`
   grid-gap: 1rem;
   position: relative;
   margin: 1rem 0;
-  /* max-height: 5rem; */
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     flex-direction: column;
