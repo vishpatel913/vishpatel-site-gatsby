@@ -41,7 +41,7 @@ const MenuLink = styled(Link)`
   padding: 0.5rem 1rem;
   color: ${({ theme }) => theme.color.greyDark};
 
-  &:hover, 
+  &:hover,
   &.active {
     color: ${({ theme }) => theme.color.primary};
     background: ${({ theme }) => theme.color.background};
@@ -60,10 +60,7 @@ const Tab = ({ category }) => {
 
   return (
     <MenuItem>
-      <MenuLink
-        activeClassName="active"
-        to={link}
-      >
+      <MenuLink activeClassName="active" to={link}>
         {capitalizeString(category)}
       </MenuLink>
     </MenuItem>

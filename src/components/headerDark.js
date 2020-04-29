@@ -67,10 +67,7 @@ const Logo = styled.img`
 `;
 
 const Tab = ({ title, ext }) => {
-  const label = title
-    .toUpperCase()
-    .split("-")
-    .join(" ");
+  const label = title.toUpperCase().split("-").join(" ");
   if (ext) {
     return (
       <ExternalLink href={ext} target="_blank">

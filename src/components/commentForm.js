@@ -63,9 +63,10 @@ const FormToast = styled.div`
   opacity: 0;
 `;
 
-const encode = data => Object.keys(data)
-  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-  .join("&");
+const encode = data =>
+  Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
 
 const handleSubmit = async e => {
   e.preventDefault();
@@ -117,9 +118,26 @@ const CommentForm = ({ slug }) => {
         <input type="hidden" name="form-name" value={formId} />
         <input type="hidden" name="bot-field" />
         <input name="slug" type="hidden" value={slug} />
-        <FormInput name="name" type="text" aria-label="Name" placeholder="Name*" required />
-        <FormInput name="email" type="email" aria-label="Email" placeholder="Email" />
-        <FormMessage name="message" rows="5" aria-label="Message" placeholder="Message*" required />
+        <FormInput
+          name="name"
+          type="text"
+          aria-label="Name"
+          placeholder="Name*"
+          required
+        />
+        <FormInput
+          name="email"
+          type="email"
+          aria-label="Email"
+          placeholder="Email"
+        />
+        <FormMessage
+          name="message"
+          rows="5"
+          aria-label="Message"
+          placeholder="Message*"
+          required
+        />
         <Button type="submit">Submit</Button>
       </form>
       <FormToast id="success-toast">

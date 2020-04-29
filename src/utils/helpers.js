@@ -1,9 +1,10 @@
 import theme from "../assets/theme";
 
-export const capitalizeString = string => string
-  .split(/\s|-/)
-  .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-  .join(" ");
+export const capitalizeString = string =>
+  string
+    .split(/\s|-/)
+    .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(" ");
 
 export const getAltText = (title, category) => {
   switch (category) {

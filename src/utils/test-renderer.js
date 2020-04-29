@@ -3,8 +3,9 @@ import renderer from "react-test-renderer";
 import { ThemeProvider } from "styled-components";
 import theme from "../assets/theme";
 
-const renderWithTheme = tree => renderer.create(
-  <ThemeProvider theme={{ ...theme, ...theme.light }}>{tree}</ThemeProvider>
-);
+const renderWithTheme = tree =>
+  renderer.create(
+    <ThemeProvider theme={{ ...theme, ...theme.light }}>{tree}</ThemeProvider>
+  );
 
 export default renderWithTheme;

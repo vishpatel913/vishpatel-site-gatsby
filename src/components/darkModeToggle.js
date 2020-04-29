@@ -18,13 +18,13 @@ const ToggleButton = styled.button`
 const DarkModeToggle = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
-  <ToggleButton
-    onClick={() => {
-      toggleDarkMode();
-    }}
-  >
-    <Icon name={isDarkMode ? "moon" : "sun"} />
-  </ToggleButton>
+    <ToggleButton
+      onClick={() => {
+        toggleDarkMode();
+      }}
+    >
+      <Icon name={isDarkMode ? "moon" : "sun"} />
+    </ToggleButton>
   );
 };
 

@@ -1,6 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "quotes": ["error", "double"],
@@ -49,6 +50,8 @@
     "react/jsx-wrap-multilines": "off"
   },
   "env": {
+    "commonjs": true,
+    "es6": true,
     "browser": true,
     "mocha": true,
     "node": true,

@@ -25,7 +25,7 @@ const Rating = ({ value, max = 5, showAll = true, icon = "star" }) => (
       ))
     ) : (
       <>
-        <RatingItem name={icon} on={value > i} />
+        <RatingItem name={icon} on />
         <Number>{value}</Number>
       </>
     )}

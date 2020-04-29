@@ -110,10 +110,19 @@ const Tag = ({ title }) => {
 
 const ImageTemplate = ({ data, location, isDarkMode }) => {
   const {
-    title, photo, imageCaption, dateCreated, category, tags, slug
+    title,
+    photo,
+    imageCaption,
+    dateCreated,
+    category,
+    tags,
+    slug
   } = data.contentfulImage;
-  const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
-  const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
+  const comments =
+    data.allContentfulPostComment && data.allContentfulPostComment.edges;
+  const metaDescription = imageCaption
+    ? imageCaption.imageCaption
+    : getAltText(title, category);
 
   return (
     <Layout page={location.pathname}>
@@ -130,7 +139,9 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
           <ContentContainer>
             <h1>{title}</h1>
             {imageCaption && (
-              <MarkdownRenderer source={imageCaption.childMarkdownRemark.rawMarkdownBody} />
+              <MarkdownRenderer
+                source={imageCaption.childMarkdownRemark.rawMarkdownBody}
+              />
             )}
             <ImageMetaContainer>
               <DateText>{dateCreated}</DateText>

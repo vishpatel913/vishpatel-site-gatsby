@@ -58,16 +58,15 @@ const ImagePost = styled(Img)`
     }
 
     &:hover:after {
-      ${({ hoverText }) => (hoverText ? `content: '${hoverText}';` : "content: 'View';")};
+      ${({ hoverText }) =>
+        hoverText ? `content: '${hoverText}';` : "content: 'View';"};
       opacity: 1;
     }
   }
 `;
 
 const ImageGridItem = ({ node, isDarkMode }) => {
-  const {
-    title, slug, photo, category
-  } = node;
+  const { title, slug, photo, category } = node;
 
   return (
     <ImageContainer>
@@ -87,11 +86,11 @@ const ImageGridItem = ({ node, isDarkMode }) => {
 const ImageGrid = ({ data }) => {
   const { isDarkMode } = useContext(DarkModeContext);
   return (
-  <GridContainer elementType="ul">
-    {data.map(({ node }) => (
-      <ImageGridItem key={node.slug} node={node} isDarkMode={isDarkMode} />
-    ))}
-  </GridContainer>
+    <GridContainer elementType="ul">
+      {data.map(({ node }) => (
+        <ImageGridItem key={node.slug} node={node} isDarkMode={isDarkMode} />
+      ))}
+    </GridContainer>
   );
 };
 

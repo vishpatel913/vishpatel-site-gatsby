@@ -29,12 +29,14 @@ const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) => left
-    && `
+  ${({ left }) =>
+    left &&
+    `
     justify-content: flex-end;
   `};
-  ${({ right }) => right
-    && `
+  ${({ right }) =>
+    right &&
+    `
     justify-content: flex-start;
   `};
 
@@ -100,21 +102,21 @@ const Tab = ({ id }) => {
 const Header = () => {
   const { isDarkMode } = useContext(DarkModeContext);
   return (
-  <Container>
-    <Navigation>
-      <FlexRow left>
-        <Tab id="about" />
-        <Tab id="work" />
-      </FlexRow>
-      <Link to="/" name="Home link">
-        <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
-      </Link>
-      <FlexRow right>
-        <Tab id="tech-stack" />
-        <Tab id="resume" />
-      </FlexRow>
-    </Navigation>
-  </Container>
+    <Container>
+      <Navigation>
+        <FlexRow left>
+          <Tab id="about" />
+          <Tab id="work" />
+        </FlexRow>
+        <Link to="/" name="Home link">
+          <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
+        </Link>
+        <FlexRow right>
+          <Tab id="tech-stack" />
+          <Tab id="resume" />
+        </FlexRow>
+      </Navigation>
+    </Container>
   );
 };
 

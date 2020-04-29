@@ -35,14 +35,13 @@ const ExternalLink = styled.a`
 
 const InternalLink = ExternalLink.withComponent(Link);
 
-const StyledLink = ({
-  href, title, children, external
-}) => (external ? (
-  <ExternalLink href={href} title={title}>
-    {children}
-  </ExternalLink>
-) : (
+const StyledLink = ({ href, title, children, external }) =>
+  external ? (
+    <ExternalLink href={href} title={title}>
+      {children}
+    </ExternalLink>
+  ) : (
     <InternalLink to={href}>{children}</InternalLink>
-));
+  );
 
 export default StyledLink;

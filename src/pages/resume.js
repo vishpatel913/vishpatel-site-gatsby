@@ -30,10 +30,12 @@ const SideContainer = styled.div`
 const MainContainer = styled.div``;
 
 const SectionHeader = styled.h2`
-  color: ${({ theme, dark }) => (dark ? theme.color.background : theme.color.primary)};
+  color: ${({ theme, dark }) =>
+    dark ? theme.color.background : theme.color.primary};
   padding-bottom: 0.25rem;
   border-bottom: 0.25rem solid
-    ${({ theme, dark }) => (dark ? theme.color.background : theme.color.primary)};
+    ${({ theme, dark }) =>
+      dark ? theme.color.background : theme.color.primary};
 `;
 
 const TechGrid = styled.ul`
@@ -137,7 +139,12 @@ const TechCategory = ({ title, data }) => {
 };
 
 const SectionContent = ({
-  title, subTitle, location, started, finished, markdown
+  title,
+  subTitle,
+  location,
+  started,
+  finished,
+  markdown
 }) => (
   <div>
     <MetaHeaderContainer>
@@ -159,7 +166,11 @@ const SectionContent = ({
 
 const ResumePage = ({ data, location }) => {
   const {
-    name, tagLine, emailAddress, phone, shortBio
+    name,
+    tagLine,
+    emailAddress,
+    phone,
+    shortBio
   } = data.contentfulAuthor;
   const projects = data.allContentfulProject.nodes;
   const { education, employment } = data.allContentfulResume.nodes.reduce(
@@ -175,7 +186,10 @@ const ResumePage = ({ data, location }) => {
   const techByCategory = data.allContentfulTech.nodes
     .sort((a, b) => (a.competence === null) - (b.competence === null))
     .reduce(
-      (acc, tech) => ({ ...acc, [tech.category]: [...acc[tech.category], tech.name] }),
+      (acc, tech) => ({
+        ...acc,
+        [tech.category]: [...acc[tech.category], tech.name]
+      }),
       {
         language: ["JavaScript", "Bash"],
         framework: [],
