@@ -3,44 +3,42 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import Layout from "../components/layout";
-import MarkdownRenderer from "../components/markdownRenderer";
-import Icon from "../components/icon";
-import { capitalizeString, editTracedSvg } from "../utils/helpers";
-import { withDarkMode } from "../context/darkModeContext";
+import { Layout, MarkdownRenderer, Icon } from "../components";
+import { capitalizeString, editTracedSvg } from "../utils";
+import { withDarkMode } from "../context/darkMode";
 
 const PageContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0;
     padding: 0;
   }
 `;
 
 const FlexContainer = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
     display: flex;
   }
 `;
 
 const ImageContainer = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
     flex: 1;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     height: 20rem;
     overflow: hidden;
   }
 `;
 
 const MetaContainer = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
     flex: 2;
     padding: 1.5rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
     padding: 2rem;
   }
@@ -51,7 +49,7 @@ const ContentContainer = styled.div`
   max-width: 80%;
   margin: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
     padding-top: 0;
   }
@@ -139,13 +137,18 @@ const AboutPage = ({ data, location, isDarkMode }) => {
             </EmailLink>
             <SocialContainer>
               <Social title="gitHub" link={gitHubAccount} />
-              <Social title="instagram" link={`http://instagram.com/${twitterHandle}`} />
+              <Social
+                title="instagram"
+                link={`http://instagram.com/${twitterHandle}`}
+              />
               <Social title="linkedIn" link={linkedInProfile} />
             </SocialContainer>
           </MetaContainer>
         </FlexContainer>
         <ContentContainer>
-          <MarkdownRenderer source={biography.childMarkdownRemark.rawMarkdownBody} />
+          <MarkdownRenderer
+            source={biography.childMarkdownRemark.rawMarkdownBody}
+          />
         </ContentContainer>
       </PageContainer>
     </Layout>

@@ -1,9 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Icon from "./icon";
-import Button from "./button";
+import { Icon, Button } from ".";
 
 const Container = styled.div``;
 
@@ -23,7 +21,7 @@ const FormInput = styled.input`
     font-weight: lighter;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     width: 100%;
     margin-right: 0;
   }
@@ -63,9 +61,10 @@ const FormToast = styled.div`
   opacity: 0;
 `;
 
-const encode = data => Object.keys(data)
-  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-  .join("&");
+const encode = data =>
+  Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
 
 const handleSubmit = async e => {
   e.preventDefault();
@@ -117,9 +116,26 @@ const CommentForm = ({ slug }) => {
         <input type="hidden" name="form-name" value={formId} />
         <input type="hidden" name="bot-field" />
         <input name="slug" type="hidden" value={slug} />
-        <FormInput name="name" type="text" aria-label="Name" placeholder="Name*" required />
-        <FormInput name="email" type="email" aria-label="Email" placeholder="Email" />
-        <FormMessage name="message" rows="5" aria-label="Message" placeholder="Message*" required />
+        <FormInput
+          name="name"
+          type="text"
+          aria-label="Name"
+          placeholder="Name*"
+          required
+        />
+        <FormInput
+          name="email"
+          type="email"
+          aria-label="Email"
+          placeholder="Email"
+        />
+        <FormMessage
+          name="message"
+          rows="5"
+          aria-label="Message"
+          placeholder="Message*"
+          required
+        />
         <Button type="submit">Submit</Button>
       </form>
       <FormToast id="success-toast">
@@ -128,10 +144,6 @@ const CommentForm = ({ slug }) => {
       </FormToast>
     </Container>
   );
-};
-
-CommentForm.propTypes = {
-  slug: PropTypes.string
 };
 
 export default CommentForm;

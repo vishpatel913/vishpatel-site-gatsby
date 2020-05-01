@@ -2,16 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import TabMenu from "../components/tabMenu";
-import ImageGrid from "../components/imageGrid";
+import { Layout, TabMenu, ImageGrid } from "../components";
+import { workPages } from "../utils/config";
 
 const PageContainer = styled.div``;
 
 const WorkPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
-      <TabMenu />
+      <TabMenu links={workPages} />
       <ImageGrid data={data.allContentfulImage.edges} />
     </PageContainer>
   </Layout>

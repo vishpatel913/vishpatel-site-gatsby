@@ -1,105 +1,75 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import Masonry from "react-masonry-component";
 
-import Layout from "../components/layout";
-import { editTracedSvg } from "../utils/helpers";
-import { withDarkMode } from "../context/darkModeContext";
+import { Layout, TechItem } from "../components";
 
 const PageContainer = styled.div`
   margin: 0.5rem;
   background: ${({ theme }) => theme.color.white};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0;
     padding: 1rem;
   }
 `;
 
 const TitleContainer = styled.div`
-  padding: 1em 1em 0;
-
-  @media (min-width: 768px) {
-    text-align: center;
-    padding-top: 1.5rem;
-  }
-`;
-
-const GridContainer = styled(Masonry)`
-  margin: auto;
-`;
-
-const TechContainer = styled.li`
-  display: block;
-
-  @media (max-width: 768px) {
-    width: 50%;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-  }
-
-  @media (min-width: 768px) {
-    width: 33.3333%;
-    padding: 1rem 2rem;
-    margin: 0;
-  }
-
-  @media (min-width: 992px) {
-    width: 25%;
-  }
-`;
-
-const TechName = styled.h2`
-  margin-top: 1rem;
+  padding: 1.5em 1.5em 0;
   text-align: center;
+  width: 80%;
+  margin: auto;
 
-  @media (max-width: 768px) {
-    font-size: 20px;
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
+    text-align: left;
+  }
+
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
+    width: 100%;
   }
 `;
 
-const GridTechItem = ({ node, isDarkMode }) => {
-  const { name, logo } = node;
+const GridContainer = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+  row-gap: 1rem;
+  column-gap: 2rem;
 
-  return (
-    <TechContainer>
-      <Img
-        fluid={editTracedSvg(logo.fluid, isDarkMode)}
-        title={name}
-        alt={`Logo for ${name}`}
-        imgStyle={isDarkMode && { filter: "brightness(120%) sepia(10%)" }}
-      />
-      <TechName>{name}</TechName>
-    </TechContainer>
-  );
-};
+  @media (max-width: ${({ theme }) => theme.bp.xs}) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+  }
+`;
 
-const TechStackPage = ({ data, location, isDarkMode }) => (
+const TechStackPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
       <TitleContainer>
         <h1>Tech Stack</h1>
         <p>Technologies used for development and design</p>
       </TitleContainer>
-      <GridContainer elementType="ul">
+      <GridContainer>
         {data.allContentfulTech.edges.map(({ node }) => (
-          <GridTechItem key={node.name} node={node} isDarkMode={isDarkMode} />
+          <TechItem key={node.name} node={node} />
         ))}
       </GridContainer>
     </PageContainer>
   </Layout>
 );
 
-export default withDarkMode(TechStackPage);
+export default TechStackPage;
 
 export const query = graphql`
   {
-    allContentfulTech(sort: { fields: [order, name] }) {
+    allContentfulTech(
+      sort: { fields: [order, competence], order: [ASC, DESC] }
+    ) {
       edges {
         node {
           name
+          competence
+          # category
           logo {
             fluid(maxWidth: 800) {
               ...GatsbyContentfulFluid_tracedSVG

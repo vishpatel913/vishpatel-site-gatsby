@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import {
@@ -12,7 +11,9 @@ import {
   FaCheckCircle,
   FaSun,
   FaMoon,
-  FaFileDownload
+  FaFileDownload,
+  FaFire,
+  FaStar
 } from "react-icons/fa";
 
 const IconContainer = styled.span`
@@ -55,14 +56,15 @@ const Icon = ({ className, name }) => {
     case "file-download":
       icon = <FaFileDownload />;
       break;
+    case "fire":
+      icon = <FaFire />;
+      break;
+    case "star":
+      icon = <FaStar />;
+      break;
     default:
   }
   return <IconContainer className={className}>{icon}</IconContainer>;
-};
-
-Icon.propTypes = {
-  className: PropTypes.string,
-  name: PropTypes.string
 };
 
 export default Icon;

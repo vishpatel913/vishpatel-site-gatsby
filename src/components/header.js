@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
-import DarkModeContext from "../context/darkModeContext";
+import { useDarkMode } from "../context/darkMode";
 
 const Container = styled.header`
   background: ${({ theme }) => theme.color.white};
@@ -20,7 +20,7 @@ const Navigation = styled.div`
   max-width: 1200px;
   padding: 1.5rem 2rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 1rem;
   }
 `;
@@ -29,16 +29,10 @@ const FlexRow = styled.div`
   display: flex;
   flex: 1;
 
-  ${({ left }) => left
-    && `
-    justify-content: flex-end;
-  `};
-  ${({ right }) => right
-    && `
-    justify-content: flex-start;
-  `};
+  ${({ left }) => left && "justify-content: flex-end;"};
+  ${({ right }) => right && "justify-content: flex-start;"};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     flex-direction: column;
     align-items: center;
   }
@@ -72,7 +66,7 @@ const HeaderLink = styled(Link)`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     font-size: 14px;
   }
 `;
@@ -81,7 +75,7 @@ const Logo = styled.img`
   margin: 0 0.5rem;
   height: 64px;
   width: 64px;
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     height: 56px;
     width: 56px;
   }
@@ -98,23 +92,23 @@ const Tab = ({ id }) => {
 };
 
 const Header = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
+  const { isDarkMode } = useDarkMode();
   return (
-  <Container>
-    <Navigation>
-      <FlexRow left>
-        <Tab id="about" />
-        <Tab id="work" />
-      </FlexRow>
-      <Link to="/" name="Home link">
-        <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
-      </Link>
-      <FlexRow right>
-        <Tab id="tech-stack" />
-        <Tab id="resume" />
-      </FlexRow>
-    </Navigation>
-  </Container>
+    <Container>
+      <Navigation>
+        <FlexRow left>
+          <Tab id="about" />
+          <Tab id="work" />
+        </FlexRow>
+        <Link to="/" name="Home link">
+          <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
+        </Link>
+        <FlexRow right>
+          <Tab id="tech-stack" />
+          <Tab id="resume" />
+        </FlexRow>
+      </Navigation>
+    </Container>
   );
 };
 

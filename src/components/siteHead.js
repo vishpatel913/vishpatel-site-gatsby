@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { ThemeContext } from "styled-components";
-
 import Helmet from "react-helmet";
 
 import GatsbyConfig from "../../gatsby-config";
-import { capitalizeString } from "../utils/helpers";
+import { capitalizeString } from "../utils";
 import icon32 from "../../static/images/favicon-32.png";
 
-const SiteHead = ({
- title, description, keywords, page
-}) => {
+const SiteHead = ({ title, description, keywords, page }) => {
   const theme = useContext(ThemeContext);
   let siteTitle = GatsbyConfig.siteMetadata.title;
   if (title) {
@@ -18,9 +14,11 @@ const SiteHead = ({
   } else if (page && page !== "/") {
     siteTitle += `${capitalizeString(page.split("/").join(" | "))}`;
   }
-  const siteDescription = description || "Front-end Development and Design Portfolio";
-  const siteKeywords = keywords
-    || "front-end, development, design, portfolio, javascript, photoshop, illustrator, react, gatsby, graphql";
+  const siteDescription =
+    description || "Front-end Development and Design Portfolio";
+  const siteKeywords =
+    keywords ||
+    "front-end, development, design, portfolio, javascript, photoshop, illustrator, react, gatsby, graphql";
 
   return (
     <Helmet
@@ -48,13 +46,6 @@ const SiteHead = ({
       <html lang="en" />
     </Helmet>
   );
-};
-
-SiteHead.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  page: PropTypes.string
 };
 
 export default SiteHead;

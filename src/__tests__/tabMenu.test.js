@@ -5,8 +5,7 @@ import TabMenu from "../components/tabMenu";
 
 describe("TabMenu", () => {
   it("renders correctly", () => {
-    const tree = renderWithTheme(<TabMenu />)
-      .toJSON();
+    const tree = renderWithTheme(<TabMenu />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -3,49 +3,51 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import Layout from "../components/layout";
-import MarkdownRenderer from "../components/markdownRenderer";
-import Link from "../components/link";
-import CommentForm from "../components/commentForm";
-import CommentList from "../components/commentList";
-import SiteHead from "../components/siteHead";
-import Icon from "../components/icon";
-import { capitalizeString, getAltText, editTracedSvg } from "../utils/helpers";
-import { withDarkMode } from "../context/darkModeContext";
+import {
+  Layout,
+  MarkdownRenderer,
+  Link,
+  CommentForm,
+  CommentList,
+  SiteHead,
+  Icon
+} from "../components";
+import { capitalizeString, getAltText, editTracedSvg } from "../utils";
+import { withDarkMode } from "../context/darkMode";
 
 const PostContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
   margin: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     margin: 0;
     padding: 0;
   }
 `;
 
 const FlexContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     display: flex;
   }
 `;
 
 const ImageContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     flex: 2;
   }
 `;
 
 const ContentContainer = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     flex: 1;
     padding: 1.5rem;
   }
-  @media (max-width: 992px) {
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
     padding: 2rem;
     max-width: 80%;
     margin: auto;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
   }
 `;
@@ -55,10 +57,10 @@ const CommentContainer = styled.div`
   max-width: 80%;
   margin: auto;
 
-  @media (max-width: 992px) {
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
     padding-top: 0;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
     max-width: 100%;
   }
 `;
@@ -110,10 +112,19 @@ const Tag = ({ title }) => {
 
 const ImageTemplate = ({ data, location, isDarkMode }) => {
   const {
-    title, photo, imageCaption, dateCreated, category, tags, slug
+    title,
+    photo,
+    imageCaption,
+    dateCreated,
+    category,
+    tags,
+    slug
   } = data.contentfulImage;
-  const comments = data.allContentfulPostComment && data.allContentfulPostComment.edges;
-  const metaDescription = imageCaption ? imageCaption.imageCaption : getAltText(title, category);
+  const comments =
+    data.allContentfulPostComment && data.allContentfulPostComment.edges;
+  const metaDescription = imageCaption
+    ? imageCaption.imageCaption
+    : getAltText(title, category);
 
   return (
     <Layout page={location.pathname}>
@@ -130,7 +141,9 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
           <ContentContainer>
             <h1>{title}</h1>
             {imageCaption && (
-              <MarkdownRenderer source={imageCaption.childMarkdownRemark.rawMarkdownBody} />
+              <MarkdownRenderer
+                source={imageCaption.childMarkdownRemark.rawMarkdownBody}
+              />
             )}
             <ImageMetaContainer>
               <DateText>{dateCreated}</DateText>

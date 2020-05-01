@@ -4,8 +4,7 @@ import CommentForm from "../components/commentForm";
 
 describe("CommentForm", () => {
   it("renders correctly", () => {
-    const tree = renderWithTheme(<CommentForm slug="test" />)
-      .toJSON();
+    const tree = renderWithTheme(<CommentForm slug="test" />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
