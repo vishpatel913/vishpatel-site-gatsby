@@ -15,7 +15,7 @@
     "dev:lambda": "netlify-lambda serve src/lambda",
     "start": "yarn dev && dev:lambda",
     "build": "yarn build:app && yarn build:lambda",
-    "build:app": "gatsby build",
+    "build:app": "gatsby clean && gatsby build",
     "build:lambda": "netlify-lambda build src/lambda",
     "lint": "eslint .",
     "test": "jest",
