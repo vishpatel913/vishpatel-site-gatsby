@@ -31,13 +31,22 @@ const TitleContainer = styled.div`
 
 const GridContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1.5rem;
+  margin: 0;
   row-gap: 1rem;
   column-gap: 2rem;
 
+  @media (max-width: ${({ theme }) => theme.bp.md}) and (min-width: ${({
+      theme
+    }) => theme.bp.sm}) {
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: auto;
+  }
+
   @media (max-width: ${({ theme }) => theme.bp.xs}) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     column-gap: 3rem;
   }
 `;

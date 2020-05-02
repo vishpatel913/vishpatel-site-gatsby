@@ -11,7 +11,6 @@ const TechContainer = styled.li`
   grid-template-columns: 1fr 3fr;
   grid-gap: 1rem;
   position: relative;
-  margin: 1rem 0;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     flex-direction: column;
