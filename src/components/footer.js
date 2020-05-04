@@ -8,9 +8,6 @@ const Container = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  max-width: ${({ theme }) => theme.bp.lg};
-  padding: 0.5rem 2rem 1rem;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding: 1rem;

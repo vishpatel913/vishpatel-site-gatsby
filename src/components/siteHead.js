@@ -9,10 +9,10 @@ import icon32 from "../../static/images/favicon-32.png";
 const SiteHead = ({ title, description, keywords, page }) => {
   const theme = useContext(ThemeContext);
   let siteTitle = GatsbyConfig.siteMetadata.title;
-  if (title) {
+  if (page && page !== "/") {
+    siteTitle += `${capitalizeString(page.replace("/", " | "))}`;
+  } else if (title) {
     siteTitle += ` | ${title}`;
-  } else if (page && page !== "/") {
-    siteTitle += `${capitalizeString(page.split("/").join(" | "))}`;
   }
   const siteDescription =
     description || "Front-end Development and Design Portfolio";

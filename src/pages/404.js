@@ -10,7 +10,7 @@ const PageContainer = styled(Container)`
 `;
 
 const PageNotFound = () => (
-  <Layout page="404">
+  <Layout page="/404">
     <PageContainer>
       <NotFoundMessage />
     </PageContainer>

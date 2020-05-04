@@ -11,23 +11,25 @@ const SiteContainer = styled.div`
   min-height: 100%;
 `;
 
-const BodyContainer = styled.main`
+const LayoutContainer = styled.main`
   margin: 0 auto;
   max-width: ${({ theme }) => theme.bp.lg};
-  height: 100%;
 
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    margin: 0;
+  & > * {
+    margin: 2rem 3rem 0;
+    @media (max-width: ${({ theme }) => theme.bp.md}) {
+      margin: 2rem 2rem 0;
+    }
+    @media (max-width: ${({ theme }) => theme.bp.sm}) {
+      margin: 0;
+    }
   }
 `;
 
 const PageContainer = styled.div`
   background: ${({ white, theme }) => (white ? theme.color.white : "none")};
-  margin: 2rem;
-
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     padding-bottom: ${({ white }) => white && "2rem"};
-    margin: 0;
   }
 `;
 
@@ -40,10 +42,12 @@ const Layout = ({ children, page, white }) => {
       <SiteContainer>
         <SiteHead page={page} />
         <Header />
-        <BodyContainer>
+        <LayoutContainer>
           <PageContainer white={white}>{children}</PageContainer>
-        </BodyContainer>
-        <Footer />
+        </LayoutContainer>
+        <LayoutContainer>
+          <Footer />
+        </LayoutContainer>
       </SiteContainer>
     </ThemeProvider>
   );
