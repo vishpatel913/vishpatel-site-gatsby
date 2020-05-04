@@ -13,7 +13,7 @@ const SiteContainer = styled.div`
 
 const BodyContainer = styled.main`
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.bp.lg};
   height: 100%;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
@@ -24,9 +24,9 @@ const BodyContainer = styled.main`
 const PageContainer = styled.div`
   background: ${({ white, theme }) => (white ? theme.color.white : "none")};
   margin: 2rem;
-  padding-bottom: ${({ white }) => white && "1.5rem"};
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
+    padding-bottom: ${({ white }) => white && "2rem"};
     margin: 0;
   }
 `;

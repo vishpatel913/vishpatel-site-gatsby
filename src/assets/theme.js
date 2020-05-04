@@ -4,6 +4,7 @@ export default {
     half: "0.5rem"
   },
   bp: {
+    lg: "1200px",
     md: "992px",
     sm: "768px",
     xs: "480px"

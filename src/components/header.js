@@ -17,7 +17,7 @@ const Navigation = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.bp.lg};
   padding: 1.5rem 2rem;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
