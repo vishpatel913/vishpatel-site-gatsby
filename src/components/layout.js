@@ -9,6 +9,9 @@ const SiteContainer = styled.div`
   background: ${({ theme }) => theme.color.background};
   color: ${({ theme }) => theme.color.main};
   min-height: 100%;
+  @media (min-width: ${({ theme }) => theme.bp.sm}) {
+    padding-bottom: 1rem;
+  }
 `;
 
 const LayoutContainer = styled.main`
