@@ -4,6 +4,7 @@ export default {
     half: "0.5rem"
   },
   bp: {
+    lg: "1200px",
     md: "992px",
     sm: "768px",
     xs: "480px"
@@ -34,7 +35,7 @@ export default {
     // secondaryLight: "#11aa61",
     white: "#1d1642",
     black: "#fff",
-    grey: "#2a2442",
+    grey: "#37315e",
     greyDark: "#E0E0E0"
   }
 };

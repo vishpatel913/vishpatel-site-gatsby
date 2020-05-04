@@ -8,20 +8,16 @@ import { useDarkMode } from "../context/darkMode";
 
 const ImageContainer = styled.li`
   display: block;
+  padding: 0.5rem;
+  width: 33.33333%;
+  margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.bp.sm}) {
+  @media (max-width: ${({ theme }) => theme.bp.md}) {
     width: 50%;
-    padding: 0.5rem;
-    margin: 0;
   }
 
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    width: 33.33333%;
+  @media (max-width: ${({ theme }) => theme.bp.xs}) {
+    width: 100%;
   }
 `;
 

@@ -3,55 +3,24 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import { Layout, MarkdownRenderer, Icon } from "../components";
+import { Layout, Container, MarkdownRenderer, Icon } from "../components";
 import { capitalizeString, editTracedSvg } from "../utils";
 import { withDarkMode } from "../context/darkMode";
 
-const PageContainer = styled.div`
-  background: ${({ theme }) => theme.color.white};
-  margin: 0.5rem;
+const HeaderContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    margin: 0;
-    padding: 0;
-  }
-`;
-
-const FlexContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.sm}) {
-    display: flex;
+    grid-template-columns: 1fr;
   }
 `;
 
 const ImageContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.sm}) {
-    flex: 1;
-  }
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     height: 20rem;
     overflow: hidden;
-  }
-`;
-
-const MetaContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.sm}) {
-    flex: 2;
-    padding: 1.5rem;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
-    padding: 2rem;
-  }
-`;
-
-const ContentContainer = styled.div`
-  padding: 2rem;
-  max-width: 80%;
-  margin: auto;
-
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
-    padding-top: 0;
   }
 `;
 
@@ -114,9 +83,9 @@ const AboutPage = ({ data, location, isDarkMode }) => {
   } = data.contentfulAuthor;
 
   return (
-    <Layout page={location.pathname}>
-      <PageContainer>
-        <FlexContainer>
+    <Layout white page={location.pathname}>
+      <>
+        <HeaderContainer>
           <ImageContainer>
             <Img
               fluid={editTracedSvg(profilePhoto.fluid, isDarkMode)}
@@ -128,7 +97,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
               }}
             />
           </ImageContainer>
-          <MetaContainer>
+          <Container>
             <h1>{name}</h1>
             <p>{tagLine}</p>
             <EmailLink href={`mailto:${emailAddress}`}>
@@ -143,14 +112,14 @@ const AboutPage = ({ data, location, isDarkMode }) => {
               />
               <Social title="linkedIn" link={linkedInProfile} />
             </SocialContainer>
-          </MetaContainer>
-        </FlexContainer>
-        <ContentContainer>
+          </Container>
+        </HeaderContainer>
+        <Container content>
           <MarkdownRenderer
             source={biography.childMarkdownRemark.rawMarkdownBody}
           />
-        </ContentContainer>
-      </PageContainer>
+        </Container>
+      </>
     </Layout>
   );
 };

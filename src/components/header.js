@@ -9,6 +9,11 @@ import { useDarkMode } from "../context/darkMode";
 const Container = styled.header`
   background: ${({ theme }) => theme.color.white};
   border-bottom: ${({ theme }) => theme.color.grey} 1px solid;
+  padding: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
+    padding: 1rem;
+  }
 `;
 
 const Navigation = styled.div`
@@ -17,12 +22,7 @@ const Navigation = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 1.5rem 2rem;
-
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    padding: 1rem;
-  }
+  max-width: ${({ theme }) => theme.bp.lg};
 `;
 
 const FlexRow = styled.div`

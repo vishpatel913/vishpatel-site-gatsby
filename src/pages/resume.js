@@ -2,29 +2,30 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 
-import { Layout, MarkdownRenderer, Button, Icon } from "../components";
+import {
+  Layout,
+  Container,
+  MarkdownRenderer,
+  Button,
+  Icon
+} from "../components";
 
 const PageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: auto;
-  background: ${({ theme }) => theme.color.white};
-  margin: 0.5rem;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0;
   }
 `;
 
-const SideContainer = styled.div`
+const SideContainer = styled(Container)`
   background: ${({ theme }) => theme.color.grey};
+  flex: 1;
   /* background: ${({ theme }) => theme.color.primaryLight}; */
   /* color: ${({ theme }) => theme.color.main}; */
 `;
-
-const MainContainer = styled.div``;
 
 const SectionHeader = styled.h2`
   color: ${({ theme, dark }) =>
@@ -52,14 +53,6 @@ const TechGrid = styled.ul`
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 0.5rem;
-  }
-`;
-
-const SectionContainer = styled.div`
-  padding: 1.5rem;
-
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    padding: 2rem;
   }
 `;
 
@@ -197,10 +190,10 @@ const ResumePage = ({ data, location }) => {
     );
 
   return (
-    <Layout page={location.pathname}>
+    <Layout white page={location.pathname}>
       <PageContainer className="cv-pdf">
         <SideContainer>
-          <SectionContainer>
+          <>
             <IntroContent
               name={name}
               title={tagLine}
@@ -219,10 +212,10 @@ const ResumePage = ({ data, location }) => {
               www.vishpatel.com
               <br />
             </p>
-          </SectionContainer>
+          </>
         </SideContainer>
-        <MainContainer>
-          <SectionContainer>
+        <Container>
+          <>
             <SectionHeader>Education</SectionHeader>
             {education.map(item => (
               <SectionContent
@@ -235,8 +228,8 @@ const ResumePage = ({ data, location }) => {
                 markdown={item.description?.childMarkdownRemark.rawMarkdownBody}
               />
             ))}
-          </SectionContainer>
-          <SectionContainer>
+          </>
+          <>
             <SectionHeader>Employment</SectionHeader>
             {employment.map(item => (
               <SectionContent
@@ -249,8 +242,8 @@ const ResumePage = ({ data, location }) => {
                 markdown={item.description?.childMarkdownRemark.rawMarkdownBody}
               />
             ))}
-          </SectionContainer>
-          <SectionContainer>
+          </>
+          <>
             <SectionHeader>Projects</SectionHeader>
             {projects.map(item => (
               <SectionContent
@@ -262,8 +255,8 @@ const ResumePage = ({ data, location }) => {
                 markdown={item.description?.childMarkdownRemark.rawMarkdownBody}
               />
             ))}
-          </SectionContainer>
-        </MainContainer>
+          </>
+        </Container>
       </PageContainer>
     </Layout>
   );

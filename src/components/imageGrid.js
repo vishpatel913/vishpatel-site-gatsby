@@ -5,11 +5,9 @@ import Masonry from "react-masonry-component";
 import { ImageGridItem } from ".";
 
 const GridContainer = styled(Masonry)`
-  margin: auto;
-
+  margin: -0.5rem;
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    margin: 0 1rem;
-    padding-top: 1rem;
+    margin: 0.5rem;
   }
 `;
 

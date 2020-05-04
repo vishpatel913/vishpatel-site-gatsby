@@ -21,11 +21,11 @@ const TechContainer = styled.li`
 `;
 
 const TechLogo = styled.div`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    width: 100%;
-    padding: 0;
+    justify-content: flex-end;
   }
 `;
 
@@ -57,7 +57,9 @@ const TechItem = ({ node }) => {
           fluid={editTracedSvg(logo.fluid, isDarkMode)}
           title={name}
           alt={`Logo for ${name}`}
-          imgStyle={{ filter: isDarkMode && "brightness(120%) sepia(10%)" }}
+          imgStyle={{
+            filter: isDarkMode && "brightness(120%) sepia(10%)"
+          }}
         />
       </TechLogo>
       <TechDetails>

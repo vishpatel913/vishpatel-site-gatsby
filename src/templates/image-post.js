@@ -5,6 +5,7 @@ import Img from "gatsby-image";
 
 import {
   Layout,
+  Container,
   MarkdownRenderer,
   Link,
   CommentForm,
@@ -15,53 +16,17 @@ import {
 import { capitalizeString, getAltText, editTracedSvg } from "../utils";
 import { withDarkMode } from "../context/darkMode";
 
-const PostContainer = styled.div`
-  background: ${({ theme }) => theme.color.white};
-  margin: 0.5rem;
+const HeaderContainer = styled.div`
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+  }
+`;
 
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
+const ContentContainer = styled(Container)`
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
     margin: 0;
-    padding: 0;
-  }
-`;
-
-const FlexContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    display: flex;
-  }
-`;
-
-const ImageContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    flex: 2;
-  }
-`;
-
-const ContentContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    flex: 1;
-    padding: 1.5rem;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.md}) {
-    padding: 2rem;
-    max-width: 80%;
-    margin: auto;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
-  }
-`;
-
-const CommentContainer = styled.div`
-  padding: 2rem;
-  max-width: 80%;
-  margin: auto;
-
-  @media (max-width: ${({ theme }) => theme.bp.md}) {
-    padding-top: 0;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
   }
 `;
 
@@ -127,41 +92,37 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
     : getAltText(title, category);
 
   return (
-    <Layout page={location.pathname}>
+    <Layout white page={location.pathname}>
       <SiteHead title={title} description={metaDescription} keywords={tags} />
-      <PostContainer>
-        <FlexContainer>
-          <ImageContainer>
-            <PostImage
-              fluid={editTracedSvg(photo.fluid, isDarkMode)}
-              title={title}
-              alt={getAltText(title, category)}
+      <HeaderContainer>
+        <PostImage
+          fluid={editTracedSvg(photo.fluid, isDarkMode)}
+          title={title}
+          alt={getAltText(title, category)}
+        />
+        <ContentContainer content>
+          <h1>{title}</h1>
+          {imageCaption && (
+            <MarkdownRenderer
+              source={imageCaption.childMarkdownRemark.rawMarkdownBody}
             />
-          </ImageContainer>
-          <ContentContainer>
-            <h1>{title}</h1>
-            {imageCaption && (
-              <MarkdownRenderer
-                source={imageCaption.childMarkdownRemark.rawMarkdownBody}
-              />
-            )}
-            <ImageMetaContainer>
-              <DateText>{dateCreated}</DateText>
-              <CategoryLink href={`/work/${category}`} title={category}>
-                <Icon name="category" />
-                {capitalizeString(category)}
-              </CategoryLink>
-            </ImageMetaContainer>
-            {tags.sort().map(tag => (
-              <Tag key={tag} title={tag} />
-            ))}
-          </ContentContainer>
-        </FlexContainer>
-        <CommentContainer>
-          {comments && <CommentList data={comments} />}
-          <CommentForm slug={slug} />
-        </CommentContainer>
-      </PostContainer>
+          )}
+          <ImageMetaContainer>
+            <DateText>{dateCreated}</DateText>
+            <CategoryLink href={`/work/${category}`} title={category}>
+              <Icon name="category" />
+              {capitalizeString(category)}
+            </CategoryLink>
+          </ImageMetaContainer>
+          {tags.sort().map(tag => (
+            <Tag key={tag} title={tag} />
+          ))}
+        </ContentContainer>
+      </HeaderContainer>
+      <Container content>
+        {comments && <CommentList data={comments} />}
+        <CommentForm slug={slug} />
+      </Container>
     </Layout>
   );
 };

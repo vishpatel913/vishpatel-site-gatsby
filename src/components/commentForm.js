@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 import { Icon, Button } from ".";
 
-const Container = styled.div``;
+const Form = styled.form`
+  margin: 0;
+`;
 
 const FormInput = styled.input`
   background: ${({ theme }) => theme.color.white};
@@ -102,9 +104,9 @@ const handleSubmit = async e => {
 const CommentForm = ({ slug }) => {
   const formId = `${slug}-comments`;
   return (
-    <Container>
+    <>
       <h2>Leave a Comment</h2>
-      <form
+      <Form
         disabled
         id="comment-form"
         name={formId}
@@ -137,12 +139,12 @@ const CommentForm = ({ slug }) => {
           required
         />
         <Button type="submit">Submit</Button>
-      </form>
+      </Form>
       <FormToast id="success-toast">
         <Icon name="check" />
         Comment submitted and pending review
       </FormToast>
-    </Container>
+    </>
   );
 };
 

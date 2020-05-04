@@ -24,6 +24,7 @@
     "no-underscore-dangle": ["off"],
     "no-unused-expressions": ["off"],
     "no-use-before-define": ["off"],
+    "import/no-cycle": ["off"],
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-filename-extension": [
       1,
