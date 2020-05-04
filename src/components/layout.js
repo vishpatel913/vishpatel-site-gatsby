@@ -15,14 +15,23 @@ const BodyContainer = styled.main`
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
-  padding: 1.5rem 2rem;
 
   @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    padding: 0;
+    margin: 0;
   }
 `;
 
-const Layout = ({ children, page }) => {
+const PageContainer = styled.div`
+  background: ${({ white, theme }) => (white ? theme.color.white : "none")};
+  margin: 2rem;
+  padding-bottom: ${({ white }) => white && "1.5rem"};
+
+  @media (max-width: ${({ theme }) => theme.bp.sm}) {
+    margin: 0;
+  }
+`;
+
+const Layout = ({ children, page, white }) => {
   const { isDarkMode } = useDarkMode();
   const color = themeConfig[isDarkMode ? "dark" : "light"];
 
@@ -31,7 +40,9 @@ const Layout = ({ children, page }) => {
       <SiteContainer>
         <SiteHead page={page} />
         <Header />
-        <BodyContainer>{children}</BodyContainer>
+        <BodyContainer>
+          <PageContainer white={white}>{children}</PageContainer>
+        </BodyContainer>
         <Footer />
       </SiteContainer>
     </ThemeProvider>

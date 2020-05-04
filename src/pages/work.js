@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 
-import { Layout, TabMenu, ImageGrid } from "../components";
+import { Layout, Container, TabMenu, ImageGrid } from "../components";
 import { workPages } from "../utils/config";
 
 const PageContainer = styled.div``;
@@ -10,7 +10,9 @@ const PageContainer = styled.div``;
 const WorkPage = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
-      <TabMenu links={workPages} />
+      <Container edge>
+        <TabMenu links={workPages} />
+      </Container>
       <ImageGrid data={data.allContentfulImage.edges} />
     </PageContainer>
   </Layout>

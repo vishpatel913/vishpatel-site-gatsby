@@ -5,9 +5,7 @@ import { Layout, ImageGrid } from "../components";
 
 const IndexPage = ({ data, location }) => (
   <Layout page={location.pathname}>
-    <div>
-      <ImageGrid data={data.allContentfulImage.edges} />
-    </div>
+    <ImageGrid data={data.allContentfulImage.edges} />
   </Layout>
 );
 

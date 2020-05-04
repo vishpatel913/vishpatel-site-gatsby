@@ -2,6 +2,7 @@ export { default as Button } from "./button";
 export { default as Comment } from "./comment";
 export { default as CommentForm } from "./commentForm";
 export { default as CommentList } from "./commentList";
+export { default as Container } from "./container";
 export { default as DarkModeToggle } from "./darkModeToggle";
 export { default as Footer } from "./footer";
 export { default as Header } from "./header";

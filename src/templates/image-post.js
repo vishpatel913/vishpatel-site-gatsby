@@ -5,6 +5,7 @@ import Img from "gatsby-image";
 
 import {
   Layout,
+  Container,
   MarkdownRenderer,
   Link,
   CommentForm,
@@ -14,16 +15,6 @@ import {
 } from "../components";
 import { capitalizeString, getAltText, editTracedSvg } from "../utils";
 import { withDarkMode } from "../context/darkMode";
-
-const PostContainer = styled.div`
-  background: ${({ theme }) => theme.color.white};
-  margin: 0.5rem;
-
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    margin: 0;
-    padding: 0;
-  }
-`;
 
 const FlexContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.bp.md}) {
@@ -37,32 +28,8 @@ const ImageContainer = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    flex: 1;
-    padding: 1.5rem;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.md}) {
-    padding: 2rem;
-    max-width: 80%;
-    margin: auto;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
-  }
-`;
-
-const CommentContainer = styled.div`
-  padding: 2rem;
-  max-width: 80%;
-  margin: auto;
-
-  @media (max-width: ${({ theme }) => theme.bp.md}) {
-    padding-top: 0;
-  }
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    max-width: 100%;
-  }
+const ContentContainer = styled(Container)`
+  flex: 1;
 `;
 
 const PostImage = styled(Img)`
@@ -127,9 +94,9 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
     : getAltText(title, category);
 
   return (
-    <Layout page={location.pathname}>
+    <Layout white page={location.pathname}>
       <SiteHead title={title} description={metaDescription} keywords={tags} />
-      <PostContainer>
+      <>
         <FlexContainer>
           <ImageContainer>
             <PostImage
@@ -138,7 +105,7 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
               alt={getAltText(title, category)}
             />
           </ImageContainer>
-          <ContentContainer>
+          <ContentContainer content>
             <h1>{title}</h1>
             {imageCaption && (
               <MarkdownRenderer
@@ -157,11 +124,11 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
             ))}
           </ContentContainer>
         </FlexContainer>
-        <CommentContainer>
+        <Container content>
           {comments && <CommentList data={comments} />}
           <CommentForm slug={slug} />
-        </CommentContainer>
-      </PostContainer>
+        </Container>
+      </>
     </Layout>
   );
 };

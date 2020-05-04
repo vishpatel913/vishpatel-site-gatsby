@@ -2,7 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 
-import { Layout, TabMenu, ImageGrid, NotFoundMessage } from "../components";
+import {
+  Layout,
+  Container,
+  TabMenu,
+  ImageGrid,
+  NotFoundMessage
+} from "../components";
 import { workPages } from "../utils/config";
 
 const PageContainer = styled.div``;
@@ -17,7 +23,9 @@ const ErrorContainer = styled.div`
 const CategoryTemplate = ({ data, location }) => (
   <Layout page={location.pathname}>
     <PageContainer>
-      <TabMenu links={workPages} />
+      <Container edge>
+        <TabMenu links={workPages} />
+      </Container>
       {data.allContentfulImage.edges.length > 0 ? (
         <ImageGrid data={data.allContentfulImage.edges} />
       ) : (

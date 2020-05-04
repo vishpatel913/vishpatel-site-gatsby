@@ -13,15 +13,10 @@ const MenuContainer = styled.div`
 const MenuList = styled.ul`
   display: inline-flex;
   height: auto;
-  margin: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
   background: ${({ theme }) => theme.color.white};
   border: solid 1px ${({ theme }) => theme.color.grey};
   border-radius: 4px;
-
-  @media (max-width: ${({ theme }) => theme.bp.sm}) {
-    margin: 1rem 1rem 0;
-  }
 `;
 
 const MenuItem = styled.li`
