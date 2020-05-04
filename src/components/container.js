@@ -14,8 +14,12 @@ const StyledContainer = styled.div`
   }
 `;
 
-const Container = props => (
-  <StyledContainer {...props}>{props.children}</StyledContainer>
-);
+const Container = props => {
+  const ElementContainer = props.element
+    ? StyledContainer.withComponent(props.element)
+    : StyledContainer;
+
+  return <ElementContainer {...props}>{props.children}</ElementContainer>;
+};
 
 export default Container;
