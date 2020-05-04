@@ -16,20 +16,18 @@ import {
 import { capitalizeString, getAltText, editTracedSvg } from "../utils";
 import { withDarkMode } from "../context/darkMode";
 
-const FlexContainer = styled.div`
+const HeaderContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.bp.md}) {
-    display: flex;
-  }
-`;
-
-const ImageContainer = styled.div`
-  @media (min-width: ${({ theme }) => theme.bp.md}) {
-    flex: 2;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
   }
 `;
 
 const ContentContainer = styled(Container)`
-  flex: 1;
+  @media (min-width: ${({ theme }) => theme.bp.md}) {
+    margin: 0;
+  }
 `;
 
 const PostImage = styled(Img)`
@@ -96,39 +94,35 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
   return (
     <Layout white page={location.pathname}>
       <SiteHead title={title} description={metaDescription} keywords={tags} />
-      <>
-        <FlexContainer>
-          <ImageContainer>
-            <PostImage
-              fluid={editTracedSvg(photo.fluid, isDarkMode)}
-              title={title}
-              alt={getAltText(title, category)}
+      <HeaderContainer>
+        <PostImage
+          fluid={editTracedSvg(photo.fluid, isDarkMode)}
+          title={title}
+          alt={getAltText(title, category)}
+        />
+        <ContentContainer content>
+          <h1>{title}</h1>
+          {imageCaption && (
+            <MarkdownRenderer
+              source={imageCaption.childMarkdownRemark.rawMarkdownBody}
             />
-          </ImageContainer>
-          <ContentContainer content>
-            <h1>{title}</h1>
-            {imageCaption && (
-              <MarkdownRenderer
-                source={imageCaption.childMarkdownRemark.rawMarkdownBody}
-              />
-            )}
-            <ImageMetaContainer>
-              <DateText>{dateCreated}</DateText>
-              <CategoryLink href={`/work/${category}`} title={category}>
-                <Icon name="category" />
-                {capitalizeString(category)}
-              </CategoryLink>
-            </ImageMetaContainer>
-            {tags.sort().map(tag => (
-              <Tag key={tag} title={tag} />
-            ))}
-          </ContentContainer>
-        </FlexContainer>
-        <Container content>
-          {comments && <CommentList data={comments} />}
-          <CommentForm slug={slug} />
-        </Container>
-      </>
+          )}
+          <ImageMetaContainer>
+            <DateText>{dateCreated}</DateText>
+            <CategoryLink href={`/work/${category}`} title={category}>
+              <Icon name="category" />
+              {capitalizeString(category)}
+            </CategoryLink>
+          </ImageMetaContainer>
+          {tags.sort().map(tag => (
+            <Tag key={tag} title={tag} />
+          ))}
+        </ContentContainer>
+      </HeaderContainer>
+      <Container content>
+        {comments && <CommentList data={comments} />}
+        <CommentForm slug={slug} />
+      </Container>
     </Layout>
   );
 };

@@ -7,14 +7,13 @@ import { Layout, Container, TechItem } from "../components";
 const GridContainer = styled(Container)`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* padding: 1.5rem; */
   margin: 0;
   row-gap: 1rem;
   column-gap: 2rem;
 
-  @media (max-width: ${({ theme }) => theme.bp.md}) and (min-width: ${({
+  @media (min-width: ${({ theme }) => theme.bp.sm}) and (max-width: ${({
       theme
-    }) => theme.bp.sm}) {
+    }) => theme.bp.md}) {
     grid-template-columns: 1fr 1fr;
   }
 
