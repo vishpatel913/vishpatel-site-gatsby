@@ -17,7 +17,7 @@ export default {
     primaryLight: "#de9edf",
     // primaryLight: "#8559da",
     secondary: "#35cdbc",
-    secondaryLight: "#99ede4",
+    secondaryLight: "#7ddddf",
     white: "#fff",
     black: "#000",
     grey: "#E0E0E0",
