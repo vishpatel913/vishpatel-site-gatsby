@@ -11,6 +11,7 @@ import {
   FaCheckCircle,
   FaSun,
   FaMoon,
+  FaCloud,
   FaFileDownload,
   FaFire,
   FaStar
@@ -23,7 +24,7 @@ const IconContainer = styled.span`
   vertical-align: text-top;
 `;
 
-const Icon = ({ className, name }) => {
+const Icon = ({ className, name, ...rest }) => {
   let icon;
   switch (name) {
     case "instagram":
@@ -53,6 +54,9 @@ const Icon = ({ className, name }) => {
     case "moon":
       icon = <FaMoon />;
       break;
+    case "cloud":
+      icon = <FaCloud />;
+      break;
     case "file-download":
       icon = <FaFileDownload />;
       break;
@@ -64,7 +68,11 @@ const Icon = ({ className, name }) => {
       break;
     default:
   }
-  return <IconContainer className={className}>{icon}</IconContainer>;
+  return (
+    <IconContainer {...rest} className={className}>
+      {icon}
+    </IconContainer>
+  );
 };
 
 export default Icon;

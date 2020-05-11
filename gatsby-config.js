@@ -10,6 +10,11 @@ module.exports = {
   pathPrefix: "/",
   plugins: [
     "gatsby-plugin-react-helmet",
+    "gatsby-image",
+    // "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    // 'gatsby-paginate',
+    "gatsby-transformer-remark",
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-typography",
@@ -24,11 +29,14 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
       }
     },
-    "gatsby-image",
-    // "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
-    // 'gatsby-paginate',
-    "gatsby-transformer-remark"
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    }
   ],
   // for avoiding CORS while developing Netlify Functions locally
   developMiddleware: app => {
