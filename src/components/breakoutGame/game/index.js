@@ -68,8 +68,9 @@ export const getGameState = () => {
     (height - height * PADDLE_AREA - blocks.length * BLOCK_HEIGHT) / 1.5;
 
   const rowsOfBlocks = blocks.map((row, i) =>
-    row.map((level, j) => ({
-      level,
+    row.map((score, j) => ({
+      score,
+      active: true,
       position: new Vector(j, blocksStart + i * BLOCK_HEIGHT),
       width: 1,
       height: BLOCK_HEIGHT
@@ -193,13 +194,7 @@ export const getNewGameState = (state, movement, timespan) => {
       isInBoundaries(ballLeft, ballRight, position.x, position.x + width)
   );
   if (block) {
-    const density = block.density - 1;
-    const newBlock = { ...block, density };
-    const blocks =
-      density < 0
-        ? withoutElement(state.blocks, block)
-        : updateElement(state.blocks, block, newBlock);
-
+    const blocks = withoutElement(state.blocks, block);
     const getNewBallNormal = () => {
       const blockTop = block.position.y;
       const blockBottom = blockTop + block.height;
