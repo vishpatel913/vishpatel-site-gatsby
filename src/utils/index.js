@@ -1,4 +1,4 @@
-import theme from "../assets/theme";
+import theme from "../styles/theme";
 
 export const capitalizeString = string =>
   string

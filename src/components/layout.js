@@ -2,7 +2,7 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
 import { SiteHead, Header, Footer } from ".";
-import themeConfig from "../assets/theme";
+import themeConfig from "../styles/theme";
 import { useDarkMode } from "../context/darkMode";
 
 const SiteContainer = styled.div`
