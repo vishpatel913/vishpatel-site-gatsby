@@ -2,15 +2,20 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import Helmet from "react-helmet";
 
-import GatsbyConfig from "../../gatsby-config";
+import GATSBY_CONFIG from "../../gatsby-config";
 import { capitalizeString } from "../utils";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({ title, description, keywords, page }) => {
   const theme = useContext(ThemeContext);
-  let siteTitle = GatsbyConfig.siteMetadata.title;
+  let siteTitle = GATSBY_CONFIG.siteMetadata.title;
   if (page && page !== "/") {
-    siteTitle += `${capitalizeString(page.replace("/", " | "))}`;
+    siteTitle += ` | ${capitalizeString(
+      page
+        .split("/")
+        .filter(v => v !== "")
+        .join(" | ")
+    )}`;
   } else if (title) {
     siteTitle += ` | ${title}`;
   }
