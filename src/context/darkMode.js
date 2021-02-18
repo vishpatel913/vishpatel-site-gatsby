@@ -20,18 +20,6 @@ export const DarkModeProvider = ({ children }) => {
 
 export const useDarkMode = () => useContext(DarkModeContext);
 
-export const withDarkMode = Component => props => (
-  <DarkModeContext.Consumer>
-    {ctx => (
-      <Component
-        {...props}
-        isDarkMode={ctx.isDarkMode}
-        toggleDarkMode={ctx.toggleDarkMode}
-      />
-    )}
-  </DarkModeContext.Consumer>
-);
-
 export const wrapWithProvider = ({ element }) => (
   <DarkModeProvider>{element}</DarkModeProvider>
 );

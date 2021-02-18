@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 
 import { Layout, Container, MarkdownRenderer, Icon } from "../components";
 import { capitalizeString, editTracedSvg } from "../utils";
-import { withDarkMode } from "../context/darkMode";
+import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
   display: grid;
@@ -70,7 +70,9 @@ const Social = ({ title, link }) => (
   </SocialLink>
 );
 
-const AboutPage = ({ data, location, isDarkMode }) => {
+const AboutPage = ({ data, location }) => {
+  console.info("---TESTING DEV BUILD ---");
+  const { isDarkMode } = useDarkMode();
   const {
     name,
     tagLine,
@@ -124,7 +126,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
   );
 };
 
-export default withDarkMode(AboutPage);
+export default AboutPage;
 
 export const query = graphql`
   {

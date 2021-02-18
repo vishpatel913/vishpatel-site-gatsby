@@ -14,7 +14,7 @@ import {
   Icon
 } from "../components";
 import { capitalizeString, getAltText, editTracedSvg } from "../utils";
-import { withDarkMode } from "../context/darkMode";
+import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.bp.md}) {
@@ -75,7 +75,8 @@ const Tag = ({ title }) => {
   return <TagLink to={`tag/${tagSlug}`}>{`#${title}`}</TagLink>;
 };
 
-const ImageTemplate = ({ data, location, isDarkMode }) => {
+const ImageTemplate = ({ data, location }) => {
+  const { isDarkMode } = useDarkMode();
   const {
     title,
     photo,
@@ -127,7 +128,7 @@ const ImageTemplate = ({ data, location, isDarkMode }) => {
   );
 };
 
-export default withDarkMode(ImageTemplate);
+export default ImageTemplate;
 
 export const query = graphql`
   query($slug: String!) {
