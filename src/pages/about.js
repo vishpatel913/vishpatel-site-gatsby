@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Layout, Container, MarkdownRenderer, Icon } from "../components";
-import { capitalizeString, editTracedSvg } from "../utils";
+import { capitalizeString, getImageWithTracedSVG } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
@@ -71,7 +71,6 @@ const Social = ({ title, link }) => (
 );
 
 const AboutPage = ({ data, location }) => {
-  console.info("---TESTING DEV BUILD ---");
   const { isDarkMode } = useDarkMode();
   const {
     name,
@@ -83,14 +82,15 @@ const AboutPage = ({ data, location }) => {
     profilePhoto,
     biography
   } = data.contentfulAuthor;
+  const profileImage = getImageWithTracedSVG(profilePhoto, isDarkMode);
 
   return (
     <Layout white page={location.pathname}>
       <>
         <HeaderContainer>
           <ImageContainer>
-            <Img
-              fluid={editTracedSvg(profilePhoto.fluid, isDarkMode)}
+            <GatsbyImage
+              image={profileImage}
               title={name}
               alt={`Profile picture for ${name}`}
               imgStyle={{
@@ -138,9 +138,7 @@ export const query = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        fluid(maxWidth: 800) {
-          ...GatsbyContentfulFluid_tracedSVG
-        }
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
       }
       biography {
         childMarkdownRemark {

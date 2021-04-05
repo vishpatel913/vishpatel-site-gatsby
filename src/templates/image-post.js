@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import {
   Layout,
   Container,
   MarkdownRenderer,
   Link,
-  CommentForm,
-  CommentList,
+  // CommentForm,
+  // CommentList,
   SiteHead,
   Icon
 } from "../components";
-import { capitalizeString, getAltText, editTracedSvg } from "../utils";
+import { capitalizeString, getAltText, getImageWithTracedSVG } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
@@ -30,7 +30,7 @@ const ContentContainer = styled(Container)`
   }
 `;
 
-const PostImage = styled(Img)`
+const PostImage = styled(GatsbyImage)`
   width: 100%;
   margin: 0;
 `;
@@ -83,11 +83,11 @@ const ImageTemplate = ({ data, location }) => {
     imageCaption,
     dateCreated,
     category,
-    tags,
-    slug
+    tags
+    // slug
   } = data.contentfulImage;
-  const comments =
-    data.allContentfulPostComment && data.allContentfulPostComment.edges;
+  // const comments =
+  //   data.allContentfulPostComment && data.allContentfulPostComment.edges;
   const metaDescription = imageCaption
     ? imageCaption.imageCaption
     : getAltText(title, category);
@@ -97,7 +97,7 @@ const ImageTemplate = ({ data, location }) => {
       <SiteHead title={title} description={metaDescription} keywords={tags} />
       <HeaderContainer>
         <PostImage
-          fluid={editTracedSvg(photo.fluid, isDarkMode)}
+          image={getImageWithTracedSVG(photo, isDarkMode)}
           title={title}
           alt={getAltText(title, category)}
         />
@@ -120,10 +120,10 @@ const ImageTemplate = ({ data, location }) => {
           ))}
         </ContentContainer>
       </HeaderContainer>
-      <Container content>
+      {/* <Container content>
         {comments && <CommentList data={comments} />}
         <CommentForm slug={slug} />
-      </Container>
+      </Container> */}
     </Layout>
   );
 };
@@ -136,9 +136,7 @@ export const query = graphql`
       title
       slug
       photo {
-        fluid(maxWidth: 900) {
-          ...GatsbyContentfulFluid_tracedSVG
-        }
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
       }
       imageCaption {
         imageCaption
@@ -150,19 +148,19 @@ export const query = graphql`
       category
       tags
     }
-    allContentfulPostComment(
-      sort: { fields: [timestamp], order: DESC }
-      filter: { postSlug: { eq: $slug } }
-    ) {
-      edges {
-        node {
-          name
-          message {
-            message
-          }
-          timestamp
-        }
-      }
-    }
+    # allContentfulPostComment(
+    #   sort: { fields: [timestamp], order: DESC }
+    #   filter: { postSlug: { eq: $slug } }
+    # ) {
+    #   edges {
+    #     node {
+    #       name
+    #       message {
+    #         message
+    #       }
+    #       timestamp
+    #     }
+    #   }
+    # }
   }
 `;

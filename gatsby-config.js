@@ -1,7 +1,7 @@
-require("dotenv").config({
-  path: ".env"
-});
-const { createProxyMiddleware } = require("http-proxy-middleware");
+// require("dotenv").config({
+//   path: ".env"
+// });
+// const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = {
   siteMetadata: {
@@ -10,10 +10,8 @@ module.exports = {
   pathPrefix: "/",
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-image",
-    // "gatsby-transformer-sharp",
+    "gatsby-plugin-image",
     "gatsby-plugin-sharp",
-    // 'gatsby-paginate',
     "gatsby-transformer-remark",
     "gatsby-plugin-styled-components",
     {
@@ -37,17 +35,17 @@ module.exports = {
         }
       }
     }
-  ],
+  ]
   // for avoiding CORS while developing Netlify Functions locally
-  developMiddleware: app => {
-    app.use(
-      "/.netlify/functions/",
-      createProxyMiddleware({
-        target: "http://localhost:9000",
-        pathRewrite: {
-          "/.netlify/functions/": ""
-        }
-      })
-    );
-  }
+  // developMiddleware: app => {
+  //   app.use(
+  //     "/.netlify/functions/",
+  //     createProxyMiddleware({
+  //       target: "http://localhost:9000",
+  //       pathRewrite: {
+  //         "/.netlify/functions/": ""
+  //       }
+  //     })
+  //   );
+  // }
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-import { getAltText, editTracedSvg } from "../utils";
+import { getAltText, getImageWithTracedSVG } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const ImageContainer = styled.li`
@@ -21,7 +21,7 @@ const ImageContainer = styled.li`
   }
 `;
 
-const ImagePost = styled(Img)`
+const ImagePost = styled(GatsbyImage)`
   @media (min-width: ${({ theme }) => theme.bp.sm}) {
     &:after {
       content: "";
@@ -59,7 +59,7 @@ const ImageGridItem = ({ node }) => {
     <ImageContainer>
       <Link to={`/${slug}`}>
         <ImagePost
-          fluid={editTracedSvg(photo.fluid, isDarkMode)}
+          image={getImageWithTracedSVG(photo, isDarkMode)}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}

@@ -53,8 +53,14 @@ exports.createPages = ({ graphql, actions }) => {
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    node: {
-      fs: "empty"
+    node: { fs: "empty" },
+    resolve: {
+      fallback: {
+        path: false,
+        https: false,
+        http: false,
+        stream: false
+      }
     }
   });
 };

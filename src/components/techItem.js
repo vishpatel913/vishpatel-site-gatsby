@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Rating } from ".";
-import { editTracedSvg } from "../utils";
+import { getImageWithTracedSVG } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const TechContainer = styled.li`
@@ -53,8 +53,8 @@ const TechItem = ({ node }) => {
   return (
     <TechContainer>
       <TechLogo>
-        <Img
-          fluid={editTracedSvg(logo.fluid, isDarkMode)}
+        <GatsbyImage
+          image={getImageWithTracedSVG(logo, isDarkMode)}
           title={name}
           alt={`Logo for ${name}`}
           imgStyle={{

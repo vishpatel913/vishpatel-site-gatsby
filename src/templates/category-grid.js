@@ -50,9 +50,7 @@ export const query = graphql`
           title
           slug
           photo {
-            fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
           }
           dateCreated(formatString: "Do MMMM YYYY")
           category
