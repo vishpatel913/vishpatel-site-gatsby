@@ -1,5 +1,5 @@
 import React from "react";
-import renderWithTheme from "../test/test-renderer";
+import renderWithTheme from "./utils/test-renderer";
 import CommentList from "../components/commentList";
 
 describe("CommentList", () => {

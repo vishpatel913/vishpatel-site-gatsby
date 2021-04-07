@@ -1,6 +1,6 @@
 import React from "react";
 
-import renderWithTheme from "../test/test-renderer";
+import renderWithTheme from "./utils/test-renderer";
 import TabMenu from "../components/tabMenu";
 
 describe("TabMenu", () => {
