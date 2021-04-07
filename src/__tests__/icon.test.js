@@ -1,5 +1,5 @@
 import React from "react";
-import renderWithTheme from "../utils/test-renderer";
+import renderWithTheme from "../test/test-renderer";
 import Icon from "../components/icon";
 
 describe("Icon", () => {
