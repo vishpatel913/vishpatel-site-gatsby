@@ -39,7 +39,7 @@
     "gatsby-source-contentful": "^2.2.5",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-remark": "^2.7.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "prop-type": "0.0.1",
