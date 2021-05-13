@@ -11,10 +11,7 @@ const SiteHead = ({ title, description, keywords, page }) => {
   let siteTitle = GATSBY_CONFIG.siteMetadata.title;
   if (page && page !== "/") {
     siteTitle += ` | ${capitalizeString(
-      page
-        .split("/")
-        .filter(v => v !== "")
-        .join(" | ")
+      page.split("/").filter(Boolean).join(" | ")
     )}`;
   } else if (title) {
     siteTitle += ` | ${title}`;
