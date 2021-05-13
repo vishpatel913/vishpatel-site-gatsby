@@ -1,10 +1,4 @@
 export default {
-  spacing: (n, ...args) =>
-    args.reduce(
-      (acc, c, i) =>
-        i < 4 && (typeof c === "string" ? `${acc} ${c}rem` : `${acc} ${c}`),
-      typeof n === "number" ? `${n}rem` : n
-    ),
   bp: {
     lg: "1200px",
     md: "992px",
