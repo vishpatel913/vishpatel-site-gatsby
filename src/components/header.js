@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
+import resumePdf from "../../static/files/Vishal-Patel-Software-Developer-2021.pdf";
 import { useDarkMode } from "../context/darkMode";
 
 const Container = styled.header`
@@ -38,8 +39,9 @@ const FlexRow = styled.div`
   }
 `;
 
-const HeaderLink = styled(Link)`
+const PageLink = styled(Link)`
   color: ${({ theme }) => theme.color.greyDark};
+  text-transform: uppercase;
   text-decoration: none;
   font-weight: lighter;
   margin: 0.5rem;
@@ -71,6 +73,8 @@ const HeaderLink = styled(Link)`
   }
 `;
 
+const ExternalLink = PageLink.withComponent("a");
+
 const Logo = styled.img`
   margin: 0 0.5rem;
   height: 64px;
@@ -81,15 +85,16 @@ const Logo = styled.img`
   }
 `;
 
-const Tab = ({ id }) => {
-  const label = id.toUpperCase().split("-").join(" ");
-  const link = `/${id}`;
-  return (
-    <HeaderLink activeClassName="active" to={link}>
+const HeaderLink = ({ label, link, externalLink }) =>
+  externalLink ? (
+    <ExternalLink href={externalLink} rel="noopener noreferrer" target="_blank">
       {label}
-    </HeaderLink>
+    </ExternalLink>
+  ) : (
+    <PageLink activeClassName="active" to={link ?? "/"}>
+      {label}
+    </PageLink>
   );
-};
 
 const Header = () => {
   const { isDarkMode } = useDarkMode();
@@ -97,15 +102,15 @@ const Header = () => {
     <Container>
       <Navigation>
         <FlexRow left>
-          <Tab id="about" />
-          <Tab id="work" />
+          <HeaderLink label="About" link="/about" />
+          <HeaderLink label="Work" link="/work" />
         </FlexRow>
         <Link to="/" name="Home link">
           <Logo src={isDarkMode ? logoLight : logo} alt="VishPatel.com Logo" />
         </Link>
         <FlexRow right>
-          <Tab id="tech-stack" />
-          <Tab id="resume" />
+          <HeaderLink label="Tech Stack" link="/tech-stack" />
+          <HeaderLink label="Resume" externalLink={resumePdf} />
         </FlexRow>
       </Navigation>
     </Container>
