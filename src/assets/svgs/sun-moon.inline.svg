@@ -2,14 +2,15 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <defs>
-        <mask id="moon-mask">
-            <rect width="100%" height="100%" fill="white"/>
-            <circle id="moon-hole" cx="400" cy="250" r="150" fill="black"/>
+        <mask id="mask">
+            <rect id="background-mask" width="100%" height="100%" fill="white"/>
+            <circle id="sun-ray-mask" cx="300" cy="300" r="280" fill="black" style="fill-opacity:0.5;"/>
+            <circle id="sun-ray-mask" cx="300" cy="300" r="240" fill="white" style="fill-opacity:0.5;"/>
+            <circle id="sun-body-mask"  cx="300" cy="300" r="200" fill="white" />
+            <circle id="moon-hole-mask" cx="400" cy="250" r="200" fill="black"/>
         </mask>
     </defs>
     <g id="sun-group">
-        <circle id="sun-ray"  cx="300" cy="300" r="280" style="fill:rgb(252,248,241);fill-opacity:0.5;" />
-        <circle id="sun-ray" cx="300" cy="300" r="240" style="fill:rgb(252,248,241);fill-opacity:0.5;"/>
-        <circle id="main" cx="300" cy="300" r="200" style="fill:rgb(252,248,241);" mask="url(#moon-mask)"/>
+        <circle id="main" cx="300" cy="300" r="280" mask="url(#mask)"/>
     </g>
 </svg>
