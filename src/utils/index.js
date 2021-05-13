@@ -1,4 +1,5 @@
-import theme from "../assets/theme";
+import { getImage } from "gatsby-plugin-image";
+import theme from "../styles/theme";
 
 export const capitalizeString = string =>
   string
@@ -19,10 +20,16 @@ export const getAltText = (title, category) => {
   }
 };
 
-export const editTracedSvg = (fluid, isDark = false) => ({
-  ...fluid,
-  tracedSVG: fluid?.tracedSVG?.replace(
-    "d3d3d3",
-    theme[isDark ? "dark" : "light"].secondary.slice(1)
-  )
+const editTracedSvg = (image, hex) => ({
+  ...image,
+  placeholder: {
+    ...image?.placeholder,
+    fallback: image?.placeholder?.fallback?.replace("d3d3d3", hex.slice(1))
+  }
 });
+
+export const getImageWithTracedSVG = (gatsbyImage, isDark = false) => {
+  const color = theme[isDark ? "dark" : "light"].secondary;
+  const image = getImage(gatsbyImage);
+  return editTracedSvg(image, color);
+};

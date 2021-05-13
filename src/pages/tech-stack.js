@@ -51,9 +51,7 @@ export const query = graphql`
           name
           competence
           logo {
-            fluid(maxWidth: 800) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
           }
         }
       }

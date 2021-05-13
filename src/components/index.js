@@ -1,3 +1,4 @@
+export { default as BreakoutGame } from "./breakoutGame";
 export { default as Button } from "./button";
 export { default as Comment } from "./comment";
 export { default as CommentForm } from "./commentForm";

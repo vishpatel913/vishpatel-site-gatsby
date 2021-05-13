@@ -1,8 +1,4 @@
 export default {
-  spacing: {
-    single: "1rem",
-    half: "0.5rem"
-  },
   bp: {
     lg: "1200px",
     md: "992px",

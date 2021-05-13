@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Layout, Container, MarkdownRenderer, Icon } from "../components";
-import { capitalizeString, editTracedSvg } from "../utils";
-import { withDarkMode } from "../context/darkMode";
+import { capitalizeString, getImageWithTracedSVG } from "../utils";
+import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
   display: grid;
@@ -70,7 +70,8 @@ const Social = ({ title, link }) => (
   </SocialLink>
 );
 
-const AboutPage = ({ data, location, isDarkMode }) => {
+const AboutPage = ({ data, location }) => {
+  const { isDarkMode } = useDarkMode();
   const {
     name,
     tagLine,
@@ -81,14 +82,15 @@ const AboutPage = ({ data, location, isDarkMode }) => {
     profilePhoto,
     biography
   } = data.contentfulAuthor;
+  const profileImage = getImageWithTracedSVG(profilePhoto, isDarkMode);
 
   return (
     <Layout white page={location.pathname}>
       <>
         <HeaderContainer>
           <ImageContainer>
-            <Img
-              fluid={editTracedSvg(profilePhoto.fluid, isDarkMode)}
+            <GatsbyImage
+              image={profileImage}
               title={name}
               alt={`Profile picture for ${name}`}
               imgStyle={{
@@ -124,7 +126,7 @@ const AboutPage = ({ data, location, isDarkMode }) => {
   );
 };
 
-export default withDarkMode(AboutPage);
+export default AboutPage;
 
 export const query = graphql`
   {
@@ -136,9 +138,7 @@ export const query = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        fluid(maxWidth: 800) {
-          ...GatsbyContentfulFluid_tracedSVG
-        }
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
       }
       biography {
         childMarkdownRemark {
