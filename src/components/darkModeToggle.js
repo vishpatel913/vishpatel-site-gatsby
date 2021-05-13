@@ -6,8 +6,7 @@ import SunMoon from "../assets/svgs/sun-moon.inline.svg";
 import { useDarkMode } from "../context/darkMode";
 
 const ToggleButton = styled.button`
-  background: ${({ dark, theme }) =>
-    dark ? "#ffffff1b" : theme.color.secondaryLight};
+  background: ${({ dark }) => (dark ? "#ffffff1b" : "#7ddddf")};
   border: none;
   border-radius: 20px;
   outline: none;
@@ -28,14 +27,15 @@ const SvgComponent = styled(SunMoon)`
     transform-origin: center;
   }
   #main {
-    transform: scale(${({ dark }) => (dark ? 1.4 : 1)});
-    ${({ dark }) => dark && "fill: #f1f6fc"}
+    fill: ${({ dark }) => (dark ? "#f1f6fc" : "#fcf8f1")};
   }
-  #sun-ray {
-    transform: scale(${({ dark }) => (dark ? 0 : 1)});
+  #sun-ray-mask {
     opacity: ${({ dark }) => (dark ? 0 : 1)};
   }
-  #moon-hole {
+  #sun-main-mask {
+    transform: scale(${({ dark }) => (dark ? 1.4 : 1)});
+  }
+  #moon-hole-mask {
     transform: scale(${({ dark }) => (dark ? 1 : 0)});
   }
 `;
@@ -48,18 +48,18 @@ const Background = styled.div`
 `;
 const StarIcon = styled.span`
   position: absolute;
-  top: ${({ x }) => (x % 2 === 0 ? 8 + x : 20 - x)}px;
-  left: ${({ x }) => x * 6 + 28}px;
-  height: ${({ x }) => (x === 2 ? 1 : 2)}px;
-  width: ${({ x }) => (x === 2 ? 1 : 2)}px;
+  top: ${({ y }) => y}px;
+  left: ${({ x }) => x}px;
+  height: ${({ size }) => size}px;
+  width: ${({ size }) => size}px;
   border-radius: 20px;
   background-color: white;
 `;
 const CloudIcon = styled(Icon)`
   position: absolute;
-  top: ${({ x }) => (x % 2 === 0 ? 6 + x : 14 - x)}px;
-  right: ${({ x }) => x * 8 + 28}px;
-  font-size: ${({ x }) => x + 8}px;
+  top: ${({ y }) => y}px;
+  right: ${({ x }) => x}px;
+  font-size: ${({ size }) => size}px;
   color: white;
 `;
 
@@ -75,16 +75,29 @@ const DarkModeToggle = () => {
     >
       <SvgComponent dark={isDarkMode} />
       <Background>
-        {Array.from({ length: isDarkMode ? 4 : 2 }).map((item, index) =>
-          isDarkMode ? (
-            <StarIcon x={index} />
-          ) : (
-            <CloudIcon x={index} name="cloud" />
-          )
+        {isDarkMode ? (
+          <>
+            <StarIcon x={28} y={8} size={2} />
+            <StarIcon x={34} y={18} size={2} />
+            <StarIcon x={40} y={10} size={1} />
+            <StarIcon x={46} y={16} size={2} />
+          </>
+        ) : (
+          <>
+            <CloudIcon name="cloud" x={26} y={6} size={8} />
+            <CloudIcon name="cloud" x={36} y={12} size={10} />
+          </>
         )}
       </Background>
     </ToggleButton>
   );
 };
+// const CloudIcon = styled(Icon)`
+//   position: absolute;
+//   top: ${({ x }) => (x % 2 === 0 ? 6 + x : 14 - x)}px;
+//   right: ${({ x }) => x * 8 + 28}px;
+//   font-size: ${({ x }) => x + 8}px;
+//   color: white;
+// `;
 
 export default DarkModeToggle;
