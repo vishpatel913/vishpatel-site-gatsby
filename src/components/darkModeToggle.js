@@ -16,7 +16,7 @@ const ToggleButton = styled.button`
   line-height: 0;
   position: relative;
 `;
-const SvgComponent = styled(SunMoon)`
+const SunMoonSVG = styled(SunMoon)`
   position: relative;
   height: 20px;
   width: 20px;
@@ -67,13 +67,8 @@ const DarkModeToggle = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <ToggleButton
-      dark={isDarkMode}
-      onClick={() => {
-        toggleDarkMode();
-      }}
-    >
-      <SvgComponent dark={isDarkMode} />
+    <ToggleButton dark={isDarkMode} onClick={toggleDarkMode}>
+      <SunMoonSVG dark={isDarkMode} />
       <Background>
         {isDarkMode ? (
           <>
@@ -92,12 +87,5 @@ const DarkModeToggle = () => {
     </ToggleButton>
   );
 };
-// const CloudIcon = styled(Icon)`
-//   position: absolute;
-//   top: ${({ x }) => (x % 2 === 0 ? 6 + x : 14 - x)}px;
-//   right: ${({ x }) => x * 8 + 28}px;
-//   font-size: ${({ x }) => x + 8}px;
-//   color: white;
-// `;
 
 export default DarkModeToggle;
