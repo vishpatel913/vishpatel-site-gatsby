@@ -90,4 +90,4 @@ If a file fights you, slap `any` on it and move on.
 - [ ] `yarn lint` passes
 - [ ] `yarn build:app` produces working output
 - [ ] Delete this file
-- [ ] Consider flipping strict-mode flags in `tsconfig.json` one at a time
+- [ ] Pick from [FUTURE.md](FUTURE.md) — strict-mode flags, styled-components v6, Head API, traced-SVG re-impl, dropping moment/typography, re-enabling comments, etc.

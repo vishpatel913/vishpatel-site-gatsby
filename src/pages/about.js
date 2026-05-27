@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Layout, Container, MarkdownRenderer, Icon } from "../components";
-import { capitalizeString, getImageWithTracedSVG } from "../utils";
+import { capitalizeString, getImageData } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const HeaderContainer = styled.div`
@@ -82,7 +82,7 @@ const AboutPage = ({ data, location }) => {
     profilePhoto,
     biography
   } = data.contentfulAuthor;
-  const profileImage = getImageWithTracedSVG(profilePhoto, isDarkMode);
+  const profileImage = getImageData(profilePhoto);
 
   return (
     <Layout white page={location.pathname}>
@@ -138,7 +138,7 @@ export const query = graphql`
       gitHubAccount
       linkedInProfile
       profilePhoto {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
       }
       biography {
         childMarkdownRemark {

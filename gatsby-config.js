@@ -9,6 +9,7 @@ module.exports = {
     title: "VishPatel.com"
   },
   pathPrefix: "/",
+  graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-image",
