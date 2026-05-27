@@ -2,13 +2,12 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import Helmet from "react-helmet";
 
-import GATSBY_CONFIG from "../../gatsby-config";
 import { capitalizeString } from "../utils";
 import icon32 from "../../static/images/favicon-32.png";
 
 const SiteHead = ({ title, description, keywords, page }) => {
   const theme = useContext(ThemeContext);
-  let siteTitle = GATSBY_CONFIG.siteMetadata.title;
+  let siteTitle = "VishPatel.com";
   if (page && page !== "/") {
     siteTitle += ` | ${capitalizeString(
       page.split("/").filter(Boolean).join(" | ")

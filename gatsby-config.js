@@ -1,7 +1,3 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`
-});
-
 // const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = {
@@ -9,6 +5,7 @@ module.exports = {
     title: "VishPatel.com"
   },
   pathPrefix: "/",
+  graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-image",

@@ -13,8 +13,7 @@ import {
   SiteHead,
   Icon
 } from "../components";
-import { capitalizeString, getAltText, getImageWithTracedSVG } from "../utils";
-import { useDarkMode } from "../context/darkMode";
+import { capitalizeString, getAltText, getImageData } from "../utils";
 
 const HeaderContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.bp.md}) {
@@ -76,7 +75,6 @@ const Tag = ({ title }) => {
 };
 
 const ImageTemplate = ({ data, location }) => {
-  const { isDarkMode } = useDarkMode();
   const {
     title,
     photo,
@@ -97,7 +95,7 @@ const ImageTemplate = ({ data, location }) => {
       <SiteHead title={title} description={metaDescription} keywords={tags} />
       <HeaderContainer>
         <PostImage
-          image={getImageWithTracedSVG(photo, isDarkMode)}
+          image={getImageData(photo)}
           title={title}
           alt={getAltText(title, category)}
         />
@@ -131,12 +129,12 @@ const ImageTemplate = ({ data, location }) => {
 export default ImageTemplate;
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulImage(slug: { eq: $slug }) {
       title
       slug
       photo {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
       }
       imageCaption {
         imageCaption

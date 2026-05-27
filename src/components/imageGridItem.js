@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-import { getAltText, getImageWithTracedSVG } from "../utils";
+import { getAltText, getImageData } from "../utils";
 import { useDarkMode } from "../context/darkMode";
 
 const ImageContainer = styled.li`
@@ -59,7 +59,7 @@ const ImageGridItem = ({ node }) => {
     <ImageContainer>
       <Link to={`/${slug}`}>
         <ImagePost
-          image={getImageWithTracedSVG(photo, isDarkMode)}
+          image={getImageData(photo)}
           title={title}
           alt={getAltText(title, category)}
           hoverText={title}

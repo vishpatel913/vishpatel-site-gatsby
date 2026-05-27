@@ -43,15 +43,13 @@ export default TechStackPage;
 
 export const query = graphql`
   {
-    allContentfulTech(
-      sort: { fields: [order, competence], order: [ASC, DESC] }
-    ) {
+    allContentfulTech(sort: [{ order: ASC }, { competence: DESC }]) {
       edges {
         node {
           name
           competence
           logo {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
         }
       }

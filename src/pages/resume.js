@@ -155,13 +155,8 @@ const SectionContent = ({
 );
 
 const ResumePage = ({ data, location }) => {
-  const {
-    name,
-    tagLine,
-    emailAddress,
-    phone,
-    shortBio
-  } = data.contentfulAuthor;
+  const { name, tagLine, emailAddress, phone, shortBio } =
+    data.contentfulAuthor;
   const projects = data.allContentfulProject.nodes;
   const { education, employment } = data.allContentfulResume.nodes.reduce(
     (p, c) => {
@@ -292,7 +287,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulProject(sort: { fields: started, order: DESC }) {
+    allContentfulProject(sort: { started: DESC }) {
       nodes {
         name
         techStack
@@ -304,7 +299,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulTech(sort: { fields: competence, order: DESC }) {
+    allContentfulTech(sort: { competence: DESC }) {
       nodes {
         name
         category

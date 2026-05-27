@@ -15,7 +15,7 @@ export const query = graphql`
   {
     allContentfulImage(
       filter: { featured: { eq: true } }
-      sort: { fields: [updatedAt], order: DESC }
+      sort: { updatedAt: DESC }
     ) {
       edges {
         node {
@@ -23,7 +23,7 @@ export const query = graphql`
           slug
           featured
           photo {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
           dateCreated(formatString: "Do MMMM YYYY")
           category

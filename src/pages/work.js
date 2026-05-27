@@ -19,13 +19,13 @@ export default WorkPage;
 
 export const query = graphql`
   {
-    allContentfulImage(sort: { fields: [dateCreated], order: DESC }) {
+    allContentfulImage(sort: { dateCreated: DESC }) {
       edges {
         node {
           title
           slug
           photo {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
           dateCreated(formatString: "Do MMMM YYYY")
           category

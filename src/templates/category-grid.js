@@ -40,9 +40,9 @@ const CategoryTemplate = ({ data, location }) => (
 export default CategoryTemplate;
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     allContentfulImage(
-      sort: { fields: [dateCreated], order: DESC }
+      sort: { dateCreated: DESC }
       filter: { category: { eq: $slug } }
     ) {
       edges {
@@ -50,7 +50,7 @@ export const query = graphql`
           title
           slug
           photo {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
           dateCreated(formatString: "Do MMMM YYYY")
           category

@@ -51,18 +51,16 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions, plugins }) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    node: { fs: "empty" },
     resolve: {
       fallback: {
+        fs: false,
         path: false,
         https: false,
         http: false,
         stream: false
-      },
-      alias: { process: "process/browser" }
-    },
-    plugins: [plugins.provide({ process: "process/browser" })]
+      }
+    }
   });
 };
