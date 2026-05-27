@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 import logo from "../../static/images/logo.svg";
 import logoLight from "../../static/images/logo-light.svg";
-import resumePdf from "../../static/files/Vishal-Patel-Software-Developer-2021.pdf";
+import resumePdf from "../../static/files/Vishal-Patel-Software-Developer-2024.pdf";
 import { useDarkMode } from "../context/darkMode";
 
 const Container = styled.header`
