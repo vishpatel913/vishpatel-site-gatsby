@@ -10,5 +10,6 @@ yarn-error.log
 
 .env
 .env.*
+!.env.*.example
 /lambda
 /functions

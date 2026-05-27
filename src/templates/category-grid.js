@@ -40,7 +40,7 @@ const CategoryTemplate = ({ data, location }) => (
 export default CategoryTemplate;
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     allContentfulImage(
       sort: { fields: [dateCreated], order: DESC }
       filter: { category: { eq: $slug } }

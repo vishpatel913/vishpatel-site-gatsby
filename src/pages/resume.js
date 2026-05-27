@@ -155,13 +155,8 @@ const SectionContent = ({
 );
 
 const ResumePage = ({ data, location }) => {
-  const {
-    name,
-    tagLine,
-    emailAddress,
-    phone,
-    shortBio
-  } = data.contentfulAuthor;
+  const { name, tagLine, emailAddress, phone, shortBio } =
+    data.contentfulAuthor;
   const projects = data.allContentfulProject.nodes;
   const { education, employment } = data.allContentfulResume.nodes.reduce(
     (p, c) => {
