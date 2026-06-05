@@ -1,5 +1,11 @@
 // const { createProxyMiddleware } = require("http-proxy-middleware");
 
+// Gatsby does not load .env files automatically — load the one matching the
+// current command (.env.development for `develop`, .env.production for `build`).
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   siteMetadata: {
     title: "VishPatel.com"

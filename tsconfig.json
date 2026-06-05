@@ -32,8 +32,8 @@
   },
   "include": [
     "src/**/*",
-    "gatsby-browser.js",
-    "gatsby-ssr.js"
+    "gatsby-browser.tsx",
+    "gatsby-ssr.tsx"
   ],
   "exclude": [
     "node_modules",

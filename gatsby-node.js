@@ -3,8 +3,10 @@ const path = require("path");
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
-    const imagePostTemplate = path.resolve("src/templates/image-post.js");
-    const categoryGridTemplate = path.resolve("src/templates/category-grid.js");
+    const imagePostTemplate = path.resolve("src/templates/image-post.tsx");
+    const categoryGridTemplate = path.resolve(
+      "src/templates/category-grid.tsx"
+    );
     // Query for markdown nodes to use in creating pages.
     // all entries based on content type: which here, is image
     resolve(

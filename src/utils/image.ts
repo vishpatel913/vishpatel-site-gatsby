@@ -1,15 +1,15 @@
 import { getImage, ImageDataLike } from "gatsby-plugin-image";
 
-export const getAltText = (title: string, category?: string) => {
+export const getAltText = (title?: string, category?: string) => {
   switch (category) {
     case "development":
-      return `Screenshot of ${title}`;
+      return title ? `Screenshot of ${title}` : "Screenshot";
     case "design":
-      return `Design titled ${title}`;
+      return title ? `Design titled ${title}` : "Design";
     case "photography":
-      return `Photograph titled ${title}`;
+      return title ? `Photograph titled ${title}` : "Photograph";
     default:
-      return title;
+      return title ?? "";
   }
 };
 

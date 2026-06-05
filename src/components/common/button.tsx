@@ -39,14 +39,16 @@ const StyledButton = styled.button<{
 type Props = {
   small?: boolean;
   outline?: boolean;
+  onClick?: () => void;
 };
 
 const Button: React.FC<React.PropsWithChildren<Props>> = ({
   small,
   outline,
+  onClick,
   children
 }) => (
-  <StyledButton $small={small} $outline={outline}>
+  <StyledButton $small={small} $outline={outline} onClick={onClick}>
     {children}
   </StyledButton>
 );
