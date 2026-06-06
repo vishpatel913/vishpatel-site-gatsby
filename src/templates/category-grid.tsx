@@ -26,23 +26,25 @@ const CategoryTemplate = ({
       <Container edge>
         <TabMenu links={WORK_PAGES} />
       </Container>
-      {data.allContentfulImage.edges.length > 0 ? (
-        <ImageGrid>
-          {data.allContentfulImage.edges.map(({ node }) => (
-            <ImageGrid.Item
-              key={node.slug}
-              title={node.title ?? undefined}
-              slug={node.slug ?? undefined}
-              photo={node.photo?.gatsbyImageData ?? undefined}
-              category={node.category ?? undefined}
-            />
-          ))}
-        </ImageGrid>
-      ) : (
-        <ErrorContainer>
-          <NotFoundMessage />
-        </ErrorContainer>
-      )}
+      <Container edge>
+        {data.allContentfulImage.edges.length > 0 ? (
+          <ImageGrid>
+            {data.allContentfulImage.edges.map(({ node }) => (
+              <ImageGrid.Item
+                key={node.slug}
+                title={node.title ?? undefined}
+                slug={node.slug ?? undefined}
+                photo={node.photo?.gatsbyImageData ?? undefined}
+                category={node.category ?? undefined}
+              />
+            ))}
+          </ImageGrid>
+        ) : (
+          <ErrorContainer>
+            <NotFoundMessage />
+          </ErrorContainer>
+        )}
+      </Container>
     </PageContainer>
   </Layout>
 );

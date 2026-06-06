@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql, Link, PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { capitalizeString, getAltText, getImageData } from "../utils";
 import { Container, Layout, SiteHead } from "../components/layout";
 import { MarkdownRenderer } from "../components/markdownRenderer";
-import { Icon } from "../components/common";
+import { Link } from "../components/common";
 
 const HeaderContainer = styled.div`
   @media (min-width: ${({ theme }) => theme.bp.md}) {
@@ -28,6 +28,11 @@ const PostImage = styled(GatsbyImage)`
 `;
 
 const ImageMetaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
   color: ${({ theme }) => theme.color.greyDark};
 
   &:before {
@@ -40,48 +45,27 @@ const ImageMetaContainer = styled.div`
   }
 `;
 
-const DateText = styled.span`
-  display: block;
-  margin-bottom: 4px;
-`;
-
-const CategoryLink = styled(Link)`
-  display: inline-block;
-  margin-bottom: 4px;
-  color: ${({ theme }) => theme.color.greyDark};
+const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 
 const TagLink = styled.span`
   display: inline-block;
-  text-decoration: none;
   color: ${({ theme }) => theme.color.greyDark};
-  margin-right: 0.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.color.primary};
   }
 `;
 
-const Tag = ({ title }: { title?: string }) => {
-  // const tagSlug = title.toLowerCase().split(" ").join("-");
-  return <TagLink>{`#${title}`}</TagLink>;
-};
-
 const ImageTemplate = ({
   data,
   location
 }: PageProps<Queries.ImagePostTemplateQuery>) => {
-  const {
-    title,
-    photo,
-    imageCaption,
-    dateCreated,
-    category,
-    tags
-    // slug
-  } = data.contentfulImage ?? {};
-  // const comments =
-  //   data.allContentfulPostComment && data.allContentfulPostComment.edges;
+  const { title, photo, imageCaption, dateCreated, category, tags } =
+    data.contentfulImage ?? {};
   const metaDescription = imageCaption
     ? imageCaption.imageCaption
     : getAltText(title ?? undefined, category ?? undefined);
@@ -112,20 +96,22 @@ const ImageTemplate = ({
             />
           )}
           <ImageMetaContainer>
-            <DateText>{dateCreated}</DateText>
+            <span>{dateCreated}</span>
             {category ? (
-              <CategoryLink
-                to={`/work/${category}`}
+              <Link
+                href={`/work/${category}`}
                 title={category ?? undefined}
+                icon="category"
               >
-                <Icon name="category" />
                 {capitalizeString(category)}
-              </CategoryLink>
+              </Link>
             ) : null}
+            <TagContainer>
+              {tags?.map((tag: any) => (
+                <TagLink key={tag}>{`#${tag}`}</TagLink>
+              ))}
+            </TagContainer>
           </ImageMetaContainer>
-          {tags?.map((tag: any) => (
-            <Tag key={tag} title={tag} />
-          ))}
         </ContentContainer>
       </HeaderContainer>
     </Layout>
@@ -152,19 +138,5 @@ export const query = graphql`
       category
       tags
     }
-    # allContentfulPostComment(
-    #   sort: { fields: [timestamp], order: DESC }
-    #   filter: { postSlug: { eq: $slug } }
-    # ) {
-    #   edges {
-    #     node {
-    #       name
-    #       message {
-    #         message
-    #       }
-    #       timestamp
-    #     }
-    #   }
-    # }
   }
 `;

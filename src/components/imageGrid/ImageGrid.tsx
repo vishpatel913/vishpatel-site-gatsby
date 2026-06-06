@@ -1,4 +1,3 @@
-// TODO: fix styles for < 3 photos
 import React from "react";
 
 import { GridContainer } from "./ImageGrid.styles";

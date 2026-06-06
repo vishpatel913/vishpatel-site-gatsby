@@ -11,17 +11,19 @@ const WorkPage = ({ data, location }: PageProps<Queries.WorkPageQuery>) => (
     <Container edge>
       <TabMenu links={WORK_PAGES} />
     </Container>
-    <ImageGrid>
-      {data.allContentfulImage.edges.map(({ node }) => (
-        <ImageGrid.Item
-          key={node.slug}
-          title={node.title ?? undefined}
-          slug={node.slug ?? undefined}
-          photo={node.photo?.gatsbyImageData ?? undefined}
-          category={node.category ?? undefined}
-        />
-      ))}
-    </ImageGrid>
+    <Container edge>
+      <ImageGrid>
+        {data.allContentfulImage.edges.map(({ node }) => (
+          <ImageGrid.Item
+            key={node.slug}
+            title={node.title ?? undefined}
+            slug={node.slug ?? undefined}
+            photo={node.photo?.gatsbyImageData ?? undefined}
+            category={node.category ?? undefined}
+          />
+        ))}
+      </ImageGrid>
+    </Container>
   </Layout>
 );
 

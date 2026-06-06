@@ -1,12 +1,11 @@
-// TODO: refactor into components
 import React from "react";
 import styled from "styled-components";
 import { graphql, PageProps } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-import { capitalizeString, getImageData } from "../utils";
+import { getImageData } from "../utils";
 import { useDarkMode } from "../context/darkMode";
-import { Icon } from "../components/common";
+import { IconLink, Link } from "../components/common";
 import { Container, Layout } from "../components/layout";
 import { MarkdownRenderer } from "../components/markdownRenderer";
 
@@ -27,51 +26,22 @@ const ImageContainer = styled.div`
   }
 `;
 
-const SocialContainer = styled.div`
+const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 `;
 
-const SocialLink = styled.a`
+const ColumnContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  border: solid ${({ theme }) => theme.color.grey} 1px;
-  font-size: 12px;
-  font-weight: 200;
-  border-radius: 4px;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  color: ${({ theme }) => theme.color.greyDark};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.primary};
-    border-color: ${({ theme }) => theme.color.primary};
-  }
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
 `;
-
-const EmailLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  font-weight: 200;
-  margin-left: 1px;
-  margin-bottom: 1rem;
-  color: ${({ theme }) => theme.color.greyDark};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.primary};
-  }
-`;
-
-const Social = ({ title, link }: { title: string; link: string }) => (
-  <SocialLink href={link} rel="noopener noreferrer" target="_blank">
-    <Icon name={title} />
-    {capitalizeString(title)}
-  </SocialLink>
-);
 
 const AboutPage = ({ data, location }: PageProps<Queries.AboutPageQuery>) => {
   const { isDarkMode } = useDarkMode();
@@ -89,46 +59,49 @@ const AboutPage = ({ data, location }: PageProps<Queries.AboutPageQuery>) => {
 
   return (
     <Layout white page={location.pathname}>
-      <>
-        <HeaderContainer>
-          {profileImage ? (
-            <ImageContainer>
-              <GatsbyImage
-                image={profileImage}
-                title={name ?? "Profile"}
-                alt={`Profile picture for ${name}`}
-                imgStyle={{
-                  verticalAlign: "middle",
-                  filter: isDarkMode ? "brightness(80%) sepia(10%)" : "none"
-                }}
-              />
-            </ImageContainer>
-          ) : null}
-          <Container>
-            <h1>{name}</h1>
-            <p>{tagLine}</p>
-            <EmailLink href={`mailto:${emailAddress}`}>
-              <Icon name="mail" />
+      <HeaderContainer>
+        {profileImage ? (
+          <ImageContainer>
+            <GatsbyImage
+              image={profileImage}
+              title={name ?? "Profile"}
+              alt={`Profile picture for ${name}`}
+              imgStyle={{
+                verticalAlign: "middle",
+                filter: isDarkMode ? "brightness(80%) sepia(10%)" : "none"
+              }}
+            />
+          </ImageContainer>
+        ) : null}
+        <Container>
+          <h1>{name}</h1>
+          <p>{tagLine}</p>
+          <ColumnContainer>
+            <Link href={`mailto:${emailAddress}`} icon="mail">
               {emailAddress}
-            </EmailLink>
-            <SocialContainer>
-              <Social title="gitHub" link={gitHubAccount ?? ""} />
-              <Social
-                title="instagram"
-                link={`http://instagram.com/${twitterHandle}`}
-              />
-              <Social title="linkedIn" link={linkedInProfile ?? ""} />
-            </SocialContainer>
-          </Container>
-        </HeaderContainer>
-        <Container content>
-          <MarkdownRenderer
-            source={
-              biography?.childMarkdownRemark?.rawMarkdownBody ?? undefined
-            }
-          />
+            </Link>
+            <RowContainer>
+              <IconLink icon="gitHub" href={gitHubAccount ?? ""}>
+                GitHub
+              </IconLink>
+              <IconLink
+                icon="instagram"
+                href={`http://instagram.com/${twitterHandle}`}
+              >
+                Instagram
+              </IconLink>
+              <IconLink icon="linkedIn" href={linkedInProfile ?? ""}>
+                LinkedIn
+              </IconLink>
+            </RowContainer>
+          </ColumnContainer>
         </Container>
-      </>
+      </HeaderContainer>
+      <Container content>
+        <MarkdownRenderer
+          source={biography?.childMarkdownRemark?.rawMarkdownBody ?? undefined}
+        />
+      </Container>
     </Layout>
   );
 };

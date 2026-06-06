@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
-import styled, { AnyStyledComponent } from "styled-components";
+import styled from "styled-components";
 import { Link } from "gatsby";
+import Icon from "./icon";
 
 const ExternalLink = styled.a`
   text-decoration: "none";
@@ -8,6 +9,12 @@ const ExternalLink = styled.a`
   color: inherit;
   position: relative;
   z-index: 1;
+`;
+
+const StyledContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
   &::after {
     content: "";
@@ -33,12 +40,11 @@ const ExternalLink = styled.a`
   }
 `;
 
-const InternalLink = ExternalLink.withComponent(
-  Link as unknown as AnyStyledComponent
-);
+const InternalLink = ExternalLink.withComponent(Link);
 
 type Props = {
   href: string;
+  icon?: string;
   title?: string;
   external?: boolean;
 };
@@ -46,15 +52,23 @@ type Props = {
 const StyledLink: React.FC<PropsWithChildren<Props>> = ({
   href,
   title,
-  children,
-  external
-}) =>
-  external ? (
-    <ExternalLink href={href} title={title}>
+  icon,
+  external,
+  children
+}) => {
+  const content = (
+    <StyledContent>
+      {icon ? <Icon name={icon} /> : null}
       {children}
+    </StyledContent>
+  );
+  return external ? (
+    <ExternalLink href={href} title={title}>
+      {content}
     </ExternalLink>
   ) : (
-    <InternalLink to={href}>{children}</InternalLink>
+    <InternalLink to={href}>{content}</InternalLink>
   );
+};
 
 export default StyledLink;
